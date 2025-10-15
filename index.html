@@ -67,28 +67,63 @@
     <!-- Header -->
     <header class="gradient-bg text-white shadow-2xl relative overflow-hidden">
         <div class="absolute inset-0 bg-black opacity-10"></div>
-        <div class="container mx-auto px-4 py-6 relative z-10">
+        <div class="container mx-auto px-4 py-3 relative z-10">
             <div class="flex justify-between items-center">
-                <div class="flex items-center space-x-4">
-                    <div class="w-16 h-16 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-full flex items-center justify-center shadow-lg">
-                        <span class="text-3xl font-bold text-white">💰</span>
+                <div class="flex items-center space-x-3">
+                    <div class="w-12 h-12 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-full flex items-center justify-center shadow-lg">
+                        <span class="text-2xl font-bold text-white">💰</span>
                     </div>
                     <div>
-                        <h1 class="text-4xl font-bold bg-gradient-to-r from-yellow-300 to-white bg-clip-text text-transparent">Mega Millions Brasil</h1>
-                        <p class="text-yellow-200 text-sm">Sorteios Semanais • Prêmios a partir de R$ 10.000</p>
+                        <h1 class="text-2xl md:text-3xl font-bold bg-gradient-to-r from-yellow-300 to-white bg-clip-text text-transparent">Mega Millions Brasil</h1>
+                        <p class="text-yellow-200 text-xs md:text-sm">Sorteios Semanais • Prêmios R$ 10.000+</p>
                     </div>
                 </div>
-                <nav class="hidden md:flex space-x-8">
-                    <button onclick="showSection('home')" class="hover:text-yellow-300 transition-all duration-300 font-semibold border-b-2 border-transparent hover:border-yellow-300">Início</button>
-                    <button onclick="showSection('tickets')" class="hover:text-yellow-300 transition-all duration-300 font-semibold border-b-2 border-transparent hover:border-yellow-300">Bilhetes</button>
-                    <button onclick="showSection('financial')" class="hover:text-yellow-300 transition-all duration-300 font-semibold border-b-2 border-transparent hover:border-yellow-300">Financeiro</button>
-                    <button onclick="showSection('feedback')" class="hover:text-yellow-300 transition-all duration-300 font-semibold border-b-2 border-transparent hover:border-yellow-300">Depoimentos</button>
-                    <button onclick="showSection('bolao')" class="hover:text-yellow-300 transition-all duration-300 font-semibold border-b-2 border-transparent hover:border-yellow-300">Bolões</button>
-                    <button onclick="showSection('winners')" class="hover:text-yellow-300 transition-all duration-300 font-semibold border-b-2 border-transparent hover:border-yellow-300">Ganhadores</button>
-                    <button onclick="showSection('contact')" class="hover:text-yellow-300 transition-all duration-300 font-semibold border-b-2 border-transparent hover:border-yellow-300">Contato</button>
-                    <button onclick="showLoginModal()" class="bg-gradient-to-r from-yellow-400 to-orange-500 text-white px-6 py-3 rounded-full font-bold hover:from-yellow-300 hover:to-orange-400 transition-all duration-300 shadow-lg transform hover:scale-105">Entrar</button>
+                
+                <!-- Desktop Navigation -->
+                <nav class="hidden lg:flex space-x-6" id="mainNavigation">
+                    <button onclick="showSection('inicio')" class="hover:text-yellow-300 transition-all duration-300 font-semibold border-b-2 border-transparent hover:border-yellow-300 text-sm">Início</button>
+                    <button onclick="showSection('home')" class="hover:text-yellow-300 transition-all duration-300 font-semibold border-b-2 border-transparent hover:border-yellow-300 text-sm">Sorteios</button>
+                    <button onclick="showSection('tickets')" class="hover:text-yellow-300 transition-all duration-300 font-semibold border-b-2 border-transparent hover:border-yellow-300 text-sm">Bilhetes</button>
+                    <button onclick="showSection('financial')" class="hover:text-yellow-300 transition-all duration-300 font-semibold border-b-2 border-transparent hover:border-yellow-300 text-sm">Financeiro</button>
+                    <button onclick="showSection('feedback')" class="hover:text-yellow-300 transition-all duration-300 font-semibold border-b-2 border-transparent hover:border-yellow-300 text-sm">Depoimentos</button>
+                    <button onclick="showSection('bolao')" class="hover:text-yellow-300 transition-all duration-300 font-semibold border-b-2 border-transparent hover:border-yellow-300 text-sm">Bolões</button>
+                    <button onclick="showSection('winners')" class="hover:text-yellow-300 transition-all duration-300 font-semibold border-b-2 border-transparent hover:border-yellow-300 text-sm">Ganhadores</button>
+                    <button onclick="showSection('contact')" class="hover:text-yellow-300 transition-all duration-300 font-semibold border-b-2 border-transparent hover:border-yellow-300 text-sm">Contato</button>
+                    <button onclick="showAdminLogin()" class="hover:text-red-300 transition-all duration-300 font-semibold border-b-2 border-transparent hover:border-red-300 text-sm text-red-200">👑 Admin</button>
+                    <div id="userActions" class="flex items-center space-x-3">
+                        <button onclick="showRegisterModal()" class="bg-gradient-to-r from-green-500 to-emerald-600 text-white px-4 py-2 rounded-full font-bold hover:from-green-600 hover:to-emerald-700 transition-all duration-300 shadow-lg transform hover:scale-105 text-sm">Cadastrar</button>
+                        <button onclick="showLoginModal()" class="bg-gradient-to-r from-yellow-400 to-orange-500 text-white px-4 py-2 rounded-full font-bold hover:from-yellow-300 hover:to-orange-400 transition-all duration-300 shadow-lg transform hover:scale-105 text-sm">Entrar</button>
+                    </div>
                 </nav>
+
+                <!-- Mobile Menu Button -->
+                <div class="lg:hidden flex items-center space-x-3">
+                    <div id="userActionsMobile" class="flex items-center space-x-2">
+                        <button onclick="showRegisterModal()" class="bg-gradient-to-r from-green-500 to-emerald-600 text-white px-3 py-2 rounded-full font-bold hover:from-green-600 hover:to-emerald-700 transition-all duration-300 shadow-lg text-xs">Cadastrar</button>
+                        <button onclick="showLoginModal()" class="bg-gradient-to-r from-yellow-400 to-orange-500 text-white px-3 py-2 rounded-full font-bold hover:from-yellow-300 hover:to-orange-400 transition-all duration-300 shadow-lg text-xs">Entrar</button>
+                    </div>
+                    <button onclick="toggleMobileMenu()" class="text-white hover:text-yellow-300 transition-colors">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                </div>
             </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobileMenu" class="lg:hidden hidden bg-black bg-opacity-95 backdrop-blur-sm">
+            <nav class="container mx-auto px-4 py-4 space-y-3">
+                <button onclick="showSection('inicio'); closeMobileMenu();" class="block w-full text-left text-white hover:text-yellow-300 transition-all duration-300 font-semibold py-2 border-b border-gray-700">🏠 Início</button>
+                <button onclick="showSection('home'); closeMobileMenu();" class="block w-full text-left text-white hover:text-yellow-300 transition-all duration-300 font-semibold py-2 border-b border-gray-700">🎰 Sorteios</button>
+                <button onclick="showSection('tickets'); closeMobileMenu();" class="block w-full text-left text-white hover:text-yellow-300 transition-all duration-300 font-semibold py-2 border-b border-gray-700">🎫 Bilhetes</button>
+                <button onclick="showSection('financial'); closeMobileMenu();" class="block w-full text-left text-white hover:text-yellow-300 transition-all duration-300 font-semibold py-2 border-b border-gray-700">💳 Financeiro</button>
+                <button onclick="showSection('feedback'); closeMobileMenu();" class="block w-full text-left text-white hover:text-yellow-300 transition-all duration-300 font-semibold py-2 border-b border-gray-700">⭐ Depoimentos</button>
+                <button onclick="showSection('bolao'); closeMobileMenu();" class="block w-full text-left text-white hover:text-yellow-300 transition-all duration-300 font-semibold py-2 border-b border-gray-700">🤝 Bolões</button>
+                <button onclick="showSection('winners'); closeMobileMenu();" class="block w-full text-left text-white hover:text-yellow-300 transition-all duration-300 font-semibold py-2 border-b border-gray-700">🏆 Ganhadores</button>
+                <button onclick="showSection('contact'); closeMobileMenu();" class="block w-full text-left text-white hover:text-yellow-300 transition-all duration-300 font-semibold py-2 border-b border-gray-700">📞 Contato</button>
+                <button onclick="showAdminLogin(); closeMobileMenu();" class="block w-full text-left text-red-200 hover:text-red-300 transition-all duration-300 font-semibold py-2">👑 Acesso Admin</button>
+            </nav>
         </div>
     </header>
 
@@ -103,6 +138,174 @@
 
     <!-- Main Content -->
     <main class="container mx-auto px-4 py-8">
+        <!-- Início Section -->
+        <section id="inicio" class="section-content">
+            <!-- Hero Banner -->
+            <div class="relative bg-gradient-to-br from-purple-900 via-blue-900 to-indigo-900 rounded-3xl overflow-hidden mb-12 shadow-2xl">
+                <div class="absolute inset-0 bg-black opacity-30"></div>
+                <div class="relative z-10 text-white p-12 text-center">
+                    <h1 class="text-6xl font-bold mb-6 bg-gradient-to-r from-yellow-300 to-white bg-clip-text text-transparent">
+                        🎰 MEGA MILLIONS BRASIL
+                    </h1>
+                    <p class="text-2xl mb-8 text-yellow-200">A maior plataforma de sorteios online do Brasil!</p>
+                    <div class="grid md:grid-cols-3 gap-6 mb-8">
+                        <div class="bg-white bg-opacity-20 rounded-xl p-6 backdrop-blur-sm">
+                            <div class="text-4xl mb-2">🏆</div>
+                            <div class="text-2xl font-bold">R$ 8.2M+</div>
+                            <div class="text-sm">Prêmios Pagos</div>
+                        </div>
+                        <div class="bg-white bg-opacity-20 rounded-xl p-6 backdrop-blur-sm">
+                            <div class="text-4xl mb-2">👥</div>
+                            <div class="text-2xl font-bold">2.847</div>
+                            <div class="text-sm">Ganhadores</div>
+                        </div>
+                        <div class="bg-white bg-opacity-20 rounded-xl p-6 backdrop-blur-sm">
+                            <div class="text-4xl mb-2">⭐</div>
+                            <div class="text-2xl font-bold">100%</div>
+                            <div class="text-sm">Seguro</div>
+                        </div>
+                    </div>
+                    <a href="https://link.mercadopago.com.br/megamillionsbrasil" target="_blank" rel="noopener noreferrer" class="inline-block bg-gradient-to-r from-yellow-400 to-orange-500 text-black px-12 py-6 rounded-2xl font-bold text-2xl hover:from-yellow-300 hover:to-orange-400 transition-all duration-300 shadow-2xl transform hover:scale-105 pulse-animation">
+                        🎫 COMPRAR BILHETES AGORA
+                    </a>
+                </div>
+            </div>
+
+            <!-- Como Funciona -->
+            <div class="bg-white rounded-3xl shadow-2xl p-10 mb-12 border border-gray-200">
+                <h2 class="text-4xl font-bold text-center mb-12 bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">Como Funciona</h2>
+                <div class="grid md:grid-cols-4 gap-8">
+                    <div class="text-center">
+                        <div class="w-20 h-20 bg-gradient-to-br from-purple-500 to-blue-600 rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg">
+                            <span class="text-3xl text-white">1️⃣</span>
+                        </div>
+                        <h3 class="text-xl font-bold mb-4 text-gray-800">Escolha seu Pacote</h3>
+                        <p class="text-gray-600">Selecione quantos bilhetes deseja comprar. Mais bilhetes = mais chances!</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="w-20 h-20 bg-gradient-to-br from-green-500 to-emerald-600 rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg">
+                            <span class="text-3xl text-white">2️⃣</span>
+                        </div>
+                        <h3 class="text-xl font-bold mb-4 text-gray-800">Faça o Pagamento</h3>
+                        <p class="text-gray-600">Pague com PIX, cartão ou boleto através do Mercado Pago. 100% seguro!</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="w-20 h-20 bg-gradient-to-br from-orange-500 to-red-600 rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg">
+                            <span class="text-3xl text-white">3️⃣</span>
+                        </div>
+                        <h3 class="text-xl font-bold mb-4 text-gray-800">Receba os Bilhetes</h3>
+                        <p class="text-gray-600">Seus bilhetes chegam no email em até 30 minutos após o pagamento.</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="w-20 h-20 bg-gradient-to-br from-yellow-500 to-orange-600 rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg">
+                            <span class="text-3xl text-white">4️⃣</span>
+                        </div>
+                        <h3 class="text-xl font-bold mb-4 text-gray-800">Aguarde o Sorteio</h3>
+                        <p class="text-gray-600">Toda sexta-feira às 19h. Acompanhe ao vivo e torça para ganhar!</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Link Mega Millions em Destaque -->
+            <div class="bg-gradient-to-r from-yellow-400 via-orange-500 to-red-500 rounded-3xl p-8 mb-12 text-center shadow-2xl relative overflow-hidden">
+                <div class="absolute inset-0 bg-black opacity-10"></div>
+                <div class="relative z-10">
+                    <h2 class="text-4xl font-bold text-white mb-6">🎯 ACESSE NOSSA PLATAFORMA OFICIAL</h2>
+                    <p class="text-xl text-white mb-8">Clique no link abaixo para acessar diretamente nossa página de compras no Mercado Pago</p>
+                    <div class="bg-white rounded-2xl p-6 inline-block shadow-2xl">
+                        <div class="text-lg font-bold text-gray-800 mb-4">🔗 Link Oficial Mega Millions Brasil</div>
+                        <a href="https://link.mercadopago.com.br/megamillionsbrasil" target="_blank" rel="noopener noreferrer" class="bg-gradient-to-r from-green-500 to-blue-600 text-white px-8 py-4 rounded-xl font-bold text-xl hover:from-green-600 hover:to-blue-700 transition-all duration-300 shadow-lg transform hover:scale-105 inline-block">
+                            link.mercadopago.com.br/megamillionsbrasil
+                        </a>
+                        <div class="text-sm text-gray-600 mt-4">✅ Pagamento 100% Seguro • PIX, Cartão e Boleto</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Últimas Notícias -->
+            <div class="bg-white rounded-3xl shadow-2xl p-10 mb-12 border border-gray-200">
+                <h2 class="text-4xl font-bold text-center mb-12 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">📰 Últimas Notícias</h2>
+                <div class="grid md:grid-cols-3 gap-8">
+                    <div class="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-2xl p-6 border border-blue-200">
+                        <div class="text-4xl mb-4">🎉</div>
+                        <h3 class="text-xl font-bold mb-3 text-gray-800">Novo Recorde de Prêmio!</h3>
+                        <p class="text-gray-600 mb-4">O sorteio desta semana pode chegar a R$ 50.000! Não perca esta oportunidade única.</p>
+                        <div class="text-sm text-blue-600 font-semibold">15/12/2025</div>
+                    </div>
+                    <div class="bg-gradient-to-br from-green-50 to-emerald-50 rounded-2xl p-6 border border-green-200">
+                        <div class="text-4xl mb-4">🏆</div>
+                        <h3 class="text-xl font-bold mb-3 text-gray-800">Ganhadora de Juscimeira</h3>
+                        <p class="text-gray-600 mb-4">Juliana P. ganhou R$ 48.300 com apenas 500 bilhetes. "Não acreditei quando vi o resultado!"</p>
+                        <div class="text-sm text-green-600 font-semibold">12/12/2025</div>
+                    </div>
+                    <div class="bg-gradient-to-br from-purple-50 to-pink-50 rounded-2xl p-6 border border-purple-200">
+                        <div class="text-4xl mb-4">🚀</div>
+                        <h3 class="text-xl font-bold mb-3 text-gray-800">Novos Bolões Disponíveis</h3>
+                        <p class="text-gray-600 mb-4">Agora você pode participar de bolões com até 4.200 bilhetes! Mais chances, menor investimento.</p>
+                        <div class="text-sm text-purple-600 font-semibold">10/12/2025</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Depoimentos em Destaque -->
+            <div class="bg-gradient-to-r from-green-500 to-blue-500 rounded-3xl p-10 text-white mb-12 shadow-2xl">
+                <h2 class="text-4xl font-bold text-center mb-12">⭐ O Que Nossos Ganhadores Dizem</h2>
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div class="bg-white bg-opacity-20 rounded-2xl p-8 backdrop-blur-sm">
+                        <div class="flex items-center mb-6">
+                            <div class="w-16 h-16 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-full flex items-center justify-center text-2xl font-bold text-white shadow-lg">
+                                IM
+                            </div>
+                            <div class="ml-4">
+                                <div class="font-bold text-xl">Isabela Martins</div>
+                                <div class="text-yellow-300">⭐⭐⭐⭐⭐</div>
+                                <div class="text-sm text-green-300 font-semibold">Ganhou R$ 47.200</div>
+                            </div>
+                        </div>
+                        <p class="text-lg italic">"Ganhei no meu terceiro sorteio! O processo é super fácil e os bilhetes chegam rapidinho no email. Já paguei minha casa!"</p>
+                    </div>
+                    <div class="bg-white bg-opacity-20 rounded-2xl p-8 backdrop-blur-sm">
+                        <div class="flex items-center mb-6">
+                            <div class="w-16 h-16 bg-gradient-to-br from-blue-400 to-purple-500 rounded-full flex items-center justify-center text-2xl font-bold text-white shadow-lg">
+                                EN
+                            </div>
+                            <div class="ml-4">
+                                <div class="font-bold text-xl">Eduardo Nascimento</div>
+                                <div class="text-yellow-300">⭐⭐⭐⭐⭐</div>
+                                <div class="text-sm text-green-300 font-semibold">Ganhou R$ 33.850</div>
+                            </div>
+                        </div>
+                        <p class="text-lg italic">"Participo há 6 meses e já ganhei duas vezes! O atendimento é excelente e o pagamento é sempre certinho!"</p>
+                    </div>
+                </div>
+                <div class="text-center mt-8">
+                    <button onclick="showSection('feedback')" class="bg-white text-blue-600 px-8 py-4 rounded-2xl font-bold text-lg hover:bg-gray-100 transition-all duration-300 shadow-lg transform hover:scale-105">
+                        Ver Todos os Depoimentos
+                    </button>
+                </div>
+            </div>
+
+            <!-- Call to Action Final -->
+            <div class="text-center bg-gradient-to-br from-purple-900 to-blue-900 rounded-3xl p-12 text-white shadow-2xl">
+                <h2 class="text-5xl font-bold mb-6 bg-gradient-to-r from-yellow-300 to-white bg-clip-text text-transparent">
+                    Pronto para Ganhar?
+                </h2>
+                <p class="text-2xl mb-8 text-yellow-200">Junte-se a milhares de ganhadores! Próximo sorteio: Sexta-feira às 19h</p>
+                <div class="space-y-4">
+                    <a href="https://link.mercadopago.com.br/megamillionsbrasil" target="_blank" rel="noopener noreferrer" class="inline-block bg-gradient-to-r from-yellow-400 to-orange-500 text-black px-12 py-6 rounded-2xl font-bold text-2xl hover:from-yellow-300 hover:to-orange-400 transition-all duration-300 shadow-2xl transform hover:scale-105 mr-4">
+                        🎫 COMPRAR AGORA
+                    </a>
+                    <button onclick="showSection('home')" class="inline-block bg-gradient-to-r from-blue-600 to-purple-600 text-white px-12 py-6 rounded-2xl font-bold text-2xl hover:from-blue-700 hover:to-purple-700 transition-all duration-300 shadow-2xl transform hover:scale-105">
+                        🎰 VER SORTEIOS
+                    </button>
+                </div>
+                <div class="mt-8 text-sm text-gray-300">
+                    <div>🏢 CNPJ: 63.173.859/0001-12 • 📧 megamillionbrasil@gmail.com</div>
+                    <div>🔒 Pagamentos 100% Seguros • ⚡ Entrega em 30min • 🏆 Prêmios Garantidos</div>
+                </div>
+            </div>
+        </section>
+
         <!-- Home Section -->
         <section id="home" class="section-content">
             <!-- Hero Section -->
@@ -147,59 +350,91 @@
             </div>
 
             <!-- Ticket Packages -->
-            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
-                <div class="premium-card relative rounded-2xl shadow-2xl p-8 card-hover">
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+                <div class="premium-card relative rounded-2xl shadow-2xl p-6 card-hover bg-white border border-gray-200">
                     <div class="text-center">
-                        <div class="text-5xl mb-4">🎫</div>
-                        <h3 class="text-2xl font-bold mb-3 text-gray-800">100 Bilhetes</h3>
-                        <div class="text-sm text-gray-600 mb-4">Pacote Iniciante • Mais chances de ganhar</div>
-                        <div class="text-4xl font-bold bg-gradient-to-r from-green-500 to-emerald-600 bg-clip-text text-transparent mb-6">R$ 29,90</div>
-                        <button onclick="selectPackage('100', '29.90')" class="w-full bg-gradient-to-r from-purple-600 to-blue-600 text-white py-4 rounded-xl hover:from-purple-700 hover:to-blue-700 transition-all duration-300 font-bold text-lg shadow-lg transform hover:scale-105">
-                            Comprar Agora
-                        </button>
-                        <div class="text-xs text-gray-500 mt-2">Entrega em até 30 minutos</div>
+                        <div class="text-4xl mb-3">🎫</div>
+                        <h3 class="text-xl font-bold mb-2 text-gray-800">100 Bilhetes</h3>
+                        <div class="text-xs text-gray-600 mb-3">Pacote Iniciante</div>
+                        <div class="bg-gradient-to-r from-blue-50 to-purple-50 rounded-lg p-3 mb-4 border border-blue-200">
+                            <div class="text-xs text-gray-700 space-y-1">
+                                <div>✓ 100 combinações únicas</div>
+                                <div>✓ Números de 01 a 60</div>
+                                <div>✓ Entrega em 30min</div>
+                                <div>✓ Suporte completo</div>
+                            </div>
+                        </div>
+                        <div class="text-3xl font-bold bg-gradient-to-r from-green-500 to-emerald-600 bg-clip-text text-transparent mb-4">R$ 29,90</div>
+                        <a href="https://link.mercadopago.com.br/megamillionsbrasil" target="_blank" rel="noopener noreferrer" class="block w-full bg-gradient-to-r from-purple-600 to-blue-600 text-white py-3 rounded-xl hover:from-purple-700 hover:to-blue-700 transition-all duration-300 font-bold text-sm shadow-lg transform hover:scale-105 text-center">
+                            💳 COMPRAR AGORA
+                        </a>
+                        <div class="text-xs text-gray-500 mt-2">Pagamento seguro via Mercado Pago</div>
                     </div>
                 </div>
 
-                <div class="premium-card relative rounded-2xl shadow-2xl p-8 card-hover">
+                <div class="premium-card relative rounded-2xl shadow-2xl p-6 card-hover bg-white border border-gray-200">
                     <div class="text-center">
-                        <div class="text-5xl mb-4">🎫🎫</div>
-                        <h3 class="text-2xl font-bold mb-3 text-gray-800">200 Bilhetes</h3>
-                        <div class="text-sm text-gray-600 mb-4">Pacote Intermediário • Dobra suas chances</div>
-                        <div class="text-4xl font-bold bg-gradient-to-r from-green-500 to-emerald-600 bg-clip-text text-transparent mb-6">R$ 49,90</div>
-                        <button onclick="selectPackage('200', '49.90')" class="w-full bg-gradient-to-r from-purple-600 to-blue-600 text-white py-4 rounded-xl hover:from-purple-700 hover:to-blue-700 transition-all duration-300 font-bold text-lg shadow-lg transform hover:scale-105">
-                            Comprar Agora
-                        </button>
-                        <div class="text-xs text-gray-500 mt-2">Entrega em até 30 minutos</div>
+                        <div class="text-4xl mb-3">🎫🎫</div>
+                        <h3 class="text-xl font-bold mb-2 text-gray-800">200 Bilhetes</h3>
+                        <div class="text-xs text-gray-600 mb-3">Pacote Intermediário</div>
+                        <div class="bg-gradient-to-r from-green-50 to-blue-50 rounded-lg p-3 mb-4 border border-green-200">
+                            <div class="text-xs text-gray-700 space-y-1">
+                                <div>✓ 200 combinações únicas</div>
+                                <div>✓ Dobra suas chances</div>
+                                <div>✓ Economia de R$ 9,90</div>
+                                <div>✓ Entrega prioritária</div>
+                            </div>
+                        </div>
+                        <div class="text-3xl font-bold bg-gradient-to-r from-green-500 to-emerald-600 bg-clip-text text-transparent mb-4">R$ 49,90</div>
+                        <a href="https://link.mercadopago.com.br/megamillionsbrasil" target="_blank" rel="noopener noreferrer" class="block w-full bg-gradient-to-r from-purple-600 to-blue-600 text-white py-3 rounded-xl hover:from-purple-700 hover:to-blue-700 transition-all duration-300 font-bold text-sm shadow-lg transform hover:scale-105 text-center">
+                            💳 COMPRAR AGORA
+                        </a>
+                        <div class="text-xs text-gray-500 mt-2">Pagamento seguro via Mercado Pago</div>
                     </div>
                 </div>
 
-                <div class="premium-card relative rounded-2xl shadow-2xl p-8 card-hover border-4 border-yellow-400">
-                    <div class="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-gradient-to-r from-yellow-400 to-orange-500 text-white px-6 py-2 rounded-full text-sm font-bold shadow-lg">
+                <div class="premium-card relative rounded-2xl shadow-2xl p-6 card-hover bg-white border-4 border-yellow-400">
+                    <div class="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-gradient-to-r from-yellow-400 to-orange-500 text-white px-4 py-1 rounded-full text-xs font-bold shadow-lg">
                         ⭐ MAIS POPULAR ⭐
                     </div>
                     <div class="text-center">
-                        <div class="text-5xl mb-4">🎫🎫🎫</div>
-                        <h3 class="text-2xl font-bold mb-3 text-gray-800">500 Bilhetes</h3>
-                        <div class="text-sm text-gray-600 mb-4">Pacote Premium • 5x mais chances</div>
-                        <div class="text-4xl font-bold bg-gradient-to-r from-green-500 to-emerald-600 bg-clip-text text-transparent mb-6">R$ 79,90</div>
-                        <button onclick="selectPackage('500', '79.90')" class="w-full bg-gradient-to-r from-yellow-400 to-orange-500 text-white py-4 rounded-xl hover:from-yellow-500 hover:to-orange-600 transition-all duration-300 font-bold text-lg shadow-lg transform hover:scale-105">
-                            Comprar Agora
-                        </button>
-                        <div class="text-xs text-gray-500 mt-2">Entrega em até 30 minutos</div>
+                        <div class="text-4xl mb-3">🎫🎫🎫</div>
+                        <h3 class="text-xl font-bold mb-2 text-gray-800">500 Bilhetes</h3>
+                        <div class="text-xs text-yellow-600 font-semibold mb-3">Pacote Premium</div>
+                        <div class="bg-gradient-to-r from-yellow-50 to-orange-50 rounded-lg p-3 mb-4 border border-yellow-300">
+                            <div class="text-xs text-gray-700 space-y-1">
+                                <div>✓ 500 combinações únicas</div>
+                                <div>✓ 5x mais chances de ganhar</div>
+                                <div>✓ Economia de R$ 69,60</div>
+                                <div>✓ Entrega super prioritária</div>
+                            </div>
+                        </div>
+                        <div class="text-3xl font-bold bg-gradient-to-r from-green-500 to-emerald-600 bg-clip-text text-transparent mb-4">R$ 79,90</div>
+                        <a href="https://link.mercadopago.com.br/megamillionsbrasil" target="_blank" rel="noopener noreferrer" class="block w-full bg-gradient-to-r from-yellow-400 to-orange-500 text-white py-3 rounded-xl hover:from-yellow-500 hover:to-orange-600 transition-all duration-300 font-bold text-sm shadow-lg transform hover:scale-105 text-center">
+                            💳 COMPRAR AGORA
+                        </a>
+                        <div class="text-xs text-gray-500 mt-2">Pagamento seguro via Mercado Pago</div>
                     </div>
                 </div>
 
-                <div class="premium-card relative rounded-2xl shadow-2xl p-8 card-hover">
+                <div class="premium-card relative rounded-2xl shadow-2xl p-6 card-hover bg-white border border-gray-200">
                     <div class="text-center">
-                        <div class="text-5xl mb-4">🎫🎫🎫🎫</div>
-                        <h3 class="text-2xl font-bold mb-3 text-gray-800">1000 Bilhetes</h3>
-                        <div class="text-sm text-gray-600 mb-4">Pacote VIP • Máximas chances</div>
-                        <div class="text-4xl font-bold bg-gradient-to-r from-green-500 to-emerald-600 bg-clip-text text-transparent mb-6">R$ 139,50</div>
-                        <button onclick="selectPackage('1000', '139.50')" class="w-full bg-gradient-to-r from-purple-600 to-blue-600 text-white py-4 rounded-xl hover:from-purple-700 hover:to-blue-700 transition-all duration-300 font-bold text-lg shadow-lg transform hover:scale-105">
-                            Comprar Agora
-                        </button>
-                        <div class="text-xs text-gray-500 mt-2">Entrega em até 30 minutos</div>
+                        <div class="text-4xl mb-3">🎫🎫🎫🎫</div>
+                        <h3 class="text-xl font-bold mb-2 text-gray-800">1000 Bilhetes</h3>
+                        <div class="text-xs text-gray-600 mb-3">Pacote VIP</div>
+                        <div class="bg-gradient-to-r from-purple-50 to-pink-50 rounded-lg p-3 mb-4 border border-purple-200">
+                            <div class="text-xs text-gray-700 space-y-1">
+                                <div>✓ 1000 combinações únicas</div>
+                                <div>✓ Máximas chances</div>
+                                <div>✓ Economia de R$ 159,40</div>
+                                <div>✓ Atendimento VIP exclusivo</div>
+                            </div>
+                        </div>
+                        <div class="text-3xl font-bold bg-gradient-to-r from-green-500 to-emerald-600 bg-clip-text text-transparent mb-4">R$ 139,50</div>
+                        <a href="https://link.mercadopago.com.br/megamillionsbrasil" target="_blank" rel="noopener noreferrer" class="block w-full bg-gradient-to-r from-purple-600 to-blue-600 text-white py-3 rounded-xl hover:from-purple-700 hover:to-blue-700 transition-all duration-300 font-bold text-sm shadow-lg transform hover:scale-105 text-center">
+                            💳 COMPRAR AGORA
+                        </a>
+                        <div class="text-xs text-gray-500 mt-2">Pagamento seguro via Mercado Pago</div>
                     </div>
                 </div>
             </div>
@@ -1043,58 +1278,153 @@
 
         <!-- Admin Dashboard -->
         <section id="admin" class="section-content hidden">
-            <h2 class="text-4xl font-bold text-center mb-8">Painel Administrativo</h2>
-            <div class="max-w-6xl mx-auto">
-                <div class="grid md:grid-cols-3 gap-6 mb-8">
-                    <div class="bg-white rounded-xl shadow-lg p-6">
+            <div class="bg-gradient-to-r from-red-600 to-purple-700 text-white p-6 rounded-2xl mb-8 shadow-2xl">
+                <h2 class="text-4xl font-bold text-center mb-4">👑 Painel Administrativo</h2>
+                <p class="text-center text-lg">Acesso Exclusivo - Lara Ferreira</p>
+                <div class="text-center text-sm mt-2 opacity-90">
+                    🔒 Área Restrita • 📊 Controle Financeiro • 👥 Gestão de Clientes
+                </div>
+            </div>
+            
+            <div class="max-w-7xl mx-auto">
+                <!-- Financial Overview -->
+                <div class="grid md:grid-cols-4 gap-6 mb-8">
+                    <div class="bg-gradient-to-br from-green-500 to-emerald-600 rounded-2xl shadow-2xl p-6 text-white">
                         <div class="flex items-center justify-between">
                             <div>
-                                <div class="text-2xl font-bold text-green-600" id="totalSales">R$ 0,00</div>
-                                <div class="text-gray-600">Vendas Totais</div>
+                                <div class="text-3xl font-bold" id="totalSales">R$ 0,00</div>
+                                <div class="text-sm opacity-90">Vendas Totais</div>
                             </div>
-                            <div class="text-3xl">💰</div>
+                            <div class="text-4xl opacity-80">💰</div>
                         </div>
                     </div>
-                    <div class="bg-white rounded-xl shadow-lg p-6">
+                    <div class="bg-gradient-to-br from-blue-500 to-indigo-600 rounded-2xl shadow-2xl p-6 text-white">
                         <div class="flex items-center justify-between">
                             <div>
-                                <div class="text-2xl font-bold text-blue-600" id="totalCustomers">0</div>
-                                <div class="text-gray-600">Clientes</div>
+                                <div class="text-3xl font-bold" id="totalCustomers">0</div>
+                                <div class="text-sm opacity-90">Clientes Únicos</div>
                             </div>
-                            <div class="text-3xl">👥</div>
+                            <div class="text-4xl opacity-80">👥</div>
                         </div>
                     </div>
-                    <div class="bg-white rounded-xl shadow-lg p-6">
+                    <div class="bg-gradient-to-br from-purple-500 to-pink-600 rounded-2xl shadow-2xl p-6 text-white">
                         <div class="flex items-center justify-between">
                             <div>
-                                <div class="text-2xl font-bold text-purple-600" id="totalTickets">0</div>
-                                <div class="text-gray-600">Bilhetes Vendidos</div>
+                                <div class="text-3xl font-bold" id="totalTickets">0</div>
+                                <div class="text-sm opacity-90">Bilhetes Vendidos</div>
                             </div>
-                            <div class="text-3xl">🎫</div>
+                            <div class="text-4xl opacity-80">🎫</div>
+                        </div>
+                    </div>
+                    <div class="bg-gradient-to-br from-orange-500 to-red-600 rounded-2xl shadow-2xl p-6 text-white">
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <div class="text-3xl font-bold" id="pendingOrders">0</div>
+                                <div class="text-sm opacity-90">Pedidos Pendentes</div>
+                            </div>
+                            <div class="text-4xl opacity-80">⏳</div>
                         </div>
                     </div>
                 </div>
 
-                <div class="bg-white rounded-xl shadow-lg p-8">
-                    <h3 class="text-2xl font-bold mb-6">Vendas Recentes</h3>
+                <!-- Financial Controls -->
+                <div class="grid md:grid-cols-2 gap-8 mb-8">
+                    <!-- Revenue Analytics -->
+                    <div class="bg-white rounded-2xl shadow-2xl p-8 border border-gray-200">
+                        <h3 class="text-2xl font-bold mb-6 bg-gradient-to-r from-green-600 to-blue-600 bg-clip-text text-transparent">📈 Análise Financeira</h3>
+                        <div class="space-y-4">
+                            <div class="flex justify-between items-center p-4 bg-green-50 rounded-xl border border-green-200">
+                                <span class="font-semibold text-green-800">Receita Hoje</span>
+                                <span class="text-2xl font-bold text-green-600" id="todayRevenue">R$ 0,00</span>
+                            </div>
+                            <div class="flex justify-between items-center p-4 bg-blue-50 rounded-xl border border-blue-200">
+                                <span class="font-semibold text-blue-800">Receita Esta Semana</span>
+                                <span class="text-2xl font-bold text-blue-600" id="weekRevenue">R$ 0,00</span>
+                            </div>
+                            <div class="flex justify-between items-center p-4 bg-purple-50 rounded-xl border border-purple-200">
+                                <span class="font-semibold text-purple-800">Receita Este Mês</span>
+                                <span class="text-2xl font-bold text-purple-600" id="monthRevenue">R$ 0,00</span>
+                            </div>
+                            <div class="flex justify-between items-center p-4 bg-orange-50 rounded-xl border border-orange-200">
+                                <span class="font-semibold text-orange-800">Ticket Médio</span>
+                                <span class="text-2xl font-bold text-orange-600" id="averageTicket">R$ 0,00</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Quick Actions -->
+                    <div class="bg-white rounded-2xl shadow-2xl p-8 border border-gray-200">
+                        <h3 class="text-2xl font-bold mb-6 bg-gradient-to-r from-purple-600 to-red-600 bg-clip-text text-transparent">⚡ Ações Rápidas</h3>
+                        <div class="space-y-4">
+                            <button onclick="exportSalesData()" class="w-full bg-gradient-to-r from-green-500 to-emerald-600 text-white py-3 rounded-xl hover:from-green-600 hover:to-emerald-700 transition-all duration-300 font-semibold shadow-lg">
+                                📊 Exportar Dados de Vendas
+                            </button>
+                            <button onclick="generateFinancialReport()" class="w-full bg-gradient-to-r from-blue-500 to-indigo-600 text-white py-3 rounded-xl hover:from-blue-600 hover:to-indigo-700 transition-all duration-300 font-semibold shadow-lg">
+                                📋 Gerar Relatório Financeiro
+                            </button>
+                            <button onclick="clearAllData()" class="w-full bg-gradient-to-r from-red-500 to-red-600 text-white py-3 rounded-xl hover:from-red-600 hover:to-red-700 transition-all duration-300 font-semibold shadow-lg">
+                                🗑️ Limpar Todos os Dados
+                            </button>
+                            <button onclick="backupData()" class="w-full bg-gradient-to-r from-purple-500 to-pink-600 text-white py-3 rounded-xl hover:from-purple-600 hover:to-pink-700 transition-all duration-300 font-semibold shadow-lg">
+                                💾 Backup dos Dados
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sales Table -->
+                <div class="bg-white rounded-2xl shadow-2xl p-8 border border-gray-200">
+                    <div class="flex justify-between items-center mb-6">
+                        <h3 class="text-2xl font-bold bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">💳 Histórico de Vendas</h3>
+                        <div class="flex space-x-2">
+                            <select id="statusFilter" onchange="filterSales()" class="border rounded-lg px-3 py-2 text-sm">
+                                <option value="">Todos os Status</option>
+                                <option value="Aguardando Confirmação">Pendentes</option>
+                                <option value="Confirmado">Confirmados</option>
+                                <option value="Enviado">Enviados</option>
+                            </select>
+                            <input type="date" id="dateFilter" onchange="filterSales()" class="border rounded-lg px-3 py-2 text-sm">
+                        </div>
+                    </div>
                     <div class="overflow-x-auto">
                         <table class="w-full">
                             <thead>
-                                <tr class="border-b">
-                                    <th class="text-left py-3">Data</th>
-                                    <th class="text-left py-3">Cliente</th>
-                                    <th class="text-left py-3">Email</th>
-                                    <th class="text-left py-3">Combo</th>
-                                    <th class="text-left py-3">Valor</th>
-                                    <th class="text-left py-3">Status</th>
+                                <tr class="bg-gradient-to-r from-gray-50 to-gray-100 border-b-2 border-gray-200">
+                                    <th class="text-left py-4 px-4 font-bold text-gray-700">Data/Hora</th>
+                                    <th class="text-left py-4 px-4 font-bold text-gray-700">Cliente</th>
+                                    <th class="text-left py-4 px-4 font-bold text-gray-700">Email</th>
+                                    <th class="text-left py-4 px-4 font-bold text-gray-700">CPF</th>
+                                    <th class="text-left py-4 px-4 font-bold text-gray-700">Produto</th>
+                                    <th class="text-left py-4 px-4 font-bold text-gray-700">Valor</th>
+                                    <th class="text-left py-4 px-4 font-bold text-gray-700">Status</th>
+                                    <th class="text-left py-4 px-4 font-bold text-gray-700">Ações</th>
                                 </tr>
                             </thead>
                             <tbody id="salesTable">
                                 <tr>
-                                    <td colspan="6" class="text-center py-8 text-gray-500">Nenhuma venda registrada</td>
+                                    <td colspan="8" class="text-center py-8 text-gray-500">
+                                        <div class="text-4xl mb-2">📊</div>
+                                        <div>Nenhuma venda registrada ainda</div>
+                                    </td>
                                 </tr>
                             </tbody>
                         </table>
+                    </div>
+                </div>
+
+                <!-- System Info -->
+                <div class="mt-8 bg-gradient-to-r from-gray-800 to-gray-900 rounded-2xl p-6 text-white">
+                    <h3 class="text-xl font-bold mb-4">🔧 Informações do Sistema</h3>
+                    <div class="grid md:grid-cols-3 gap-4 text-sm">
+                        <div>
+                            <span class="font-semibold">Versão:</span> 2.0.1
+                        </div>
+                        <div>
+                            <span class="font-semibold">Último Backup:</span> <span id="lastBackup">Nunca</span>
+                        </div>
+                        <div>
+                            <span class="font-semibold">Uptime:</span> <span id="systemUptime">Carregando...</span>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -1215,21 +1545,21 @@
     </div>
 
     <!-- Purchase Modal -->
-    <div id="purchaseModal" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-50 p-2">
-        <div class="bg-white rounded-lg shadow-2xl p-3 w-full max-w-xs max-h-[90vh] overflow-y-auto">
-            <h3 class="text-base font-bold mb-2 text-center text-purple-600">🎫 Finalizar Compra</h3>
+    <div id="purchaseModal" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-50 p-4">
+        <div class="bg-white rounded-2xl shadow-2xl p-6 w-full max-w-sm mx-auto border border-gray-200">
+            <h3 class="text-2xl font-bold mb-6 text-center bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">🎫 Finalizar Compra</h3>
             
-            <div id="purchaseDetails" class="bg-purple-50 rounded p-2 mb-2 text-center text-sm">
+            <div id="purchaseDetails" class="bg-gradient-to-r from-purple-50 to-blue-50 rounded-xl p-4 mb-6 text-center border border-purple-200">
                 <!-- Purchase details will be inserted here -->
             </div>
 
             <div class="text-center">
-                <p class="text-sm text-purple-600 mb-4">Para comprar este pacote, acesse o link de pagamento na seção Financeiro e depois confirme sua compra.</p>
-                <div class="space-y-2">
-                    <button onclick="showSection('financial')" class="w-full bg-purple-600 text-white py-2 rounded font-bold text-xs">
-                        Ir para Pagamento
+                <p class="text-purple-600 mb-6 text-sm">Para comprar este pacote, acesse o link de pagamento na seção Financeiro e depois confirme sua compra.</p>
+                <div class="space-y-3">
+                    <button onclick="showSection('financial'); closePurchaseModal();" class="w-full bg-gradient-to-r from-purple-600 to-blue-600 text-white py-3 rounded-xl hover:from-purple-700 hover:to-blue-700 transition-all duration-300 font-bold shadow-lg">
+                        💳 Ir para Pagamento
                     </button>
-                    <button type="button" onclick="closePurchaseModal()" class="w-full bg-gray-400 text-white py-2 rounded text-xs">
+                    <button type="button" onclick="closePurchaseModal()" class="w-full bg-gradient-to-r from-gray-400 to-gray-500 text-white py-3 rounded-xl hover:from-gray-500 hover:to-gray-600 transition-all duration-300 font-semibold">
                         Fechar
                     </button>
                 </div>
@@ -1238,38 +1568,35 @@
     </div>
 
     <!-- Bolão Modal -->
-    <div id="bolaoModal" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-50">
-        <div class="bg-white rounded-2xl shadow-2xl p-8 max-w-lg w-full mx-4 border border-gray-200">
-            <h3 class="text-3xl font-bold mb-8 text-center bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">🤝 Participar do Bolão</h3>
+    <div id="bolaoModal" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-50 p-4">
+        <div class="bg-white rounded-2xl shadow-2xl p-4 md:p-6 w-full max-w-sm mx-auto border border-gray-200">
+            <h3 class="text-xl md:text-2xl font-bold mb-4 text-center bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">🤝 Participar do Bolão</h3>
             
-            <div id="bolaoDetails" class="bg-gradient-to-r from-purple-50 to-blue-50 rounded-xl p-6 mb-8 border-2 border-purple-200">
+            <div id="bolaoDetails" class="bg-gradient-to-r from-purple-50 to-blue-50 rounded-xl p-3 mb-4 border border-purple-200 text-center">
                 <!-- Bolão details will be inserted here -->
             </div>
 
-            <form onsubmit="processBolao(event)" class="space-y-4">
+            <form onsubmit="processBolao(event)" class="space-y-3">
                 <div>
-                    <label class="block text-sm font-semibold mb-3 text-gray-700">Quantidade de Cotas</label>
-                    <select id="bolaoCotas" class="w-full border-2 border-gray-300 rounded-xl px-4 py-3 focus:border-purple-500 focus:outline-none transition-colors bg-white" required onchange="updateBolaoTotal()">
+                    <label class="block text-sm font-semibold mb-2 text-gray-700">Quantidade de Cotas</label>
+                    <select id="bolaoCotas" class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:border-purple-500 focus:outline-none transition-colors bg-white text-sm" required onchange="updateBolaoTotal()">
                         <!-- Options will be populated dynamically -->
                     </select>
-                    <div class="text-xs text-gray-500 mt-2">💡 Mais cotas = maior participação no prêmio</div>
+                    <div class="text-xs text-gray-500 mt-1">💡 Mais cotas = maior participação no prêmio</div>
                 </div>
                 
-                <div class="bg-gradient-to-r from-purple-50 to-blue-50 rounded-xl p-6 border-2 border-purple-200">
-                    <div class="text-center">
-                        <div class="text-sm font-semibold text-gray-600 mb-2">Total a Pagar</div>
-                        <div id="bolaoTotal" class="text-4xl font-bold bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">R$ 0,00</div>
-                        <div class="text-xs text-gray-500 mt-2">💳 Pagamento seguro e protegido</div>
-                    </div>
+                <div class="bg-gradient-to-r from-purple-50 to-blue-50 rounded-lg p-3 border border-purple-200 text-center">
+                    <div class="text-xs font-semibold text-gray-600 mb-1">Total a Pagar</div>
+                    <div id="bolaoTotal" class="text-2xl font-bold bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">R$ 0,00</div>
                 </div>
 
                 <div class="text-center">
-                    <p class="text-lg text-purple-600 mb-6">Para participar deste bolão, acesse o link de pagamento na seção Financeiro e depois confirme sua participação.</p>
-                    <div class="space-y-4">
-                        <button onclick="showSection('financial'); closeBolaoModal();" class="w-full bg-gradient-to-r from-purple-600 to-blue-600 text-white py-4 rounded-xl hover:from-purple-700 hover:to-blue-700 transition-all duration-300 font-bold text-lg shadow-lg">
+                    <p class="text-sm text-purple-600 mb-4">Para participar, acesse o pagamento na seção Financeiro e confirme sua participação.</p>
+                    <div class="space-y-2">
+                        <button onclick="showSection('financial'); closeBolaoModal();" class="w-full bg-gradient-to-r from-purple-600 to-blue-600 text-white py-3 rounded-lg hover:from-purple-700 hover:to-blue-700 transition-all duration-300 font-bold text-sm shadow-lg">
                             💳 Ir para Pagamento
                         </button>
-                        <button type="button" onclick="closeBolaoModal()" class="w-full bg-gradient-to-r from-gray-400 to-gray-500 text-white py-4 rounded-xl hover:from-gray-500 hover:to-gray-600 transition-all duration-300 font-semibold">
+                        <button type="button" onclick="closeBolaoModal()" class="w-full bg-gradient-to-r from-gray-400 to-gray-500 text-white py-2 rounded-lg hover:from-gray-500 hover:to-gray-600 transition-all duration-300 font-semibold text-sm">
                             Fechar
                         </button>
                     </div>
@@ -1530,6 +1857,9 @@
             return true; // Simulate successful email sending
         }
 
+        // User database simulation
+        let userDatabase = JSON.parse(localStorage.getItem('megaMillionsUsers') || '[]');
+
         // Login functionality
         function showLoginModal() {
             document.getElementById('loginModal').classList.remove('hidden');
@@ -1542,57 +1872,218 @@
         }
 
         function loginWithGoogle() {
-            // Simulate Google login
-            currentUser = {
-                name: 'Usuário Google',
-                email: 'usuario@gmail.com',
-                provider: 'google'
-            };
-            closeLoginModal();
-            updateUserInterface();
-            showMessage('Login realizado com sucesso!', 'success');
+            showMessage('Login com Google não está disponível no momento. Use email e senha ou cadastre-se primeiro.', 'error');
         }
 
         function loginWithFacebook() {
-            // Simulate Facebook login
-            currentUser = {
-                name: 'Usuário Facebook',
-                email: 'usuario@facebook.com',
-                provider: 'facebook'
-            };
-            closeLoginModal();
-            updateUserInterface();
-            showMessage('Login realizado com sucesso!', 'success');
+            showMessage('Login com Facebook não está disponível no momento. Use email e senha ou cadastre-se primeiro.', 'error');
         }
 
         function loginWithEmail(event) {
             event.preventDefault();
-            const email = document.getElementById('loginEmail').value;
+            const email = document.getElementById('loginEmail').value.trim().toLowerCase();
             const password = document.getElementById('loginPassword').value;
 
-            // Check admin credentials
+            // Validate required fields
+            if (!email || !password) {
+                showMessage('Email e senha são obrigatórios!', 'error');
+                return;
+            }
+
+            // Check admin credentials FIRST
             if (email === 'laraempresaferreira@gmail.com' && password === 'cruzeiro13') {
                 currentUser = {
-                    name: 'Administrador',
+                    name: 'Lara Ferreira - ADMIN',
                     email: email,
-                    isAdmin: true
+                    isAdmin: true,
+                    provider: 'admin'
                 };
                 closeLoginModal();
                 showSection('admin');
                 updateAdminDashboard();
-                showMessage('Login administrativo realizado!', 'success');
+                showMessage('🔑 Acesso administrativo autorizado! Bem-vinda Lara!', 'success');
+                updateHeaderForLoggedUser();
+                
+                // Clear form
+                document.getElementById('loginEmail').value = '';
+                document.getElementById('loginPassword').value = '';
                 return;
             }
 
-            // Regular user login
+            // Check regular user credentials
+            const user = userDatabase.find(u => u.email.toLowerCase() === email && u.password === password);
+            if (!user) {
+                showMessage('❌ Email ou senha incorretos! Verifique seus dados ou cadastre-se primeiro.', 'error');
+                return;
+            }
+
+            // Login successful for regular user
             currentUser = {
-                name: 'Usuário',
-                email: email,
-                provider: 'email'
+                id: user.id,
+                name: user.name,
+                email: user.email,
+                cpf: user.cpf,
+                provider: user.provider,
+                isAdmin: false
             };
+
             closeLoginModal();
             updateUserInterface();
-            showMessage('Login realizado com sucesso!', 'success');
+            updateHeaderForLoggedUser();
+            showMessage(`✅ Bem-vindo, ${user.name}! Login realizado com sucesso.`, 'success');
+            
+            // Clear form
+            document.getElementById('loginEmail').value = '';
+            document.getElementById('loginPassword').value = '';
+        }
+
+        // Registration functions
+        function showRegisterModal() {
+            document.getElementById('registerModal').classList.remove('hidden');
+            document.getElementById('registerModal').classList.add('flex');
+        }
+
+        function showRegisterForm() {
+            closeLoginModal();
+            showRegisterModal();
+        }
+
+        function showLoginForm() {
+            closeRegisterModal();
+            closeForgotPasswordModal();
+            showLoginModal();
+        }
+
+        function closeRegisterModal() {
+            document.getElementById('registerModal').classList.add('hidden');
+            document.getElementById('registerModal').classList.remove('flex');
+        }
+
+        function registerUser(event) {
+            event.preventDefault();
+            const name = document.getElementById('registerName').value.trim();
+            const cpf = document.getElementById('registerCPF').value.trim();
+            const email = document.getElementById('registerEmail').value.trim().toLowerCase();
+            const password = document.getElementById('registerPassword').value;
+
+            // Validate required fields
+            if (!name || !cpf || !email || !password) {
+                showMessage('❌ Todos os campos são obrigatórios!', 'error');
+                return;
+            }
+
+            // Validate email format
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+                showMessage('❌ Por favor, insira um email válido!', 'error');
+                return;
+            }
+
+            // Validate password length
+            if (password.length < 6) {
+                showMessage('❌ A senha deve ter pelo menos 6 caracteres!', 'error');
+                return;
+            }
+
+            // Validate CPF format (basic)
+            if (cpf.length < 11) {
+                showMessage('❌ CPF deve ter pelo menos 11 dígitos!', 'error');
+                return;
+            }
+
+            // Check if user already exists
+            const existingUser = userDatabase.find(user => user.email.toLowerCase() === email);
+            if (existingUser) {
+                showMessage('❌ Este email já está cadastrado! Faça login ou use outro email.', 'error');
+                return;
+            }
+
+            // Check if CPF already exists
+            const existingCPF = userDatabase.find(user => user.cpf === cpf);
+            if (existingCPF) {
+                showMessage('❌ Este CPF já está cadastrado!', 'error');
+                return;
+            }
+
+            // Create new user
+            const newUser = {
+                id: Date.now(),
+                name: name,
+                email: email,
+                cpf: cpf,
+                password: password, // In production, this should be hashed
+                provider: 'email',
+                createdAt: new Date().toISOString(),
+                isActive: true
+            };
+
+            // Save to database
+            userDatabase.push(newUser);
+            localStorage.setItem('megaMillionsUsers', JSON.stringify(userDatabase));
+
+            closeRegisterModal();
+            showMessage('✅ Conta criada com sucesso! Agora você pode fazer login com suas credenciais.', 'success');
+            
+            // Clear form
+            document.getElementById('registerName').value = '';
+            document.getElementById('registerCPF').value = '';
+            document.getElementById('registerEmail').value = '';
+            document.getElementById('registerPassword').value = '';
+
+            // Auto-open login modal
+            setTimeout(() => {
+                showLoginModal();
+                // Pre-fill email
+                document.getElementById('loginEmail').value = email;
+                document.getElementById('loginPassword').focus();
+            }, 1500);
+        }
+
+        // Password reset functions
+        function showForgotPassword() {
+            closeLoginModal();
+            document.getElementById('forgotPasswordModal').classList.remove('hidden');
+            document.getElementById('forgotPasswordModal').classList.add('flex');
+        }
+
+        function closeForgotPasswordModal() {
+            document.getElementById('forgotPasswordModal').classList.add('hidden');
+            document.getElementById('forgotPasswordModal').classList.remove('flex');
+        }
+
+        function resetPassword(event) {
+            event.preventDefault();
+            const email = document.getElementById('resetEmail').value.trim().toLowerCase();
+            
+            if (!email) {
+                showMessage('❌ Por favor, insira seu email!', 'error');
+                return;
+            }
+
+            // Check if user exists
+            const user = userDatabase.find(u => u.email.toLowerCase() === email);
+            if (!user) {
+                showMessage('❌ Email não encontrado em nossa base de dados!', 'error');
+                return;
+            }
+            
+            closeForgotPasswordModal();
+            showMessage('✅ Link de recuperação enviado para seu email! Verifique sua caixa de entrada.', 'success');
+            
+            // Clear form
+            document.getElementById('resetEmail').value = '';
+        }
+
+        // Admin access function
+        function showAdminLogin() {
+            showMessage('🔑 Para acessar o painel administrativo, faça login com suas credenciais de administrador.', 'info');
+            showLoginModal();
+            
+            // Pre-fill admin email for convenience
+            setTimeout(() => {
+                document.getElementById('loginEmail').value = 'laraempresaferreira@gmail.com';
+                document.getElementById('loginPassword').focus();
+            }, 500);
         }
 
         function updateUserInterface() {
@@ -1600,6 +2091,85 @@
                 // Update purchase history
                 updatePurchaseHistory();
             }
+        }
+
+        function updateHeaderForLoggedUser() {
+            const userActions = document.getElementById('userActions');
+            const userActionsMobile = document.getElementById('userActionsMobile');
+            
+            if (currentUser) {
+                if (currentUser.isAdmin) {
+                    userActions.innerHTML = `
+                        <div class="flex items-center space-x-3">
+                            <span class="text-yellow-300 font-semibold text-sm">👑 ${currentUser.name}</span>
+                            <button onclick="showSection('admin')" class="bg-gradient-to-r from-red-500 to-red-600 text-white px-3 py-2 rounded-full font-bold hover:from-red-600 hover:to-red-700 transition-all duration-300 text-xs">Admin</button>
+                            <button onclick="logout()" class="bg-gradient-to-r from-gray-500 to-gray-600 text-white px-3 py-2 rounded-full font-bold hover:from-gray-600 hover:to-gray-700 transition-all duration-300 text-xs">Sair</button>
+                        </div>
+                    `;
+                    userActionsMobile.innerHTML = `
+                        <div class="flex items-center space-x-2">
+                            <span class="text-yellow-300 font-semibold text-xs">👑</span>
+                            <button onclick="logout()" class="bg-gradient-to-r from-gray-500 to-gray-600 text-white px-2 py-1 rounded-full font-bold hover:from-gray-600 hover:to-gray-700 transition-all duration-300 text-xs">Sair</button>
+                        </div>
+                    `;
+                } else {
+                    userActions.innerHTML = `
+                        <div class="flex items-center space-x-3">
+                            <span class="text-yellow-300 font-semibold text-sm">👤 ${currentUser.name}</span>
+                            <button onclick="logout()" class="bg-gradient-to-r from-gray-500 to-gray-600 text-white px-3 py-2 rounded-full font-bold hover:from-gray-600 hover:to-gray-700 transition-all duration-300 text-xs">Sair</button>
+                        </div>
+                    `;
+                    userActionsMobile.innerHTML = `
+                        <div class="flex items-center space-x-2">
+                            <span class="text-yellow-300 font-semibold text-xs">👤</span>
+                            <button onclick="logout()" class="bg-gradient-to-r from-gray-500 to-gray-600 text-white px-2 py-1 rounded-full font-bold hover:from-gray-600 hover:to-gray-700 transition-all duration-300 text-xs">Sair</button>
+                        </div>
+                    `;
+                }
+            } else {
+                userActions.innerHTML = `
+                    <div class="flex items-center space-x-3">
+                        <button onclick="showRegisterModal()" class="bg-gradient-to-r from-green-500 to-emerald-600 text-white px-4 py-2 rounded-full font-bold hover:from-green-600 hover:to-emerald-700 transition-all duration-300 shadow-lg transform hover:scale-105 text-sm">Cadastrar</button>
+                        <button onclick="showLoginModal()" class="bg-gradient-to-r from-yellow-400 to-orange-500 text-white px-4 py-2 rounded-full font-bold hover:from-yellow-300 hover:to-orange-400 transition-all duration-300 shadow-lg transform hover:scale-105 text-sm">Entrar</button>
+                    </div>
+                `;
+                userActionsMobile.innerHTML = `
+                    <div class="flex items-center space-x-2">
+                        <button onclick="showRegisterModal()" class="bg-gradient-to-r from-green-500 to-emerald-600 text-white px-3 py-2 rounded-full font-bold hover:from-green-600 hover:to-emerald-700 transition-all duration-300 shadow-lg text-xs">Cadastrar</button>
+                        <button onclick="showLoginModal()" class="bg-gradient-to-r from-yellow-400 to-orange-500 text-white px-3 py-2 rounded-full font-bold hover:from-yellow-300 hover:to-orange-400 transition-all duration-300 shadow-lg text-xs">Entrar</button>
+                    </div>
+                `;
+            }
+        }
+
+        // Mobile menu functions
+        function toggleMobileMenu() {
+            const mobileMenu = document.getElementById('mobileMenu');
+            if (mobileMenu.classList.contains('hidden')) {
+                mobileMenu.classList.remove('hidden');
+            } else {
+                mobileMenu.classList.add('hidden');
+            }
+        }
+
+        function closeMobileMenu() {
+            document.getElementById('mobileMenu').classList.add('hidden');
+        }
+
+        function logout() {
+            currentUser = null;
+            updateHeaderForLoggedUser();
+            showSection('inicio');
+            showMessage('Logout realizado com sucesso!', 'success');
+            
+            // Clear purchase history
+            const historyDiv = document.getElementById('purchaseHistory');
+            historyDiv.innerHTML = `
+                <div class="text-center text-gray-500 py-8">
+                    <div class="text-4xl mb-2">📋</div>
+                    <p>Faça login para ver seu histórico</p>
+                </div>
+            `;
         }
 
         // Package selection
@@ -1616,11 +2186,12 @@
             
             details.innerHTML = `
                 <div>
-                    <div class="text-base font-bold text-gray-800 mb-1">${selectedPackage.tickets} Bilhetes</div>
-                    <div class="text-2xl font-bold bg-gradient-to-r from-green-500 to-emerald-600 bg-clip-text text-transparent mb-2">R$ ${selectedPackage.price}</div>
-                    <div class="text-xs text-gray-600 space-y-1">
+                    <div class="text-xl font-bold text-gray-800 mb-2">${selectedPackage.tickets} Bilhetes</div>
+                    <div class="text-3xl font-bold bg-gradient-to-r from-green-500 to-emerald-600 bg-clip-text text-transparent mb-4">R$ ${selectedPackage.price}</div>
+                    <div class="text-sm text-gray-600 space-y-1">
                         <div>🎯 Sorteio: Sexta às 19h</div>
                         <div>📧 Entrega em 30min</div>
+                        <div>🔒 Pagamento 100% Seguro</div>
                     </div>
                 </div>
             `;
@@ -1687,30 +2258,254 @@
             const totalSales = salesData.reduce((sum, sale) => sum + parseFloat(sale.price.replace(',', '.')), 0);
             const totalCustomers = new Set(salesData.map(sale => sale.email)).size;
             const totalTickets = salesData.reduce((sum, sale) => sum + parseInt(sale.tickets), 0);
+            const pendingOrders = salesData.filter(sale => sale.status === 'Aguardando Confirmação').length;
 
-            document.getElementById('totalSales').textContent = `R$ ${totalSales.toFixed(2).replace('.', ',')}`;
+            document.getElementById('totalSales').textContent = `R$ ${totalSales.toLocaleString('pt-BR', {minimumFractionDigits: 2})}`;
             document.getElementById('totalCustomers').textContent = totalCustomers;
-            document.getElementById('totalTickets').textContent = totalTickets;
+            document.getElementById('totalTickets').textContent = totalTickets.toLocaleString('pt-BR');
+            document.getElementById('pendingOrders').textContent = pendingOrders;
 
+            // Calculate revenue analytics
+            const today = new Date().toLocaleDateString('pt-BR');
+            const todaySales = salesData.filter(sale => sale.date === today);
+            const todayRevenue = todaySales.reduce((sum, sale) => sum + parseFloat(sale.price.replace(',', '.')), 0);
+            
+            const thisWeek = getThisWeekSales();
+            const weekRevenue = thisWeek.reduce((sum, sale) => sum + parseFloat(sale.price.replace(',', '.')), 0);
+            
+            const thisMonth = getThisMonthSales();
+            const monthRevenue = thisMonth.reduce((sum, sale) => sum + parseFloat(sale.price.replace(',', '.')), 0);
+            
+            const averageTicket = salesData.length > 0 ? totalSales / salesData.length : 0;
+
+            document.getElementById('todayRevenue').textContent = `R$ ${todayRevenue.toLocaleString('pt-BR', {minimumFractionDigits: 2})}`;
+            document.getElementById('weekRevenue').textContent = `R$ ${weekRevenue.toLocaleString('pt-BR', {minimumFractionDigits: 2})}`;
+            document.getElementById('monthRevenue').textContent = `R$ ${monthRevenue.toLocaleString('pt-BR', {minimumFractionDigits: 2})}`;
+            document.getElementById('averageTicket').textContent = `R$ ${averageTicket.toLocaleString('pt-BR', {minimumFractionDigits: 2})}`;
+
+            updateSalesTable();
+        }
+
+        function updateSalesTable(filteredData = null) {
             const salesTable = document.getElementById('salesTable');
-            if (salesData.length === 0) {
-                salesTable.innerHTML = '<tr><td colspan="6" class="text-center py-8 text-gray-500">Nenhuma venda registrada</td></tr>';
+            const dataToShow = filteredData || salesData;
+            
+            if (dataToShow.length === 0) {
+                salesTable.innerHTML = `
+                    <tr>
+                        <td colspan="8" class="text-center py-8 text-gray-500">
+                            <div class="text-4xl mb-2">📊</div>
+                            <div>Nenhuma venda encontrada</div>
+                        </td>
+                    </tr>
+                `;
                 return;
             }
 
-            salesTable.innerHTML = salesData.slice(-10).reverse().map(sale => `
-                <tr class="border-b">
-                    <td class="py-3">${sale.date} ${sale.time || ''}</td>
-                    <td class="py-3">${sale.name}</td>
-                    <td class="py-3">${sale.email}</td>
-                    <td class="py-3">${sale.type === 'Bolão' ? `Bolão ${sale.cotas} cotas (${sale.tickets} bilhetes)` : `${sale.tickets} bilhetes`}</td>
-                    <td class="py-3">R$ ${sale.price}</td>
-                    <td class="py-3">
-                        <span class="bg-green-100 text-green-800 px-2 py-1 rounded-full text-sm">${sale.status}</span>
-                        ${sale.paymentCode ? `<br><small class="text-gray-500">Código: ${sale.paymentCode}</small>` : ''}
+            salesTable.innerHTML = dataToShow.slice(-20).reverse().map(sale => `
+                <tr class="border-b hover:bg-gray-50 transition-colors">
+                    <td class="py-4 px-4">
+                        <div class="font-semibold">${sale.date}</div>
+                        <div class="text-xs text-gray-500">${sale.time || ''}</div>
+                    </td>
+                    <td class="py-4 px-4">
+                        <div class="font-semibold">${sale.name}</div>
+                        <div class="text-xs text-gray-500">${sale.transactionId || 'N/A'}</div>
+                    </td>
+                    <td class="py-4 px-4">
+                        <div class="text-sm">${sale.email}</div>
+                    </td>
+                    <td class="py-4 px-4">
+                        <div class="text-sm font-mono">${sale.cpf || 'N/A'}</div>
+                    </td>
+                    <td class="py-4 px-4">
+                        <div class="font-semibold">${sale.type === 'Bolão' ? `Bolão ${sale.cotas} cotas` : `${sale.tickets} bilhetes`}</div>
+                        <div class="text-xs text-gray-500">${sale.paymentMethod || 'Mercado Pago'}</div>
+                    </td>
+                    <td class="py-4 px-4">
+                        <div class="text-lg font-bold text-green-600">R$ ${sale.price}</div>
+                    </td>
+                    <td class="py-4 px-4">
+                        <span class="px-3 py-1 rounded-full text-xs font-semibold ${getStatusColor(sale.status)}">
+                            ${sale.status}
+                        </span>
+                    </td>
+                    <td class="py-4 px-4">
+                        <div class="flex space-x-2">
+                            ${sale.status === 'Aguardando Confirmação' ? 
+                                `<button onclick="confirmSale('${sale.id}')" class="bg-green-500 text-white px-3 py-1 rounded text-xs hover:bg-green-600 transition-colors">Confirmar</button>` : 
+                                `<button onclick="viewSaleDetails('${sale.id}')" class="bg-blue-500 text-white px-3 py-1 rounded text-xs hover:bg-blue-600 transition-colors">Ver</button>`
+                            }
+                            <button onclick="deleteSale('${sale.id}')" class="bg-red-500 text-white px-3 py-1 rounded text-xs hover:bg-red-600 transition-colors">Excluir</button>
+                        </div>
                     </td>
                 </tr>
             `).join('');
+        }
+
+        function getStatusColor(status) {
+            switch(status) {
+                case 'Aguardando Confirmação': return 'bg-yellow-100 text-yellow-800';
+                case 'Confirmado': return 'bg-green-100 text-green-800';
+                case 'Enviado': return 'bg-blue-100 text-blue-800';
+                default: return 'bg-gray-100 text-gray-800';
+            }
+        }
+
+        function getThisWeekSales() {
+            const today = new Date();
+            const weekStart = new Date(today.setDate(today.getDate() - today.getDay()));
+            return salesData.filter(sale => {
+                const saleDate = new Date(sale.date.split('/').reverse().join('-'));
+                return saleDate >= weekStart;
+            });
+        }
+
+        function getThisMonthSales() {
+            const today = new Date();
+            const monthStart = new Date(today.getFullYear(), today.getMonth(), 1);
+            return salesData.filter(sale => {
+                const saleDate = new Date(sale.date.split('/').reverse().join('-'));
+                return saleDate >= monthStart;
+            });
+        }
+
+        // Admin functions
+        function filterSales() {
+            const statusFilter = document.getElementById('statusFilter').value;
+            const dateFilter = document.getElementById('dateFilter').value;
+            
+            let filteredData = salesData;
+            
+            if (statusFilter) {
+                filteredData = filteredData.filter(sale => sale.status === statusFilter);
+            }
+            
+            if (dateFilter) {
+                const filterDate = new Date(dateFilter).toLocaleDateString('pt-BR');
+                filteredData = filteredData.filter(sale => sale.date === filterDate);
+            }
+            
+            updateSalesTable(filteredData);
+        }
+
+        function confirmSale(saleId) {
+            const saleIndex = salesData.findIndex(sale => sale.id == saleId);
+            if (saleIndex !== -1) {
+                salesData[saleIndex].status = 'Confirmado';
+                localStorage.setItem('megaMillionsSales', JSON.stringify(salesData));
+                updateAdminDashboard();
+                showMessage('Venda confirmada com sucesso!', 'success');
+            }
+        }
+
+        function deleteSale(saleId) {
+            if (confirm('Tem certeza que deseja excluir esta venda?')) {
+                salesData = salesData.filter(sale => sale.id != saleId);
+                localStorage.setItem('megaMillionsSales', JSON.stringify(salesData));
+                updateAdminDashboard();
+                showMessage('Venda excluída com sucesso!', 'success');
+            }
+        }
+
+        function viewSaleDetails(saleId) {
+            const sale = salesData.find(sale => sale.id == saleId);
+            if (sale) {
+                alert(`Detalhes da Venda:\n\nCliente: ${sale.name}\nEmail: ${sale.email}\nCPF: ${sale.cpf}\nProduto: ${sale.tickets} bilhetes\nValor: R$ ${sale.price}\nData: ${sale.date} ${sale.time}\nStatus: ${sale.status}\nID Transação: ${sale.transactionId}`);
+            }
+        }
+
+        function exportSalesData() {
+            const csvContent = "data:text/csv;charset=utf-8," 
+                + "Data,Cliente,Email,CPF,Produto,Valor,Status,ID_Transacao\n"
+                + salesData.map(sale => 
+                    `${sale.date},${sale.name},${sale.email},${sale.cpf || ''},${sale.tickets} bilhetes,${sale.price},${sale.status},${sale.transactionId || ''}`
+                ).join("\n");
+            
+            const encodedUri = encodeURI(csvContent);
+            const link = document.createElement("a");
+            link.setAttribute("href", encodedUri);
+            link.setAttribute("download", `vendas_mega_millions_${new Date().toISOString().split('T')[0]}.csv`);
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            
+            showMessage('Dados exportados com sucesso!', 'success');
+        }
+
+        function generateFinancialReport() {
+            const totalSales = salesData.reduce((sum, sale) => sum + parseFloat(sale.price.replace(',', '.')), 0);
+            const totalCustomers = new Set(salesData.map(sale => sale.email)).size;
+            const totalTickets = salesData.reduce((sum, sale) => sum + parseInt(sale.tickets), 0);
+            
+            const report = `
+RELATÓRIO FINANCEIRO - MEGA MILLIONS BRASIL
+Data: ${new Date().toLocaleDateString('pt-BR')}
+============================================
+
+RESUMO GERAL:
+- Total de Vendas: R$ ${totalSales.toLocaleString('pt-BR', {minimumFractionDigits: 2})}
+- Total de Clientes: ${totalCustomers}
+- Total de Bilhetes Vendidos: ${totalTickets.toLocaleString('pt-BR')}
+- Ticket Médio: R$ ${(totalSales / salesData.length || 0).toLocaleString('pt-BR', {minimumFractionDigits: 2})}
+
+VENDAS POR STATUS:
+- Aguardando Confirmação: ${salesData.filter(s => s.status === 'Aguardando Confirmação').length}
+- Confirmadas: ${salesData.filter(s => s.status === 'Confirmado').length}
+- Enviadas: ${salesData.filter(s => s.status === 'Enviado').length}
+
+CNPJ: 63.173.859/0001-12
+Email: megamillionbrasil@gmail.com
+            `;
+            
+            const blob = new Blob([report], { type: 'text/plain' });
+            const url = window.URL.createObjectURL(blob);
+            const link = document.createElement('a');
+            link.href = url;
+            link.download = `relatorio_financeiro_${new Date().toISOString().split('T')[0]}.txt`;
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            window.URL.revokeObjectURL(url);
+            
+            showMessage('Relatório gerado com sucesso!', 'success');
+        }
+
+        function clearAllData() {
+            if (confirm('ATENÇÃO: Esta ação irá apagar TODOS os dados de vendas e usuários. Esta ação não pode ser desfeita. Tem certeza?')) {
+                if (confirm('Última confirmação: Realmente deseja apagar TODOS os dados?')) {
+                    localStorage.removeItem('megaMillionsSales');
+                    localStorage.removeItem('megaMillionsUsers');
+                    salesData = [];
+                    userDatabase = [];
+                    updateAdminDashboard();
+                    showMessage('Todos os dados foram apagados!', 'success');
+                }
+            }
+        }
+
+        function backupData() {
+            const backupData = {
+                sales: salesData,
+                users: userDatabase,
+                timestamp: new Date().toISOString(),
+                version: '2.0.1'
+            };
+            
+            const blob = new Blob([JSON.stringify(backupData, null, 2)], { type: 'application/json' });
+            const url = window.URL.createObjectURL(blob);
+            const link = document.createElement('a');
+            link.href = url;
+            link.download = `backup_mega_millions_${new Date().toISOString().split('T')[0]}.json`;
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            window.URL.revokeObjectURL(url);
+            
+            localStorage.setItem('lastBackup', new Date().toLocaleString('pt-BR'));
+            document.getElementById('lastBackup').textContent = new Date().toLocaleString('pt-BR');
+            
+            showMessage('Backup realizado com sucesso!', 'success');
         }
 
         // Bolão functionality
@@ -1789,67 +2584,13 @@
             }, 4000);
         }
 
-        // Modal functions for registration and password reset
-        function showRegisterForm() {
-            closeLoginModal();
-            document.getElementById('registerModal').classList.remove('hidden');
-            document.getElementById('registerModal').classList.add('flex');
-        }
-
-        function showLoginForm() {
-            closeRegisterModal();
-            closeForgotPasswordModal();
-            showLoginModal();
-        }
-
-        function showForgotPassword() {
-            closeLoginModal();
-            document.getElementById('forgotPasswordModal').classList.remove('hidden');
-            document.getElementById('forgotPasswordModal').classList.add('flex');
-        }
-
-        function closeRegisterModal() {
-            document.getElementById('registerModal').classList.add('hidden');
-            document.getElementById('registerModal').classList.remove('flex');
-        }
-
-        function closeForgotPasswordModal() {
-            document.getElementById('forgotPasswordModal').classList.add('hidden');
-            document.getElementById('forgotPasswordModal').classList.remove('flex');
-        }
-
-        function registerUser(event) {
-            event.preventDefault();
-            const name = document.getElementById('registerName').value;
-            const cpf = document.getElementById('registerCPF').value;
-            const email = document.getElementById('registerEmail').value;
-            const password = document.getElementById('registerPassword').value;
-
-            // Simulate registration
-            currentUser = {
-                name: name,
-                email: email,
-                cpf: cpf,
-                provider: 'email'
-            };
-
-            closeRegisterModal();
-            updateUserInterface();
-            showMessage('Conta criada com sucesso! Bem-vindo!', 'success');
-        }
-
-        function resetPassword(event) {
-            event.preventDefault();
-            const email = document.getElementById('resetEmail').value;
-            
-            closeForgotPasswordModal();
-            showMessage('Link de recuperação enviado para seu email!', 'success');
-        }
+        // Modal functions for registration and password reset - Functions moved above to avoid duplication
 
         // Initialize
         document.addEventListener('DOMContentLoaded', function() {
-            showSection('home');
+            showSection('inicio');
             updateAdminDashboard();
+            updateHeaderForLoggedUser();
             
             // Start countdown timer
             updateCountdown();
@@ -1866,9 +2607,22 @@
             // Update prize amount every 2 minutes
             updatePrizeAmount();
             setInterval(updatePrizeAmount, 120000);
+            
+            // Initialize system uptime
+            const startTime = Date.now();
+            setInterval(() => {
+                const uptime = Date.now() - startTime;
+                const hours = Math.floor(uptime / (1000 * 60 * 60));
+                const minutes = Math.floor((uptime % (1000 * 60 * 60)) / (1000 * 60));
+                document.getElementById('systemUptime').textContent = `${hours}h ${minutes}m`;
+            }, 60000);
+            
+            // Load last backup info
+            const lastBackup = localStorage.getItem('lastBackup');
+            if (lastBackup) {
+                document.getElementById('lastBackup').textContent = lastBackup;
+            }
         });
     </script>
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'98ec17d4a518f41e',t:'MTc2MDQ5NzUwOC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'98f112efa0e9e012',t:'MTc2MDU0OTczNy4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
-
-                  
