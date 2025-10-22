@@ -1,2629 +1,560 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mega Millions Brasil - Sorteios Semanais R$ 10.000+</title>
+    <title>Mega Millions Exclusive Tickets - Official Premium Platform</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         body {
             box-sizing: border-box;
         }
-        .gradient-bg {
-            background: linear-gradient(135deg, #1e3a8a 0%, #7c3aed 50%, #dc2626 100%);
+        .hero-gradient {
+            background: linear-gradient(135deg, #1e3a8a 0%, #3730a3 25%, #7c3aed 50%, #db2777 75%, #dc2626 100%);
         }
-        .card-hover {
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        .card-hover:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 25px 50px rgba(0,0,0,0.15);
-        }
-        .pulse-animation {
-            animation: pulse 2s infinite;
-        }
-        @keyframes pulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.8; }
-        }
-        .winner-scroll {
-            animation: scroll 30s linear infinite;
-        }
-        @keyframes scroll {
-            0% { transform: translateX(100%); }
-            100% { transform: translateX(-100%); }
-        }
-        .countdown-digit {
-            background: linear-gradient(145deg, #1e40af, #3730a3);
-            box-shadow: 0 8px 32px rgba(0,0,0,0.3);
-        }
-        .premium-card {
-            background: linear-gradient(145deg, #ffffff, #f8fafc);
-            border: 2px solid transparent;
-            background-clip: padding-box;
-        }
-        .premium-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            border-radius: inherit;
-            padding: 2px;
-            background: linear-gradient(145deg, #fbbf24, #f59e0b, #d97706);
-            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-            -webkit-mask-composite: exclude;
-            mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-            mask-composite: exclude;
-        }
-        .testimonial-card {
+        .ticket-card {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
             backdrop-filter: blur(10px);
-            background: rgba(255, 255, 255, 0.95);
+        }
+        .ticket-card:hover {
+            transform: translateY(-12px) scale(1.02);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.25);
+        }
+        .security-badge {
+            animation: securityPulse 3s infinite;
+        }
+        @keyframes securityPulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.8; transform: scale(1.05); }
+        }
+        .floating-animation {
+            animation: float 6s ease-in-out infinite;
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+        .encrypted-text {
+            background: linear-gradient(45deg, #10b981, #3b82f6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .premium-border {
+            background: linear-gradient(45deg, #ffd700, #ffed4e, #ffd700);
+            padding: 3px;
+            border-radius: 1rem;
+        }
+        .mega-logo {
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
         }
     </style>
 </head>
-<body class="bg-gray-50">
-    <!-- Header -->
-    <header class="gradient-bg text-white shadow-2xl relative overflow-hidden">
-        <div class="absolute inset-0 bg-black opacity-10"></div>
-        <div class="container mx-auto px-4 py-3 relative z-10">
-            <div class="flex justify-between items-center">
-                <div class="flex items-center space-x-3">
-                    <div class="w-12 h-12 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-full flex items-center justify-center shadow-lg">
-                        <span class="text-2xl font-bold text-white">💰</span>
-                    </div>
-                    <div>
-                        <h1 class="text-2xl md:text-3xl font-bold bg-gradient-to-r from-yellow-300 to-white bg-clip-text text-transparent">Mega Millions Brasil</h1>
-                        <p class="text-yellow-200 text-xs md:text-sm">Sorteios Semanais • Prêmios R$ 10.000+</p>
-                    </div>
-                </div>
-                
-                <!-- Desktop Navigation -->
-                <nav class="hidden lg:flex space-x-6" id="mainNavigation">
-                    <button onclick="showSection('inicio')" class="hover:text-yellow-300 transition-all duration-300 font-semibold border-b-2 border-transparent hover:border-yellow-300 text-sm">Início</button>
-                    <button onclick="showSection('home')" class="hover:text-yellow-300 transition-all duration-300 font-semibold border-b-2 border-transparent hover:border-yellow-300 text-sm">Sorteios</button>
-                    <button onclick="showSection('tickets')" class="hover:text-yellow-300 transition-all duration-300 font-semibold border-b-2 border-transparent hover:border-yellow-300 text-sm">Bilhetes</button>
-                    <button onclick="showSection('financial')" class="hover:text-yellow-300 transition-all duration-300 font-semibold border-b-2 border-transparent hover:border-yellow-300 text-sm">Financeiro</button>
-                    <button onclick="showSection('feedback')" class="hover:text-yellow-300 transition-all duration-300 font-semibold border-b-2 border-transparent hover:border-yellow-300 text-sm">Depoimentos</button>
-                    <button onclick="showSection('bolao')" class="hover:text-yellow-300 transition-all duration-300 font-semibold border-b-2 border-transparent hover:border-yellow-300 text-sm">Bolões</button>
-                    <button onclick="showSection('winners')" class="hover:text-yellow-300 transition-all duration-300 font-semibold border-b-2 border-transparent hover:border-yellow-300 text-sm">Ganhadores</button>
-                    <button onclick="showSection('contact')" class="hover:text-yellow-300 transition-all duration-300 font-semibold border-b-2 border-transparent hover:border-yellow-300 text-sm">Contato</button>
-                    <button onclick="showAdminLogin()" class="hover:text-red-300 transition-all duration-300 font-semibold border-b-2 border-transparent hover:border-red-300 text-sm text-red-200">👑 Admin</button>
-                    <div id="userActions" class="flex items-center space-x-3">
-                        <button onclick="showRegisterModal()" class="bg-gradient-to-r from-green-500 to-emerald-600 text-white px-4 py-2 rounded-full font-bold hover:from-green-600 hover:to-emerald-700 transition-all duration-300 shadow-lg transform hover:scale-105 text-sm">Cadastrar</button>
-                        <button onclick="showLoginModal()" class="bg-gradient-to-r from-yellow-400 to-orange-500 text-white px-4 py-2 rounded-full font-bold hover:from-yellow-300 hover:to-orange-400 transition-all duration-300 shadow-lg transform hover:scale-105 text-sm">Entrar</button>
-                    </div>
-                </nav>
-
-                <!-- Mobile Menu Button -->
-                <div class="lg:hidden flex items-center space-x-3">
-                    <div id="userActionsMobile" class="flex items-center space-x-2">
-                        <button onclick="showRegisterModal()" class="bg-gradient-to-r from-green-500 to-emerald-600 text-white px-3 py-2 rounded-full font-bold hover:from-green-600 hover:to-emerald-700 transition-all duration-300 shadow-lg text-xs">Cadastrar</button>
-                        <button onclick="showLoginModal()" class="bg-gradient-to-r from-yellow-400 to-orange-500 text-white px-3 py-2 rounded-full font-bold hover:from-yellow-300 hover:to-orange-400 transition-all duration-300 shadow-lg text-xs">Entrar</button>
-                    </div>
-                    <button onclick="toggleMobileMenu()" class="text-white hover:text-yellow-300 transition-colors">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-                        </svg>
-                    </button>
-                </div>
-            </div>
-        </div>
-
-        <!-- Mobile Menu -->
-        <div id="mobileMenu" class="lg:hidden hidden bg-black bg-opacity-95 backdrop-blur-sm">
-            <nav class="container mx-auto px-4 py-4 space-y-3">
-                <button onclick="showSection('inicio'); closeMobileMenu();" class="block w-full text-left text-white hover:text-yellow-300 transition-all duration-300 font-semibold py-2 border-b border-gray-700">🏠 Início</button>
-                <button onclick="showSection('home'); closeMobileMenu();" class="block w-full text-left text-white hover:text-yellow-300 transition-all duration-300 font-semibold py-2 border-b border-gray-700">🎰 Sorteios</button>
-                <button onclick="showSection('tickets'); closeMobileMenu();" class="block w-full text-left text-white hover:text-yellow-300 transition-all duration-300 font-semibold py-2 border-b border-gray-700">🎫 Bilhetes</button>
-                <button onclick="showSection('financial'); closeMobileMenu();" class="block w-full text-left text-white hover:text-yellow-300 transition-all duration-300 font-semibold py-2 border-b border-gray-700">💳 Financeiro</button>
-                <button onclick="showSection('feedback'); closeMobileMenu();" class="block w-full text-left text-white hover:text-yellow-300 transition-all duration-300 font-semibold py-2 border-b border-gray-700">⭐ Depoimentos</button>
-                <button onclick="showSection('bolao'); closeMobileMenu();" class="block w-full text-left text-white hover:text-yellow-300 transition-all duration-300 font-semibold py-2 border-b border-gray-700">🤝 Bolões</button>
-                <button onclick="showSection('winners'); closeMobileMenu();" class="block w-full text-left text-white hover:text-yellow-300 transition-all duration-300 font-semibold py-2 border-b border-gray-700">🏆 Ganhadores</button>
-                <button onclick="showSection('contact'); closeMobileMenu();" class="block w-full text-left text-white hover:text-yellow-300 transition-all duration-300 font-semibold py-2 border-b border-gray-700">📞 Contato</button>
-                <button onclick="showAdminLogin(); closeMobileMenu();" class="block w-full text-left text-red-200 hover:text-red-300 transition-all duration-300 font-semibold py-2">👑 Acesso Admin</button>
-            </nav>
-        </div>
-    </header>
-
-    <!-- Winners Ticker -->
-    <div class="bg-green-600 text-white py-2 overflow-hidden">
-        <div class="winner-scroll whitespace-nowrap">
-            <span id="winnersTicker" class="inline-block px-4">
-                🏆 Últimos Ganhadores: Maria S. ganhou R$ 15.000 • João P. ganhou R$ 25.000 • Ana L. ganhou R$ 12.500 • Carlos M. ganhou R$ 18.750 • Lucia F. ganhou R$ 22.000 • Roberto S. ganhou R$ 16.800 • Patricia O. ganhou R$ 19.200 • Fernando L. ganhou R$ 14.300 • Camila R. ganhou R$ 21.500 • Diego A. ganhou R$ 17.900
-            </span>
+<body class="min-h-full bg-gray-50">
+    <!-- Security Header -->
+    <div class="bg-green-600 text-white py-2 px-4">
+        <div class="max-w-7xl mx-auto flex items-center justify-center text-sm">
+            <span class="security-badge mr-2">🔒</span>
+            <span class="font-semibold">SSL ENCRYPTED & PROTECTED</span>
+            <span class="mx-2">•</span>
+            <span>256-BIT SECURITY ENCRYPTION</span>
+            <span class="mx-2">•</span>
+            <span>VERIFIED SECURE PLATFORM</span>
         </div>
     </div>
 
-    <!-- Main Content -->
-    <main class="container mx-auto px-4 py-8">
-        <!-- Início Section -->
-        <section id="inicio" class="section-content">
-            <!-- Hero Banner -->
-            <div class="relative bg-gradient-to-br from-purple-900 via-blue-900 to-indigo-900 rounded-3xl overflow-hidden mb-12 shadow-2xl">
-                <div class="absolute inset-0 bg-black opacity-30"></div>
-                <div class="relative z-10 text-white p-12 text-center">
-                    <h1 class="text-6xl font-bold mb-6 bg-gradient-to-r from-yellow-300 to-white bg-clip-text text-transparent">
-                        🎰 MEGA MILLIONS BRASIL
-                    </h1>
-                    <p class="text-2xl mb-8 text-yellow-200">A maior plataforma de sorteios online do Brasil!</p>
-                    <div class="grid md:grid-cols-3 gap-6 mb-8">
-                        <div class="bg-white bg-opacity-20 rounded-xl p-6 backdrop-blur-sm">
-                            <div class="text-4xl mb-2">🏆</div>
-                            <div class="text-2xl font-bold">R$ 8.2M+</div>
-                            <div class="text-sm">Prêmios Pagos</div>
-                        </div>
-                        <div class="bg-white bg-opacity-20 rounded-xl p-6 backdrop-blur-sm">
-                            <div class="text-4xl mb-2">👥</div>
-                            <div class="text-2xl font-bold">2.847</div>
-                            <div class="text-sm">Ganhadores</div>
-                        </div>
-                        <div class="bg-white bg-opacity-20 rounded-xl p-6 backdrop-blur-sm">
-                            <div class="text-4xl mb-2">⭐</div>
-                            <div class="text-2xl font-bold">100%</div>
-                            <div class="text-sm">Seguro</div>
-                        </div>
-                    </div>
-                    <a href="https://link.mercadopago.com.br/megamillionsbrasil" target="_blank" rel="noopener noreferrer" class="inline-block bg-gradient-to-r from-yellow-400 to-orange-500 text-black px-12 py-6 rounded-2xl font-bold text-2xl hover:from-yellow-300 hover:to-orange-400 transition-all duration-300 shadow-2xl transform hover:scale-105 pulse-animation">
-                        🎫 COMPRAR BILHETES AGORA
-                    </a>
+    <!-- Hero Section -->
+    <header class="hero-gradient py-20 px-4 relative overflow-hidden">
+        <div class="absolute inset-0 bg-black opacity-20"></div>
+        <div class="max-w-7xl mx-auto text-center relative z-10">
+            <div class="floating-animation mb-8">
+                <h1 class="mega-logo text-7xl font-black text-white mb-4">
+                    MEGA MILLIONS
+                </h1>
+                <div class="text-2xl font-bold text-yellow-300 mb-6">
+                    EXCLUSIVE PREMIUM TICKETS PLATFORM
                 </div>
             </div>
-
-            <!-- Como Funciona -->
-            <div class="bg-white rounded-3xl shadow-2xl p-10 mb-12 border border-gray-200">
-                <h2 class="text-4xl font-bold text-center mb-12 bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">Como Funciona</h2>
-                <div class="grid md:grid-cols-4 gap-8">
-                    <div class="text-center">
-                        <div class="w-20 h-20 bg-gradient-to-br from-purple-500 to-blue-600 rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg">
-                            <span class="text-3xl text-white">1️⃣</span>
-                        </div>
-                        <h3 class="text-xl font-bold mb-4 text-gray-800">Escolha seu Pacote</h3>
-                        <p class="text-gray-600">Selecione quantos bilhetes deseja comprar. Mais bilhetes = mais chances!</p>
-                    </div>
-                    <div class="text-center">
-                        <div class="w-20 h-20 bg-gradient-to-br from-green-500 to-emerald-600 rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg">
-                            <span class="text-3xl text-white">2️⃣</span>
-                        </div>
-                        <h3 class="text-xl font-bold mb-4 text-gray-800">Faça o Pagamento</h3>
-                        <p class="text-gray-600">Pague com PIX, cartão ou boleto através do Mercado Pago. 100% seguro!</p>
-                    </div>
-                    <div class="text-center">
-                        <div class="w-20 h-20 bg-gradient-to-br from-orange-500 to-red-600 rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg">
-                            <span class="text-3xl text-white">3️⃣</span>
-                        </div>
-                        <h3 class="text-xl font-bold mb-4 text-gray-800">Receba os Bilhetes</h3>
-                        <p class="text-gray-600">Seus bilhetes chegam no email em até 30 minutos após o pagamento.</p>
-                    </div>
-                    <div class="text-center">
-                        <div class="w-20 h-20 bg-gradient-to-br from-yellow-500 to-orange-600 rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg">
-                            <span class="text-3xl text-white">4️⃣</span>
-                        </div>
-                        <h3 class="text-xl font-bold mb-4 text-gray-800">Aguarde o Sorteio</h3>
-                        <p class="text-gray-600">Toda sexta-feira às 19h. Acompanhe ao vivo e torça para ganhar!</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Link Mega Millions em Destaque -->
-            <div class="bg-gradient-to-r from-yellow-400 via-orange-500 to-red-500 rounded-3xl p-8 mb-12 text-center shadow-2xl relative overflow-hidden">
-                <div class="absolute inset-0 bg-black opacity-10"></div>
-                <div class="relative z-10">
-                    <h2 class="text-4xl font-bold text-white mb-6">🎯 ACESSE NOSSA PLATAFORMA OFICIAL</h2>
-                    <p class="text-xl text-white mb-8">Clique no link abaixo para acessar diretamente nossa página de compras no Mercado Pago</p>
-                    <div class="bg-white rounded-2xl p-6 inline-block shadow-2xl">
-                        <div class="text-lg font-bold text-gray-800 mb-4">🔗 Link Oficial Mega Millions Brasil</div>
-                        <a href="https://link.mercadopago.com.br/megamillionsbrasil" target="_blank" rel="noopener noreferrer" class="bg-gradient-to-r from-green-500 to-blue-600 text-white px-8 py-4 rounded-xl font-bold text-xl hover:from-green-600 hover:to-blue-700 transition-all duration-300 shadow-lg transform hover:scale-105 inline-block">
-                            link.mercadopago.com.br/megamillionsbrasil
-                        </a>
-                        <div class="text-sm text-gray-600 mt-4">✅ Pagamento 100% Seguro • PIX, Cartão e Boleto</div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Últimas Notícias -->
-            <div class="bg-white rounded-3xl shadow-2xl p-10 mb-12 border border-gray-200">
-                <h2 class="text-4xl font-bold text-center mb-12 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">📰 Últimas Notícias</h2>
-                <div class="grid md:grid-cols-3 gap-8">
-                    <div class="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-2xl p-6 border border-blue-200">
-                        <div class="text-4xl mb-4">🎉</div>
-                        <h3 class="text-xl font-bold mb-3 text-gray-800">Novo Recorde de Prêmio!</h3>
-                        <p class="text-gray-600 mb-4">O sorteio desta semana pode chegar a R$ 50.000! Não perca esta oportunidade única.</p>
-                        <div class="text-sm text-blue-600 font-semibold">15/12/2025</div>
-                    </div>
-                    <div class="bg-gradient-to-br from-green-50 to-emerald-50 rounded-2xl p-6 border border-green-200">
-                        <div class="text-4xl mb-4">🏆</div>
-                        <h3 class="text-xl font-bold mb-3 text-gray-800">Ganhadora de Juscimeira</h3>
-                        <p class="text-gray-600 mb-4">Juliana P. ganhou R$ 48.300 com apenas 500 bilhetes. "Não acreditei quando vi o resultado!"</p>
-                        <div class="text-sm text-green-600 font-semibold">12/12/2025</div>
-                    </div>
-                    <div class="bg-gradient-to-br from-purple-50 to-pink-50 rounded-2xl p-6 border border-purple-200">
-                        <div class="text-4xl mb-4">🚀</div>
-                        <h3 class="text-xl font-bold mb-3 text-gray-800">Novos Bolões Disponíveis</h3>
-                        <p class="text-gray-600 mb-4">Agora você pode participar de bolões com até 4.200 bilhetes! Mais chances, menor investimento.</p>
-                        <div class="text-sm text-purple-600 font-semibold">10/12/2025</div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Depoimentos em Destaque -->
-            <div class="bg-gradient-to-r from-green-500 to-blue-500 rounded-3xl p-10 text-white mb-12 shadow-2xl">
-                <h2 class="text-4xl font-bold text-center mb-12">⭐ O Que Nossos Ganhadores Dizem</h2>
-                <div class="grid md:grid-cols-2 gap-8">
-                    <div class="bg-white bg-opacity-20 rounded-2xl p-8 backdrop-blur-sm">
-                        <div class="flex items-center mb-6">
-                            <div class="w-16 h-16 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-full flex items-center justify-center text-2xl font-bold text-white shadow-lg">
-                                IM
-                            </div>
-                            <div class="ml-4">
-                                <div class="font-bold text-xl">Isabela Martins</div>
-                                <div class="text-yellow-300">⭐⭐⭐⭐⭐</div>
-                                <div class="text-sm text-green-300 font-semibold">Ganhou R$ 47.200</div>
-                            </div>
-                        </div>
-                        <p class="text-lg italic">"Ganhei no meu terceiro sorteio! O processo é super fácil e os bilhetes chegam rapidinho no email. Já paguei minha casa!"</p>
-                    </div>
-                    <div class="bg-white bg-opacity-20 rounded-2xl p-8 backdrop-blur-sm">
-                        <div class="flex items-center mb-6">
-                            <div class="w-16 h-16 bg-gradient-to-br from-blue-400 to-purple-500 rounded-full flex items-center justify-center text-2xl font-bold text-white shadow-lg">
-                                EN
-                            </div>
-                            <div class="ml-4">
-                                <div class="font-bold text-xl">Eduardo Nascimento</div>
-                                <div class="text-yellow-300">⭐⭐⭐⭐⭐</div>
-                                <div class="text-sm text-green-300 font-semibold">Ganhou R$ 33.850</div>
-                            </div>
-                        </div>
-                        <p class="text-lg italic">"Participo há 6 meses e já ganhei duas vezes! O atendimento é excelente e o pagamento é sempre certinho!"</p>
-                    </div>
-                </div>
-                <div class="text-center mt-8">
-                    <button onclick="showSection('feedback')" class="bg-white text-blue-600 px-8 py-4 rounded-2xl font-bold text-lg hover:bg-gray-100 transition-all duration-300 shadow-lg transform hover:scale-105">
-                        Ver Todos os Depoimentos
-                    </button>
-                </div>
-            </div>
-
-            <!-- Call to Action Final -->
-            <div class="text-center bg-gradient-to-br from-purple-900 to-blue-900 rounded-3xl p-12 text-white shadow-2xl">
-                <h2 class="text-5xl font-bold mb-6 bg-gradient-to-r from-yellow-300 to-white bg-clip-text text-transparent">
-                    Pronto para Ganhar?
+            
+            <div class="bg-white bg-opacity-20 backdrop-blur-lg rounded-2xl p-8 max-w-4xl mx-auto mb-8">
+                <h2 class="text-4xl font-bold text-white mb-4">
+                    🎫 Exclusive Tickets for You to Play Mega Millions 🎫
                 </h2>
-                <p class="text-2xl mb-8 text-yellow-200">Junte-se a milhares de ganhadores! Próximo sorteio: Sexta-feira às 19h</p>
-                <div class="space-y-4">
-                    <a href="https://link.mercadopago.com.br/megamillionsbrasil" target="_blank" rel="noopener noreferrer" class="inline-block bg-gradient-to-r from-yellow-400 to-orange-500 text-black px-12 py-6 rounded-2xl font-bold text-2xl hover:from-yellow-300 hover:to-orange-400 transition-all duration-300 shadow-2xl transform hover:scale-105 mr-4">
-                        🎫 COMPRAR AGORA
-                    </a>
-                    <button onclick="showSection('home')" class="inline-block bg-gradient-to-r from-blue-600 to-purple-600 text-white px-12 py-6 rounded-2xl font-bold text-2xl hover:from-blue-700 hover:to-purple-700 transition-all duration-300 shadow-2xl transform hover:scale-105">
-                        🎰 VER SORTEIOS
-                    </button>
+                <p class="text-xl text-white opacity-95 leading-relaxed">
+                    Access premium Mega Millions lottery tickets through our secure, encrypted platform. 
+                    Professional service with instant delivery and guaranteed authenticity.
+                </p>
+            </div>
+
+            <div class="flex flex-wrap justify-center gap-4 text-white">
+                <div class="flex items-center bg-white bg-opacity-20 rounded-full px-6 py-3">
+                    <span class="text-green-300 mr-2">✓</span>
+                    <span class="font-semibold">Instant Digital Delivery</span>
                 </div>
-                <div class="mt-8 text-sm text-gray-300">
-                    <div>🏢 CNPJ: 63.173.859/0001-12 • 📧 megamillionbrasil@gmail.com</div>
-                    <div>🔒 Pagamentos 100% Seguros • ⚡ Entrega em 30min • 🏆 Prêmios Garantidos</div>
+                <div class="flex items-center bg-white bg-opacity-20 rounded-full px-6 py-3">
+                    <span class="text-green-300 mr-2">✓</span>
+                    <span class="font-semibold">Bank-Level Security</span>
+                </div>
+                <div class="flex items-center bg-white bg-opacity-20 rounded-full px-6 py-3">
+                    <span class="text-green-300 mr-2">✓</span>
+                    <span class="font-semibold">24/7 Premium Support</span>
                 </div>
             </div>
-        </section>
+        </div>
+    </header>
 
-        <!-- Home Section -->
-        <section id="home" class="section-content">
-            <!-- Hero Section -->
-            <div class="text-center mb-12">
-                <h2 class="text-6xl font-bold bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent mb-6">🎰 Próximo Sorteio</h2>
-                <div class="bg-gradient-to-br from-white to-gray-50 rounded-3xl shadow-2xl p-10 max-w-2xl mx-auto border border-gray-200">
-                    <div class="text-8xl font-bold bg-gradient-to-r from-green-500 to-emerald-600 bg-clip-text text-transparent mb-4" id="nextPrize">R$ 10.000</div>
-                    <div class="text-xl text-gray-600 mb-6">Prêmio Mínimo Garantido</div>
-                    
-                    <!-- Countdown Timer -->
-                    <div class="bg-gradient-to-r from-purple-600 to-blue-600 rounded-2xl p-6 mb-6">
-                        <div class="text-white text-lg font-semibold mb-4">Próximo Sorteio:</div>
-                        <div class="text-2xl font-bold text-yellow-300 mb-4" id="nextDrawDate">Sexta-feira, 00/00/0000 às 19h</div>
-                        <div class="grid grid-cols-4 gap-4">
-                            <div class="countdown-digit text-white rounded-xl p-4 text-center">
-                                <div class="text-3xl font-bold" id="days">00</div>
-                                <div class="text-sm">Dias</div>
-                            </div>
-                            <div class="countdown-digit text-white rounded-xl p-4 text-center">
-                                <div class="text-3xl font-bold" id="hours">00</div>
-                                <div class="text-sm">Horas</div>
-                            </div>
-                            <div class="countdown-digit text-white rounded-xl p-4 text-center">
-                                <div class="text-3xl font-bold" id="minutes">00</div>
-                                <div class="text-sm">Min</div>
-                            </div>
-                            <div class="countdown-digit text-white rounded-xl p-4 text-center">
-                                <div class="text-3xl font-bold" id="seconds">00</div>
-                                <div class="text-sm">Seg</div>
-                            </div>
-                        </div>
+    <main class="py-16 px-4">
+        <div class="max-w-7xl mx-auto">
+            <!-- Security Features -->
+            <div class="text-center mb-16">
+                <h3 class="text-3xl font-bold text-gray-800 mb-8">🛡️ Military-Grade Security & Encryption</h3>
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+                    <div class="bg-white rounded-xl p-6 shadow-lg border-2 border-green-200">
+                        <div class="text-3xl mb-4">🔐</div>
+                        <h4 class="font-bold text-gray-800 mb-2">SSL Encryption</h4>
+                        <p class="text-gray-600 text-sm">256-bit SSL certificate protection</p>
                     </div>
-
-                    <!-- Recent Winners Display -->
-                    <div class="bg-gradient-to-r from-green-50 to-emerald-50 rounded-xl p-4 border border-green-200">
-                        <div class="text-green-800 font-semibold mb-2">🏆 Ganhadores Recentes</div>
-                        <div id="recentWinners" class="text-sm text-green-700">
-                            <!-- Will be populated by JavaScript -->
-                        </div>
+                    <div class="bg-white rounded-xl p-6 shadow-lg border-2 border-blue-200">
+                        <div class="text-3xl mb-4">🛡️</div>
+                        <h4 class="font-bold text-gray-800 mb-2">Data Protection</h4>
+                        <p class="text-gray-600 text-sm">Advanced firewall security</p>
+                    </div>
+                    <div class="bg-white rounded-xl p-6 shadow-lg border-2 border-purple-200">
+                        <div class="text-3xl mb-4">🔒</div>
+                        <h4 class="font-bold text-gray-800 mb-2">Secure Payments</h4>
+                        <p class="text-gray-600 text-sm">PCI DSS compliant processing</p>
+                    </div>
+                    <div class="bg-white rounded-xl p-6 shadow-lg border-2 border-red-200">
+                        <div class="text-3xl mb-4">✅</div>
+                        <h4 class="font-bold text-gray-800 mb-2">Verified Platform</h4>
+                        <p class="text-gray-600 text-sm">Certified secure by authorities</p>
                     </div>
                 </div>
             </div>
 
             <!-- Ticket Packages -->
-            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
-                <div class="premium-card relative rounded-2xl shadow-2xl p-6 card-hover bg-white border border-gray-200">
+            <div class="text-center mb-12">
+                <h3 class="text-4xl font-bold text-gray-800 mb-4">🎯 Premium Ticket Packages</h3>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Choose from our carefully curated selection of Mega Millions ticket packages. 
+                    Each package is designed to maximize your winning potential with professional service.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
+                <!-- Starter Package - 100 Tickets -->
+                <div class="ticket-card bg-white rounded-2xl overflow-hidden shadow-xl border-2 border-blue-100" onclick="purchaseTickets('Starter Package - 100 Tickets', 'https://pay.hotmart.com/A102542189U')">
+                    <div class="bg-gradient-to-r from-blue-500 to-blue-600 p-6 text-white text-center">
+                        <div class="text-sm font-semibold mb-2">STARTER PACKAGE</div>
+                        <div class="text-4xl font-black mb-2">100</div>
+                        <div class="text-lg">Premium Tickets</div>
+                    </div>
+                    <div class="p-8">
+                        <div class="text-center mb-6">
+                            <div class="text-4xl font-bold text-gray-800 mb-1">$5.55</div>
+                            <div class="text-gray-500">USD - Best Entry Price</div>
+                        </div>
+                        <div class="space-y-3 mb-8">
+                            <div class="flex items-center text-sm">
+                                <span class="text-green-500 mr-2">✓</span>
+                                <span>100 Premium Mega Millions entries</span>
+                            </div>
+                            <div class="flex items-center text-sm">
+                                <span class="text-green-500 mr-2">✓</span>
+                                <span>Instant digital delivery</span>
+                            </div>
+                            <div class="flex items-center text-sm">
+                                <span class="text-green-500 mr-2">✓</span>
+                                <span>Email confirmation & tracking</span>
+                            </div>
+                            <div class="flex items-center text-sm">
+                                <span class="text-green-500 mr-2">✓</span>
+                                <span>24/7 customer support</span>
+                            </div>
+                        </div>
+                        <button class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-4 px-6 rounded-xl transition-all duration-300 transform hover:scale-105">
+                            🎫 Purchase Starter Package
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Value Package - 200 Tickets -->
+                <div class="ticket-card bg-white rounded-2xl overflow-hidden shadow-xl border-2 border-green-100" onclick="purchaseTickets('Value Package - 200 Tickets', 'https://pay.hotmart.com/C102542759A')">
+                    <div class="bg-gradient-to-r from-green-500 to-green-600 p-6 text-white text-center">
+                        <div class="text-sm font-semibold mb-2">VALUE PACKAGE</div>
+                        <div class="text-4xl font-black mb-2">200</div>
+                        <div class="text-lg">Premium Tickets</div>
+                    </div>
+                    <div class="p-8">
+                        <div class="text-center mb-6">
+                            <div class="text-4xl font-bold text-gray-800 mb-1">$12.04</div>
+                            <div class="text-gray-500">USD - Great Value</div>
+                        </div>
+                        <div class="space-y-3 mb-8">
+                            <div class="flex items-center text-sm">
+                                <span class="text-green-500 mr-2">✓</span>
+                                <span>200 Premium Mega Millions entries</span>
+                            </div>
+                            <div class="flex items-center text-sm">
+                                <span class="text-green-500 mr-2">✓</span>
+                                <span>Priority processing & delivery</span>
+                            </div>
+                            <div class="flex items-center text-sm">
+                                <span class="text-green-500 mr-2">✓</span>
+                                <span>Advanced tracking dashboard</span>
+                            </div>
+                            <div class="flex items-center text-sm">
+                                <span class="text-green-500 mr-2">✓</span>
+                                <span>Dedicated support line</span>
+                            </div>
+                        </div>
+                        <button class="w-full bg-green-600 hover:bg-green-700 text-white font-bold py-4 px-6 rounded-xl transition-all duration-300 transform hover:scale-105">
+                            🎫 Purchase Value Package
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Premium Package - 500 Tickets -->
+                <div class="premium-border ticket-card" onclick="purchaseTickets('Premium Package - 500 Tickets', 'https://pay.hotmart.com/T102542908Q')">
+                    <div class="bg-white rounded-xl overflow-hidden shadow-xl">
+                        <div class="bg-gradient-to-r from-purple-500 to-purple-600 p-6 text-white text-center relative">
+                            <div class="absolute -top-2 -right-2">
+                                <div class="bg-yellow-400 text-purple-800 text-xs font-black px-3 py-1 rounded-full transform rotate-12 shadow-lg">
+                                    🔥 MOST POPULAR
+                                </div>
+                            </div>
+                            <div class="text-sm font-semibold mb-2">PREMIUM PACKAGE</div>
+                            <div class="text-4xl font-black mb-2">500</div>
+                            <div class="text-lg">Premium Tickets</div>
+                        </div>
+                        <div class="p-8">
+                            <div class="text-center mb-6">
+                                <div class="text-4xl font-bold text-gray-800 mb-1">$14.83</div>
+                                <div class="text-gray-500">USD - Premium Value</div>
+                            </div>
+                            <div class="space-y-3 mb-8">
+                                <div class="flex items-center text-sm">
+                                    <span class="text-green-500 mr-2">✓</span>
+                                    <span>500 Premium Mega Millions entries</span>
+                                </div>
+                                <div class="flex items-center text-sm">
+                                    <span class="text-green-500 mr-2">✓</span>
+                                    <span>VIP instant processing</span>
+                                </div>
+                                <div class="flex items-center text-sm">
+                                    <span class="text-green-500 mr-2">✓</span>
+                                    <span>Premium analytics dashboard</span>
+                                </div>
+                                <div class="flex items-center text-sm">
+                                    <span class="text-green-500 mr-2">✓</span>
+                                    <span>VIP customer support</span>
+                                </div>
+                                <div class="flex items-center text-sm">
+                                    <span class="text-yellow-500 mr-2">⭐</span>
+                                    <span class="font-semibold">Bonus: Winning strategy guide</span>
+                                </div>
+                            </div>
+                            <button class="w-full bg-purple-600 hover:bg-purple-700 text-white font-bold py-4 px-6 rounded-xl transition-all duration-300 transform hover:scale-105">
+                                🎫 Purchase Premium Package
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Ultimate Package - 1000 Tickets -->
+                <div class="premium-border ticket-card" onclick="purchaseTickets('Ultimate Package - 1000 Tickets', 'https://pay.hotmart.com/Q102543012S')">
+                    <div class="bg-white rounded-xl overflow-hidden shadow-xl">
+                        <div class="bg-gradient-to-r from-red-500 to-red-600 p-6 text-white text-center relative">
+                            <div class="absolute -top-2 -right-2">
+                                <div class="bg-yellow-400 text-red-800 text-xs font-black px-3 py-1 rounded-full transform rotate-12 shadow-lg">
+                                    💎 ULTIMATE VALUE
+                                </div>
+                            </div>
+                            <div class="text-sm font-semibold mb-2">ULTIMATE PACKAGE</div>
+                            <div class="text-4xl font-black mb-2">1000</div>
+                            <div class="text-lg">Premium Tickets</div>
+                        </div>
+                        <div class="p-8">
+                            <div class="text-center mb-6">
+                                <div class="text-4xl font-bold text-gray-800 mb-1">$22.25</div>
+                                <div class="text-gray-500">USD - Ultimate Value</div>
+                            </div>
+                            <div class="space-y-3 mb-8">
+                                <div class="flex items-center text-sm">
+                                    <span class="text-green-500 mr-2">✓</span>
+                                    <span>1000 Premium Mega Millions entries</span>
+                                </div>
+                                <div class="flex items-center text-sm">
+                                    <span class="text-green-500 mr-2">✓</span>
+                                    <span>Lightning-fast VIP processing</span>
+                                </div>
+                                <div class="flex items-center text-sm">
+                                    <span class="text-green-500 mr-2">✓</span>
+                                    <span>Executive analytics suite</span>
+                                </div>
+                                <div class="flex items-center text-sm">
+                                    <span class="text-green-500 mr-2">✓</span>
+                                    <span>Dedicated account manager</span>
+                                </div>
+                                <div class="flex items-center text-sm">
+                                    <span class="text-yellow-500 mr-2">⭐</span>
+                                    <span class="font-semibold">Bonus: VIP strategy consultation</span>
+                                </div>
+                            </div>
+                            <button class="w-full bg-red-600 hover:bg-red-700 text-white font-bold py-4 px-6 rounded-xl transition-all duration-300 transform hover:scale-105">
+                                🎫 Purchase Ultimate Package
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Trust & Security Section -->
+            <div class="bg-gradient-to-r from-gray-900 to-gray-800 rounded-3xl p-12 text-white mb-16">
+                <div class="text-center mb-12">
+                    <h3 class="text-3xl font-bold mb-4">🏆 Why Choose Our Premium Platform?</h3>
+                    <p class="text-xl opacity-90">Trusted by thousands of players worldwide</p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                     <div class="text-center">
-                        <div class="text-4xl mb-3">🎫</div>
-                        <h3 class="text-xl font-bold mb-2 text-gray-800">100 Bilhetes</h3>
-                        <div class="text-xs text-gray-600 mb-3">Pacote Iniciante</div>
-                        <div class="bg-gradient-to-r from-blue-50 to-purple-50 rounded-lg p-3 mb-4 border border-blue-200">
-                            <div class="text-xs text-gray-700 space-y-1">
-                                <div>✓ 100 combinações únicas</div>
-                                <div>✓ Números de 01 a 60</div>
-                                <div>✓ Entrega em 30min</div>
-                                <div>✓ Suporte completo</div>
-                            </div>
-                        </div>
-                        <div class="text-3xl font-bold bg-gradient-to-r from-green-500 to-emerald-600 bg-clip-text text-transparent mb-4">R$ 29,90</div>
-                        <a href="https://link.mercadopago.com.br/megamillionsbrasil" target="_blank" rel="noopener noreferrer" class="block w-full bg-gradient-to-r from-purple-600 to-blue-600 text-white py-3 rounded-xl hover:from-purple-700 hover:to-blue-700 transition-all duration-300 font-bold text-sm shadow-lg transform hover:scale-105 text-center">
-                            💳 COMPRAR AGORA
-                        </a>
-                        <div class="text-xs text-gray-500 mt-2">Pagamento seguro via Mercado Pago</div>
-                    </div>
-                </div>
-
-                <div class="premium-card relative rounded-2xl shadow-2xl p-6 card-hover bg-white border border-gray-200">
-                    <div class="text-center">
-                        <div class="text-4xl mb-3">🎫🎫</div>
-                        <h3 class="text-xl font-bold mb-2 text-gray-800">200 Bilhetes</h3>
-                        <div class="text-xs text-gray-600 mb-3">Pacote Intermediário</div>
-                        <div class="bg-gradient-to-r from-green-50 to-blue-50 rounded-lg p-3 mb-4 border border-green-200">
-                            <div class="text-xs text-gray-700 space-y-1">
-                                <div>✓ 200 combinações únicas</div>
-                                <div>✓ Dobra suas chances</div>
-                                <div>✓ Economia de R$ 9,90</div>
-                                <div>✓ Entrega prioritária</div>
-                            </div>
-                        </div>
-                        <div class="text-3xl font-bold bg-gradient-to-r from-green-500 to-emerald-600 bg-clip-text text-transparent mb-4">R$ 49,90</div>
-                        <a href="https://link.mercadopago.com.br/megamillionsbrasil" target="_blank" rel="noopener noreferrer" class="block w-full bg-gradient-to-r from-purple-600 to-blue-600 text-white py-3 rounded-xl hover:from-purple-700 hover:to-blue-700 transition-all duration-300 font-bold text-sm shadow-lg transform hover:scale-105 text-center">
-                            💳 COMPRAR AGORA
-                        </a>
-                        <div class="text-xs text-gray-500 mt-2">Pagamento seguro via Mercado Pago</div>
-                    </div>
-                </div>
-
-                <div class="premium-card relative rounded-2xl shadow-2xl p-6 card-hover bg-white border-4 border-yellow-400">
-                    <div class="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-gradient-to-r from-yellow-400 to-orange-500 text-white px-4 py-1 rounded-full text-xs font-bold shadow-lg">
-                        ⭐ MAIS POPULAR ⭐
+                        <div class="text-5xl mb-4">🔐</div>
+                        <h4 class="text-xl font-bold mb-3">Bank-Level Security</h4>
+                        <p class="opacity-90">Your data and transactions are protected with the same encryption used by major banks worldwide.</p>
                     </div>
                     <div class="text-center">
-                        <div class="text-4xl mb-3">🎫🎫🎫</div>
-                        <h3 class="text-xl font-bold mb-2 text-gray-800">500 Bilhetes</h3>
-                        <div class="text-xs text-yellow-600 font-semibold mb-3">Pacote Premium</div>
-                        <div class="bg-gradient-to-r from-yellow-50 to-orange-50 rounded-lg p-3 mb-4 border border-yellow-300">
-                            <div class="text-xs text-gray-700 space-y-1">
-                                <div>✓ 500 combinações únicas</div>
-                                <div>✓ 5x mais chances de ganhar</div>
-                                <div>✓ Economia de R$ 69,60</div>
-                                <div>✓ Entrega super prioritária</div>
-                            </div>
-                        </div>
-                        <div class="text-3xl font-bold bg-gradient-to-r from-green-500 to-emerald-600 bg-clip-text text-transparent mb-4">R$ 79,90</div>
-                        <a href="https://link.mercadopago.com.br/megamillionsbrasil" target="_blank" rel="noopener noreferrer" class="block w-full bg-gradient-to-r from-yellow-400 to-orange-500 text-white py-3 rounded-xl hover:from-yellow-500 hover:to-orange-600 transition-all duration-300 font-bold text-sm shadow-lg transform hover:scale-105 text-center">
-                            💳 COMPRAR AGORA
-                        </a>
-                        <div class="text-xs text-gray-500 mt-2">Pagamento seguro via Mercado Pago</div>
+                        <div class="text-5xl mb-4">⚡</div>
+                        <h4 class="text-xl font-bold mb-3">Instant Delivery</h4>
+                        <p class="opacity-90">Receive your premium tickets immediately after purchase with real-time confirmation and tracking.</p>
                     </div>
-                </div>
-
-                <div class="premium-card relative rounded-2xl shadow-2xl p-6 card-hover bg-white border border-gray-200">
                     <div class="text-center">
-                        <div class="text-4xl mb-3">🎫🎫🎫🎫</div>
-                        <h3 class="text-xl font-bold mb-2 text-gray-800">1000 Bilhetes</h3>
-                        <div class="text-xs text-gray-600 mb-3">Pacote VIP</div>
-                        <div class="bg-gradient-to-r from-purple-50 to-pink-50 rounded-lg p-3 mb-4 border border-purple-200">
-                            <div class="text-xs text-gray-700 space-y-1">
-                                <div>✓ 1000 combinações únicas</div>
-                                <div>✓ Máximas chances</div>
-                                <div>✓ Economia de R$ 159,40</div>
-                                <div>✓ Atendimento VIP exclusivo</div>
-                            </div>
-                        </div>
-                        <div class="text-3xl font-bold bg-gradient-to-r from-green-500 to-emerald-600 bg-clip-text text-transparent mb-4">R$ 139,50</div>
-                        <a href="https://link.mercadopago.com.br/megamillionsbrasil" target="_blank" rel="noopener noreferrer" class="block w-full bg-gradient-to-r from-purple-600 to-blue-600 text-white py-3 rounded-xl hover:from-purple-700 hover:to-blue-700 transition-all duration-300 font-bold text-sm shadow-lg transform hover:scale-105 text-center">
-                            💳 COMPRAR AGORA
-                        </a>
-                        <div class="text-xs text-gray-500 mt-2">Pagamento seguro via Mercado Pago</div>
+                        <div class="text-5xl mb-4">🎯</div>
+                        <h4 class="text-xl font-bold mb-3">Guaranteed Authenticity</h4>
+                        <p class="opacity-90">Every ticket is verified and guaranteed authentic with full documentation and proof of purchase.</p>
                     </div>
                 </div>
             </div>
 
-            <!-- Info Cards -->
-            <div class="grid md:grid-cols-3 gap-6">
-                <div class="bg-white rounded-xl shadow-lg p-6 text-center">
-                    <div class="text-4xl mb-4">⏰</div>
-                    <h3 class="text-xl font-bold mb-2">Entrega Rápida</h3>
-                    <p class="text-gray-600">Bilhetes enviados em até 30 minutos após a compra</p>
-                </div>
-                <div class="bg-white rounded-xl shadow-lg p-6 text-center">
-                    <div class="text-4xl mb-4">🔒</div>
-                    <h3 class="text-xl font-bold mb-2">Pagamento Seguro</h3>
-                    <p class="text-gray-600">Mercado Pago - PIX, Cartão ou Boleto</p>
-                </div>
-                <div class="bg-white rounded-xl shadow-lg p-6 text-center">
-                    <div class="text-4xl mb-4">🏆</div>
-                    <h3 class="text-xl font-bold mb-2">Sorteios Semanais</h3>
-                    <p class="text-gray-600">Toda sexta-feira às 19h</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Tickets Section -->
-        <section id="tickets" class="section-content hidden">
-            <h2 class="text-5xl font-bold text-center mb-12 bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">🎫 Bilhetes & Combos</h2>
-            <div class="max-w-7xl mx-auto">
-                <!-- Detailed Ticket Information -->
-                <div class="bg-gradient-to-br from-white to-gray-50 rounded-3xl shadow-2xl p-10 mb-12 border border-gray-200">
-                    <h3 class="text-3xl font-bold text-center mb-8 bg-gradient-to-r from-green-500 to-blue-600 bg-clip-text text-transparent">📋 Detalhes dos Bilhetes</h3>
-                    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-                        <div class="text-center p-6 bg-white rounded-2xl shadow-lg border border-gray-100">
-                            <div class="text-4xl mb-4">🎯</div>
-                            <h4 class="text-xl font-bold mb-3 text-gray-800">Formato dos Bilhetes</h4>
-                            <p class="text-gray-600 text-sm">Cada bilhete contém 6 números únicos de 01 a 60, gerados automaticamente pelo sistema</p>
-                        </div>
-                        <div class="text-center p-6 bg-white rounded-2xl shadow-lg border border-gray-100">
-                            <div class="text-4xl mb-4">🔢</div>
-                            <h4 class="text-xl font-bold mb-3 text-gray-800">Numeração</h4>
-                            <p class="text-gray-600 text-sm">Números de 01 a 60 • Sem repetição • Sequência aleatória garantida</p>
-                        </div>
-                        <div class="text-center p-6 bg-white rounded-2xl shadow-lg border border-gray-100">
-                            <div class="text-4xl mb-4">📧</div>
-                            <h4 class="text-xl font-bold mb-3 text-gray-800">Entrega Digital</h4>
-                            <p class="text-gray-600 text-sm">Bilhetes enviados em PDF por email em até 30 minutos após confirmação do pagamento</p>
-                        </div>
-                        <div class="text-center p-6 bg-white rounded-2xl shadow-lg border border-gray-100">
-                            <div class="text-4xl mb-4">🏆</div>
-                            <h4 class="text-xl font-bold mb-3 text-gray-800">Prêmio Mínimo</h4>
-                            <p class="text-gray-600 text-sm">R$ 10.000 garantidos toda sexta-feira às 19h • Valores podem ser maiores</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Combos Grid -->
-                <div class="grid md:grid-cols-2 gap-8 mb-12">
-                    <!-- Left Column - Combos -->
-                    <div class="bg-white rounded-2xl shadow-2xl p-8 border border-gray-200">
-                        <h3 class="text-3xl font-bold mb-8 text-center bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">Combos Disponíveis</h3>
-                        <div class="space-y-6">
-                            <div class="border-2 border-gray-200 rounded-xl p-6 hover:border-purple-400 hover:bg-purple-50 cursor-pointer transition-all duration-300" onclick="selectPackage('100', '29.90')">
-                                <div class="flex justify-between items-center mb-3">
-                                    <div>
-                                        <div class="font-bold text-xl text-gray-800">100 Bilhetes</div>
-                                        <div class="text-sm text-gray-600">Combo Iniciante • Ideal para começar</div>
-                                    </div>
-                                    <div class="text-2xl font-bold text-green-600">R$ 29,90</div>
-                                </div>
-                                <div class="text-xs text-gray-500 space-y-1">
-                                    <div>• 100 combinações únicas de 6 números</div>
-                                    <div>• Entrega em até 30 minutos</div>
-                                    <div>• Suporte completo incluso</div>
-                                </div>
-                            </div>
-
-                            <div class="border-2 border-gray-200 rounded-xl p-6 hover:border-purple-400 hover:bg-purple-50 cursor-pointer transition-all duration-300" onclick="selectPackage('200', '49.90')">
-                                <div class="flex justify-between items-center mb-3">
-                                    <div>
-                                        <div class="font-bold text-xl text-gray-800">200 Bilhetes</div>
-                                        <div class="text-sm text-gray-600">Combo Intermediário • Dobra suas chances</div>
-                                    </div>
-                                    <div class="text-2xl font-bold text-green-600">R$ 49,90</div>
-                                </div>
-                                <div class="text-xs text-gray-500 space-y-1">
-                                    <div>• 200 combinações únicas de 6 números</div>
-                                    <div>• Economia de R$ 9,90 vs individual</div>
-                                    <div>• Entrega prioritária</div>
-                                </div>
-                            </div>
-
-                            <div class="border-4 border-yellow-400 rounded-xl p-6 hover:border-yellow-500 hover:bg-yellow-50 cursor-pointer transition-all duration-300 relative" onclick="selectPackage('500', '79.90')">
-                                <div class="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-gradient-to-r from-yellow-400 to-orange-500 text-white px-4 py-1 rounded-full text-xs font-bold shadow-lg">
-                                    ⭐ MAIS POPULAR ⭐
-                                </div>
-                                <div class="flex justify-between items-center mb-3">
-                                    <div>
-                                        <div class="font-bold text-xl text-gray-800">500 Bilhetes</div>
-                                        <div class="text-sm text-yellow-600 font-semibold">Combo Premium • 5x mais chances</div>
-                                    </div>
-                                    <div class="text-2xl font-bold text-green-600">R$ 79,90</div>
-                                </div>
-                                <div class="text-xs text-gray-500 space-y-1">
-                                    <div>• 500 combinações únicas de 6 números</div>
-                                    <div>• Economia de R$ 69,60 vs individual</div>
-                                    <div>• Entrega super prioritária</div>
-                                </div>
-                            </div>
-
-                            <div class="border-2 border-gray-200 rounded-xl p-6 hover:border-purple-400 hover:bg-purple-50 cursor-pointer transition-all duration-300" onclick="selectPackage('1000', '139.50')">
-                                <div class="flex justify-between items-center mb-3">
-                                    <div>
-                                        <div class="font-bold text-xl text-gray-800">1000 Bilhetes</div>
-                                        <div class="text-sm text-gray-600">Combo VIP • Máximas chances</div>
-                                    </div>
-                                    <div class="text-2xl font-bold text-green-600">R$ 139,50</div>
-                                </div>
-                                <div class="text-xs text-gray-500 space-y-1">
-                                    <div>• 1000 combinações únicas de 6 números</div>
-                                    <div>• Economia de R$ 159,40 vs individual</div>
-                                    <div>• Atendimento VIP exclusivo</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Right Column - How it Works -->
-                    <div class="space-y-8">
-                        <div class="bg-gradient-to-br from-purple-600 to-blue-600 rounded-2xl shadow-2xl p-8 text-white">
-                            <h3 class="text-3xl font-bold mb-8 text-center">Como Funciona</h3>
-                            <div class="space-y-6">
-                                <div class="flex items-start space-x-4">
-                                    <div class="bg-white text-purple-600 rounded-full w-10 h-10 flex items-center justify-center font-bold text-lg shadow-lg">1</div>
-                                    <div>
-                                        <div class="font-bold text-lg">Escolha seu combo</div>
-                                        <div class="text-sm opacity-90">Selecione a quantidade de bilhetes que deseja</div>
-                                    </div>
-                                </div>
-                                <div class="flex items-start space-x-4">
-                                    <div class="bg-white text-purple-600 rounded-full w-10 h-10 flex items-center justify-center font-bold text-lg shadow-lg">2</div>
-                                    <div>
-                                        <div class="font-bold text-lg">Faça o pagamento</div>
-                                        <div class="text-sm opacity-90">PIX, cartão de crédito ou débito</div>
-                                    </div>
-                                </div>
-                                <div class="flex items-start space-x-4">
-                                    <div class="bg-white text-purple-600 rounded-full w-10 h-10 flex items-center justify-center font-bold text-lg shadow-lg">3</div>
-                                    <div>
-                                        <div class="font-bold text-lg">Receba seus bilhetes</div>
-                                        <div class="text-sm opacity-90">PDF com todos os números no seu email</div>
-                                    </div>
-                                </div>
-                                <div class="flex items-start space-x-4">
-                                    <div class="bg-white text-purple-600 rounded-full w-10 h-10 flex items-center justify-center font-bold text-lg shadow-lg">4</div>
-                                    <div>
-                                        <div class="font-bold text-lg">Aguarde o sorteio</div>
-                                        <div class="text-sm opacity-90">Toda sexta-feira às 19h ao vivo</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Ticket Sample -->
-                        <div class="bg-white rounded-2xl shadow-2xl p-8 border border-gray-200">
-                            <h3 class="text-2xl font-bold mb-6 text-center text-gray-800">📄 Exemplo de Bilhete</h3>
-                            <div class="bg-gradient-to-br from-gray-50 to-gray-100 rounded-xl p-6 border-2 border-dashed border-gray-300">
-                                <div class="text-center mb-4">
-                                    <div class="font-bold text-lg text-purple-600">MEGA MILLIONS BRASIL</div>
-                                    <div class="text-sm text-gray-600">Bilhete #001234567</div>
-                                </div>
-                                <div class="grid grid-cols-6 gap-2 mb-4">
-                                    <div class="bg-purple-600 text-white rounded-full w-10 h-10 flex items-center justify-center font-bold">07</div>
-                                    <div class="bg-purple-600 text-white rounded-full w-10 h-10 flex items-center justify-center font-bold">14</div>
-                                    <div class="bg-purple-600 text-white rounded-full w-10 h-10 flex items-center justify-center font-bold">23</div>
-                                    <div class="bg-purple-600 text-white rounded-full w-10 h-10 flex items-center justify-center font-bold">31</div>
-                                    <div class="bg-purple-600 text-white rounded-full w-10 h-10 flex items-center justify-center font-bold">45</div>
-                                    <div class="bg-purple-600 text-white rounded-full w-10 h-10 flex items-center justify-center font-bold">58</div>
-                                </div>
-                                <div class="text-xs text-gray-500 text-center">
-                                    <div>Sorteio: 22/12/2023 às 19h</div>
-                                    <div>CNPJ: 63.173.859/0001-12</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Advantages Section -->
-                <div class="bg-gradient-to-r from-green-500 to-blue-500 rounded-2xl text-white p-8 mb-8">
-                    <h3 class="text-3xl font-bold text-center mb-8">🎯 Vantagens dos Nossos Bilhetes</h3>
-                    <div class="grid md:grid-cols-3 gap-6">
-                        <div class="text-center">
-                            <div class="text-4xl mb-4">🔒</div>
-                            <h4 class="text-xl font-bold mb-2">100% Seguro</h4>
-                            <p class="text-sm opacity-90">Todos os bilhetes são registrados e validados em nosso sistema</p>
-                        </div>
-                        <div class="text-center">
-                            <div class="text-4xl mb-4">⚡</div>
-                            <h4 class="text-xl font-bold mb-2">Entrega Rápida</h4>
-                            <p class="text-sm opacity-90">Receba seus bilhetes em até 30 minutos após o pagamento</p>
-                        </div>
-                        <div class="text-center">
-                            <div class="text-4xl mb-4">🎲</div>
-                            <h4 class="text-xl font-bold mb-2">Números Únicos</h4>
-                            <p class="text-sm opacity-90">Cada bilhete tem combinação exclusiva, sem repetições</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Financial Section -->
-        <section id="financial" class="section-content hidden">
-            <h2 class="text-5xl font-bold text-center mb-12 bg-gradient-to-r from-green-500 to-blue-600 bg-clip-text text-transparent">💳 Área Financeira</h2>
-            <div class="max-w-6xl mx-auto">
-                <div class="grid md:grid-cols-2 gap-8">
-                    <!-- Payment Methods -->
-                    <div class="bg-white rounded-2xl shadow-2xl p-8 border border-gray-200">
-                        <h3 class="text-3xl font-bold mb-8 text-center bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">Forma de Pagamento</h3>
-                        <div class="space-y-6">
-                            <div class="border-2 border-green-200 rounded-xl p-6 hover:border-green-400 transition-colors bg-gradient-to-r from-green-50 to-emerald-50">
-                                <div class="flex items-center space-x-4 mb-4">
-                                    <div class="w-12 h-12 bg-gradient-to-br from-green-500 to-emerald-600 rounded-full flex items-center justify-center shadow-lg">
-                                        <span class="text-white font-bold text-lg">💳</span>
-                                    </div>
-                                    <div>
-                                        <span class="font-bold text-xl text-gray-800">Mercado Pago</span>
-                                        <div class="text-sm text-green-600 font-semibold">PIX • Cartão • Boleto</div>
-                                    </div>
-                                </div>
-                                <p class="text-gray-600 mb-4">Escolha sua forma de pagamento no checkout • Aprovação rápida</p>
-                                <div class="bg-green-100 border border-green-300 rounded-lg p-4">
-                                    <div class="text-center">
-                                        <div class="text-sm font-semibold text-green-800 mb-2">Link de Pagamento:</div>
-                                        <div class="flex items-center justify-center space-x-2">
-                                            <a href="https://link.mercadopago.com.br/megamillionsbrasil" target="_blank" rel="noopener noreferrer" class="font-mono text-green-700 font-bold text-sm hover:text-green-800 underline">link.mercadopago.com.br/megamillionsbrasil</a>
-                                            <button onclick="copyToClipboard('link.mercadopago.com.br/megamillionsbrasil')" class="bg-green-600 text-white px-3 py-1 rounded text-xs hover:bg-green-700 transition-colors">
-                                                Copiar
-                                            </button>
-                                        </div>
-                                        <div class="text-xs text-green-600 mt-2">Clique no link para escolher PIX, Cartão ou Boleto</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <!-- Payment Status Check -->
-                        <div class="mt-8 bg-blue-50 border border-blue-200 rounded-xl p-6">
-                            <h4 class="text-lg font-bold text-blue-800 mb-4">📋 Confirmar Pagamento</h4>
-                            <p class="text-sm text-blue-700 mb-4">Após realizar o pagamento no Mercado Pago, informe seus dados abaixo para confirmarmos sua compra:</p>
-                            <form onsubmit="submitPaymentConfirmation(event)" class="space-y-4">
-                                <div class="grid md:grid-cols-2 gap-4">
-                                    <input type="text" id="confirmName" placeholder="Nome Completo" class="w-full border rounded-lg px-3 py-2 text-sm" required>
-                                    <input type="text" id="confirmCPF" placeholder="CPF" class="w-full border rounded-lg px-3 py-2 text-sm" required>
-                                </div>
-                                <div class="grid md:grid-cols-2 gap-4">
-                                    <input type="email" id="confirmEmail" placeholder="Email para receber bilhetes" class="w-full border rounded-lg px-3 py-2 text-sm" required>
-                                    <select id="confirmPackage" class="w-full border rounded-lg px-3 py-2 text-sm" required>
-                                        <option value="">Selecione o pacote comprado</option>
-                                        <option value="100-29.90">100 Bilhetes - R$ 29,90</option>
-                                        <option value="200-49.90">200 Bilhetes - R$ 49,90</option>
-                                        <option value="500-79.90">500 Bilhetes - R$ 79,90</option>
-                                        <option value="1000-139.50">1000 Bilhetes - R$ 139,50</option>
-                                    </select>
-                                </div>
-                                <textarea id="confirmTransactionId" placeholder="ID da transação ou últimos 4 dígitos do cartão (opcional)" class="w-full border rounded-lg px-3 py-2 text-sm h-20"></textarea>
-                                <button type="submit" class="w-full bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 transition-colors font-semibold">
-                                    📤 Enviar Confirmação de Pagamento
-                                </button>
-                            </form>
-                        </div>
-                    </div>
-
-                    <!-- Purchase History -->
-                    <div class="bg-white rounded-xl shadow-lg p-8">
-                        <h3 class="text-2xl font-bold mb-6">Histórico de Compras</h3>
-                        <div id="purchaseHistory" class="space-y-3">
-                            <div class="text-center text-gray-500 py-8">
-                                <div class="text-4xl mb-2">📋</div>
-                                <p>Faça login para ver seu histórico</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-
-            </div>
-        </section>
-
-        <!-- Feedback Section -->
-        <section id="feedback" class="section-content hidden">
-            <h2 class="text-5xl font-bold text-center mb-12 bg-gradient-to-r from-yellow-500 to-orange-500 bg-clip-text text-transparent">⭐ Depoimentos dos Ganhadores</h2>
-            <div class="max-w-6xl mx-auto">
-                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <div class="testimonial-card rounded-2xl shadow-2xl p-8 border border-gray-200">
-                        <div class="flex items-center mb-6">
-                            <img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?w=150&h=150&fit=crop&crop=face" alt="Isabela Martins" class="w-16 h-16 rounded-full border-4 border-purple-300 shadow-lg object-cover">
-                            <div class="ml-4">
-                                <div class="font-bold text-lg text-gray-800">Isabela Martins</div>
-                                <div class="text-yellow-500 text-lg">⭐⭐⭐⭐⭐</div>
-                                <div class="text-sm text-green-600 font-semibold">Ganhou R$ 47.200</div>
-                            </div>
-                        </div>
-                        <p class="text-gray-700 italic">"Ganhei no meu terceiro sorteio! O processo é super fácil e os bilhetes chegam rapidinho no email. Já paguei minha casa!"</p>
-                    </div>
-
-                    <div class="testimonial-card rounded-2xl shadow-2xl p-8 border border-gray-200">
-                        <div class="flex items-center mb-6">
-                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face" alt="Eduardo Nascimento" class="w-16 h-16 rounded-full border-4 border-blue-300 shadow-lg object-cover">
-                            <div class="ml-4">
-                                <div class="font-bold text-lg text-gray-800">Eduardo Nascimento</div>
-                                <div class="text-yellow-500 text-lg">⭐⭐⭐⭐⭐</div>
-                                <div class="text-sm text-green-600 font-semibold">Ganhou R$ 33.850</div>
-                            </div>
-                        </div>
-                        <p class="text-gray-700 italic">"Participo há 6 meses e já ganhei duas vezes! O atendimento é excelente e o pagamento é sempre certinho!"</p>
-                    </div>
-
-                    <div class="testimonial-card rounded-2xl shadow-2xl p-8 border border-gray-200">
-                        <div class="flex items-center mb-6">
-                            <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&h=150&fit=crop&crop=face" alt="Rafaela Campos" class="w-16 h-16 rounded-full border-4 border-green-300 shadow-lg object-cover">
-                            <div class="ml-4">
-                                <div class="font-bold text-lg text-gray-800">Rafaela Campos</div>
-                                <div class="text-yellow-500 text-lg">⭐⭐⭐⭐⭐</div>
-                                <div class="text-sm text-green-600 font-semibold">Ganhou R$ 29.400</div>
-                            </div>
-                        </div>
-                        <p class="text-gray-700 italic">"Plataforma muito confiável! Compro sempre o combo de 500 bilhetes. Já indiquei para toda minha família!"</p>
-                    </div>
-
-                    <div class="testimonial-card rounded-2xl shadow-2xl p-8 border border-gray-200">
-                        <div class="flex items-center mb-6">
-                            <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face" alt="Thiago Barbosa" class="w-16 h-16 rounded-full border-4 border-red-300 shadow-lg object-cover">
-                            <div class="ml-4">
-                                <div class="font-bold text-lg text-gray-800">Thiago Barbosa</div>
-                                <div class="text-yellow-500 text-lg">⭐⭐⭐⭐⭐</div>
-                                <div class="text-sm text-green-600 font-semibold">Ganhou R$ 41.600</div>
-                            </div>
-                        </div>
-                        <p class="text-gray-700 italic">"Ganhei no mês passado! O melhor é que o pagamento foi feito no mesmo dia do sorteio. Muito sério!"</p>
-                    </div>
-
-                    <div class="testimonial-card rounded-2xl shadow-2xl p-8 border border-gray-200">
-                        <div class="flex items-center mb-6">
-                            <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=150&h=150&fit=crop&crop=face" alt="Vanessa Rocha" class="w-16 h-16 rounded-full border-4 border-yellow-300 shadow-lg object-cover">
-                            <div class="ml-4">
-                                <div class="font-bold text-lg text-gray-800">Vanessa Rocha</div>
-                                <div class="text-yellow-500 text-lg">⭐⭐⭐⭐⭐</div>
-                                <div class="text-sm text-green-600 font-semibold">Ganhou R$ 36.750</div>
-                            </div>
-                        </div>
-                        <p class="text-gray-700 italic">"Adoro participar! Mesmo quando não ganho o prêmio principal, sempre tem chances de ganhar prêmios menores!"</p>
-                    </div>
-
-                    <div class="testimonial-card rounded-2xl shadow-2xl p-8 border border-gray-200">
-                        <div class="flex items-center mb-6">
-                            <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&h=150&fit=crop&crop=face" alt="Gabriel Mendes" class="w-16 h-16 rounded-full border-4 border-indigo-300 shadow-lg object-cover">
-                            <div class="ml-4">
-                                <div class="font-bold text-lg text-gray-800">Gabriel Mendes</div>
-                                <div class="text-yellow-500 text-lg">⭐⭐⭐⭐⭐</div>
-                                <div class="text-sm text-green-600 font-semibold">Ganhou R$ 52.300</div>
-                            </div>
-                        </div>
-                        <p class="text-gray-700 italic">"Empresa séria e transparente. Os sorteios são ao vivo e você pode acompanhar tudo. Já sou cliente há 1 ano!"</p>
-                    </div>
-
-                    <div class="testimonial-card rounded-2xl shadow-2xl p-8 border border-gray-200">
-                        <div class="flex items-center mb-6">
-                            <img src="https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?w=150&h=150&fit=crop&crop=face" alt="Larissa Fernandes" class="w-16 h-16 rounded-full border-4 border-pink-300 shadow-lg object-cover">
-                            <div class="ml-4">
-                                <div class="font-bold text-lg text-gray-800">Larissa Fernandes</div>
-                                <div class="text-yellow-500 text-lg">⭐⭐⭐⭐⭐</div>
-                                <div class="text-sm text-green-600 font-semibold">Ganhou R$ 28.900</div>
-                            </div>
-                        </div>
-                        <p class="text-gray-700 italic">"Participei do bolão premium e ganhamos! Dividimos o prêmio e todos ficaram felizes. Experiência incrível!"</p>
-                    </div>
-
-                    <div class="testimonial-card rounded-2xl shadow-2xl p-8 border border-gray-200">
-                        <div class="flex items-center mb-6">
-                            <img src="https://images.unsplash.com/photo-1519345182560-3f2917c472ef?w=150&h=150&fit=crop&crop=face" alt="Leonardo Silva" class="w-16 h-16 rounded-full border-4 border-teal-300 shadow-lg object-cover">
-                            <div class="ml-4">
-                                <div class="font-bold text-lg text-gray-800">Leonardo Silva</div>
-                                <div class="text-yellow-500 text-lg">⭐⭐⭐⭐⭐</div>
-                                <div class="text-sm text-green-600 font-semibold">Ganhou R$ 44.100</div>
-                            </div>
-                        </div>
-                        <p class="text-gray-700 italic">"Comprei apenas 200 bilhetes e tive sorte! O processo de pagamento foi super rápido e seguro. Recomendo!"</p>
-                    </div>
-
-                    <div class="testimonial-card rounded-2xl shadow-2xl p-8 border border-gray-200">
-                        <div class="flex items-center mb-6">
-                            <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&h=150&fit=crop&crop=face" alt="Bianca Santos" class="w-16 h-16 rounded-full border-4 border-orange-300 shadow-lg object-cover">
-                            <div class="ml-4">
-                                <div class="font-bold text-lg text-gray-800">Bianca Santos</div>
-                                <div class="text-yellow-500 text-lg">⭐⭐⭐⭐⭐</div>
-                                <div class="text-sm text-green-600 font-semibold">Ganhou R$ 39.650</div>
-                            </div>
-                        </div>
-                        <p class="text-gray-700 italic">"Sempre sonhei em ganhar na loteria! Agora posso realizar meus sonhos. Obrigada Mega Millions Brasil!"</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Winners Section -->
-        <section id="winners" class="section-content hidden">
-            <h2 class="text-5xl font-bold text-center mb-12 bg-gradient-to-r from-yellow-500 to-orange-500 bg-clip-text text-transparent">🏆 Nossos Ganhadores</h2>
-            
-            <!-- Latest Winners -->
+            <!-- Customer Reviews Section -->
             <div class="mb-16">
-                <h3 class="text-3xl font-bold text-center mb-8 text-gray-800">Últimos Ganhadores</h3>
-                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <div class="bg-white rounded-2xl shadow-xl p-6 border-l-4 border-green-500">
-                        <div class="flex items-center space-x-4 mb-4">
-                            <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=150&h=150&fit=crop&crop=face" alt="Juliana Pereira" class="w-16 h-16 rounded-full border-4 border-green-300 shadow-lg object-cover">
-                            <div>
-                                <div class="font-bold text-lg">Juliana Pereira</div>
-                                <div class="text-green-600 font-semibold">Ganhou R$ 48.300</div>
-                                <div class="text-sm text-gray-500">15/12/2025</div>
-                            </div>
-                        </div>
-                        <p class="text-gray-600 text-sm">"Não acreditei quando vi o resultado! Comprei 500 bilhetes e ganhei! Já paguei minhas dívidas e ainda sobrou para investir."</p>
-                    </div>
-
-                    <div class="bg-white rounded-2xl shadow-xl p-6 border-l-4 border-blue-500">
-                        <div class="flex items-center space-x-4 mb-4">
-                            <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=150&h=150&fit=crop&crop=face" alt="Ricardo Almeida" class="w-16 h-16 rounded-full border-4 border-blue-300 shadow-lg object-cover">
-                            <div>
-                                <div class="font-bold text-lg">Ricardo Almeida</div>
-                                <div class="text-blue-600 font-semibold">Ganhou R$ 35.750</div>
-                                <div class="text-sm text-gray-500">08/12/2025</div>
-                            </div>
-                        </div>
-                        <p class="text-gray-600 text-sm">"Terceira vez que participo e finalmente ganhei! O dinheiro caiu na conta no mesmo dia. Site muito confiável!"</p>
-                    </div>
-
-                    <div class="bg-white rounded-2xl shadow-xl p-6 border-l-4 border-purple-500">
-                        <div class="flex items-center space-x-4 mb-4">
-                            <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=150&h=150&fit=crop&crop=face" alt="Beatriz Oliveira" class="w-16 h-16 rounded-full border-4 border-purple-300 shadow-lg object-cover">
-                            <div>
-                                <div class="font-bold text-lg">Beatriz Oliveira</div>
-                                <div class="text-purple-600 font-semibold">Ganhou R$ 42.100</div>
-                                <div class="text-sm text-gray-500">01/12/2025</div>
-                            </div>
-                        </div>
-                        <p class="text-gray-600 text-sm">"Participei do bolão com minha família e ganhamos! Dividimos o prêmio e todos ficaram felizes. Experiência incrível!"</p>
-                    </div>
-
-                    <div class="bg-white rounded-2xl shadow-xl p-6 border-l-4 border-orange-500">
-                        <div class="flex items-center space-x-4 mb-4">
-                            <img src="https://images.unsplash.com/photo-1507591064344-4c6ce005b128?w=150&h=150&fit=crop&crop=face" alt="Marcos Ferreira" class="w-16 h-16 rounded-full border-4 border-orange-300 shadow-lg object-cover">
-                            <div>
-                                <div class="font-bold text-lg">Marcos Ferreira</div>
-                                <div class="text-orange-600 font-semibold">Ganhou R$ 31.800</div>
-                                <div class="text-sm text-gray-500">24/11/2025</div>
-                            </div>
-                        </div>
-                        <p class="text-gray-600 text-sm">"Comprei apenas 200 bilhetes e tive sorte! O processo de pagamento foi super rápido e seguro. Recomendo!"</p>
-                    </div>
-
-                    <div class="bg-white rounded-2xl shadow-xl p-6 border-l-4 border-teal-500">
-                        <div class="flex items-center space-x-4 mb-4">
-                            <img src="https://images.unsplash.com/photo-1551836022-deb4988cc6c0?w=150&h=150&fit=crop&crop=face" alt="Priscila Costa" class="w-16 h-16 rounded-full border-4 border-teal-300 shadow-lg object-cover">
-                            <div>
-                                <div class="font-bold text-lg">Priscila Costa</div>
-                                <div class="text-teal-600 font-semibold">Ganhou R$ 26.400</div>
-                                <div class="text-sm text-gray-500">17/11/2025</div>
-                            </div>
-                        </div>
-                        <p class="text-gray-600 text-sm">"Sempre sonhei em ganhar na loteria! Agora posso realizar meus sonhos. Obrigada Mega Millions Brasil!"</p>
-                    </div>
-
-                    <div class="bg-white rounded-2xl shadow-xl p-6 border-l-4 border-pink-500">
-                        <div class="flex items-center space-x-4 mb-4">
-                            <img src="https://images.unsplash.com/photo-1566492031773-4f4e44671d66?w=150&h=150&fit=crop&crop=face" alt="André Rodrigues" class="w-16 h-16 rounded-full border-4 border-pink-300 shadow-lg object-cover">
-                            <div>
-                                <div class="font-bold text-lg">André Rodrigues</div>
-                                <div class="text-pink-600 font-semibold">Ganhou R$ 38.950</div>
-                                <div class="text-sm text-gray-500">10/11/2025</div>
-                            </div>
-                        </div>
-                        <p class="text-gray-600 text-sm">"Ganhei no meu aniversário! Que presente incrível. O atendimento é excelente e tudo muito transparente."</p>
-                    </div>
+                <div class="text-center mb-12">
+                    <h3 class="text-4xl font-bold text-gray-800 mb-4">⭐ What Our Customers Say</h3>
+                    <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                        Join thousands of satisfied customers who trust our premium platform for their Mega Millions tickets
+                    </p>
                 </div>
-            </div>
-
-            <!-- Statistics -->
-            <div class="bg-gradient-to-r from-purple-600 to-blue-600 rounded-3xl p-8 text-white mb-16">
-                <h3 class="text-3xl font-bold text-center mb-8">Estatísticas dos Ganhadores</h3>
-                <div class="grid md:grid-cols-4 gap-6">
-                    <div class="text-center">
-                        <div class="text-4xl font-bold mb-2">2.847</div>
-                        <div class="text-lg">Ganhadores Total</div>
-                    </div>
-                    <div class="text-center">
-                        <div class="text-4xl font-bold mb-2">R$ 8.2M</div>
-                        <div class="text-lg">Prêmios Pagos</div>
-                    </div>
-                    <div class="text-center">
-                        <div class="text-4xl font-bold mb-2">156</div>
-                        <div class="text-lg">Ganhadores Este Mês</div>
-                    </div>
-                    <div class="text-center">
-                        <div class="text-4xl font-bold mb-2">R$ 45.000</div>
-                        <div class="text-lg">Maior Prêmio</div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Bolão Section -->
-        <section id="bolao" class="section-content hidden">
-            <h2 class="text-5xl font-bold text-center mb-12 bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">🤝 Bolões da Mega Millions</h2>
-            <div class="max-w-6xl mx-auto">
-                <!-- Featured Bolão -->
-                <div class="bg-gradient-to-br from-yellow-400 via-orange-500 to-red-500 rounded-3xl text-white p-10 mb-12 shadow-2xl relative overflow-hidden">
-                    <div class="absolute inset-0 bg-black opacity-10"></div>
-                    <div class="relative z-10">
-                        <div class="text-center mb-8">
-                            <div class="text-6xl mb-4">🏆</div>
-                            <h3 class="text-4xl font-bold mb-4">BOLÃO PREMIUM - 4.200 BILHETES</h3>
-                            <p class="text-2xl mb-6">Máximas chances de ganhar! Junte-se a outros apostadores!</p>
-                            <div class="bg-white bg-opacity-20 rounded-2xl p-6 inline-block backdrop-blur-sm">
-                                <div class="text-3xl font-bold mb-2">R$ 85,00 por cota</div>
-                                <div class="text-lg">Mínimo 5 cotas • Máximo 100 cotas</div>
-                                <div class="text-sm mt-2">Sorteio: Sexta-feira às 19h</div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+                    <!-- Review 1 -->
+                    <div class="bg-white rounded-2xl p-6 shadow-lg border border-gray-100">
+                        <div class="flex items-center mb-4">
+                            <div class="w-12 h-12 bg-gradient-to-br from-blue-400 to-blue-600 rounded-full flex items-center justify-center text-white font-bold text-lg mr-4">
+                                SM
+                            </div>
+                            <div>
+                                <h5 class="font-bold text-gray-800">Sarah Mitchell</h5>
+                                <p class="text-sm text-gray-500">March 17, 2025</p>
                             </div>
                         </div>
-                        
-                        <!-- Participants Counter -->
-                        <div class="grid md:grid-cols-3 gap-6 mb-8">
-                            <div class="bg-white bg-opacity-20 rounded-xl p-4 text-center backdrop-blur-sm">
-                                <div class="text-2xl font-bold">847</div>
-                                <div class="text-sm">Cotas Vendidas</div>
-                            </div>
-                            <div class="bg-white bg-opacity-20 rounded-xl p-4 text-center backdrop-blur-sm">
-                                <div class="text-2xl font-bold">153</div>
-                                <div class="text-sm">Cotas Restantes</div>
-                            </div>
-                            <div class="bg-white bg-opacity-20 rounded-xl p-4 text-center backdrop-blur-sm">
-                                <div class="text-2xl font-bold">284</div>
-                                <div class="text-sm">Participantes</div>
-                            </div>
+                        <div class="flex mb-3">
+                            <span class="text-yellow-400">⭐⭐⭐⭐⭐</span>
                         </div>
+                        <p class="text-gray-700 italic">
+                            "Absolutely amazing service! I purchased the Premium Package and received my tickets instantly. The security features give me complete peace of mind. Already planning my next purchase!"
+                        </p>
+                    </div>
 
-                        <div class="text-center">
-                            <button onclick="selectBolao('4200', '85.00', '5', '100')" class="bg-white text-orange-600 px-12 py-4 rounded-2xl font-bold text-xl hover:bg-gray-100 transition-all duration-300 shadow-lg transform hover:scale-105">
-                                PARTICIPAR AGORA
-                            </button>
+                    <!-- Review 2 -->
+                    <div class="bg-white rounded-2xl p-6 shadow-lg border border-gray-100">
+                        <div class="flex items-center mb-4">
+                            <div class="w-12 h-12 bg-gradient-to-br from-green-400 to-green-600 rounded-full flex items-center justify-center text-white font-bold text-lg mr-4">
+                                MJ
+                            </div>
+                            <div>
+                                <h5 class="font-bold text-gray-800">Michael Johnson</h5>
+                                <p class="text-sm text-gray-500">May 6, 2025</p>
+                            </div>
                         </div>
+                        <div class="flex mb-3">
+                            <span class="text-yellow-400">⭐⭐⭐⭐⭐</span>
+                        </div>
+                        <p class="text-gray-700 italic">
+                            "I've been using this platform for months now. The Ultimate Package is incredible value! Professional service, instant delivery, and the customer support is outstanding. Highly recommended!"
+                        </p>
+                    </div>
+
+                    <!-- Review 3 -->
+                    <div class="bg-white rounded-2xl p-6 shadow-lg border border-gray-100">
+                        <div class="flex items-center mb-4">
+                            <div class="w-12 h-12 bg-gradient-to-br from-purple-400 to-purple-600 rounded-full flex items-center justify-center text-white font-bold text-lg mr-4">
+                                ER
+                            </div>
+                            <div>
+                                <h5 class="font-bold text-gray-800">Emily Rodriguez</h5>
+                                <p class="text-sm text-gray-500">July 1, 2025</p>
+                            </div>
+                        </div>
+                        <div class="flex mb-3">
+                            <span class="text-yellow-400">⭐⭐⭐⭐⭐</span>
+                        </div>
+                        <p class="text-gray-700 italic">
+                            "The security encryption and professional interface impressed me immediately. I started with the Starter Package and now I'm a regular customer. This is the real deal!"
+                        </p>
+                    </div>
+
+                    <!-- Review 4 -->
+                    <div class="bg-white rounded-2xl p-6 shadow-lg border border-gray-100">
+                        <div class="flex items-center mb-4">
+                            <div class="w-12 h-12 bg-gradient-to-br from-red-400 to-red-600 rounded-full flex items-center justify-center text-white font-bold text-lg mr-4">
+                                DT
+                            </div>
+                            <div>
+                                <h5 class="font-bold text-gray-800">David Thompson</h5>
+                                <p class="text-sm text-gray-500">January 22, 2025</p>
+                            </div>
+                        </div>
+                        <div class="flex mb-3">
+                            <span class="text-yellow-400">⭐⭐⭐⭐⭐</span>
+                        </div>
+                        <p class="text-gray-700 italic">
+                            "Finally found a trustworthy platform for Mega Millions tickets! The SSL encryption and instant delivery are exactly what I was looking for. Excellent value for money!"
+                        </p>
+                    </div>
+
+                    <!-- Review 5 -->
+                    <div class="bg-white rounded-2xl p-6 shadow-lg border border-gray-100">
+                        <div class="flex items-center mb-4">
+                            <div class="w-12 h-12 bg-gradient-to-br from-pink-400 to-pink-600 rounded-full flex items-center justify-center text-white font-bold text-lg mr-4">
+                                LW
+                            </div>
+                            <div>
+                                <h5 class="font-bold text-gray-800">Lisa Wang</h5>
+                                <p class="text-sm text-gray-500">April 15, 2025</p>
+                            </div>
+                        </div>
+                        <div class="flex mb-3">
+                            <span class="text-yellow-400">⭐⭐⭐⭐⭐</span>
+                        </div>
+                        <p class="text-gray-700 italic">
+                            "The Value Package exceeded my expectations! Fast processing, secure payments, and the analytics dashboard is a nice touch. This platform is simply the best!"
+                        </p>
+                    </div>
+
+                    <!-- Review 6 -->
+                    <div class="bg-white rounded-2xl p-6 shadow-lg border border-gray-100">
+                        <div class="flex items-center mb-4">
+                            <div class="w-12 h-12 bg-gradient-to-br from-indigo-400 to-indigo-600 rounded-full flex items-center justify-center text-white font-bold text-lg mr-4">
+                                JB
+                            </div>
+                            <div>
+                                <h5 class="font-bold text-gray-800">James Brown</h5>
+                                <p class="text-sm text-gray-500">August 12, 2025</p>
+                            </div>
+                        </div>
+                        <div class="flex mb-3">
+                            <span class="text-yellow-400">⭐⭐⭐⭐⭐</span>
+                        </div>
+                        <p class="text-gray-700 italic">
+                            "Been a customer since early 2025 and never disappointed! The premium packages offer incredible value and the security features are top-notch. Keep up the great work!"
+                        </p>
                     </div>
                 </div>
 
-                <!-- Hero Section -->
-                <div class="bg-gradient-to-r from-purple-600 to-blue-600 rounded-2xl text-white p-8 mb-8">
-                    <div class="text-center">
-                        <h3 class="text-3xl font-bold mb-4">🤝 Jogue em Grupo e Multiplique suas Chances!</h3>
-                        <p class="text-xl mb-6">Um Bolão é uma forma de jogar onde você se junta a outros participantes e divide tanto os custos quanto os prêmios. É a melhor opção para aumentar suas chances de ganhar!</p>
-                        <div class="bg-white bg-opacity-20 rounded-lg p-4 inline-block">
-                            <div class="text-2xl font-bold">Próximo Sorteio: R$ 10.000+</div>
-                            <div class="text-sm">Sexta-feira às 19h</div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Como Funciona -->
-                <div class="grid md:grid-cols-2 gap-8 mb-8">
-                    <div class="bg-white rounded-xl shadow-lg p-8">
-                        <h3 class="text-2xl font-bold mb-6">Como Funciona</h3>
-                        <div class="space-y-4">
-                            <div class="flex items-start space-x-3">
-                                <div class="bg-purple-100 text-purple-600 rounded-full w-8 h-8 flex items-center justify-center font-bold text-sm">1</div>
-                                <div>
-                                    <div class="font-semibold">Escolha sua Cota</div>
-                                    <div class="text-sm text-gray-600">Selecione quantas cotas deseja comprar no bolão</div>
-                                </div>
-                            </div>
-                            <div class="flex items-start space-x-3">
-                                <div class="bg-purple-100 text-purple-600 rounded-full w-8 h-8 flex items-center justify-center font-bold text-sm">2</div>
-                                <div>
-                                    <div class="font-semibold">Divida os Custos</div>
-                                    <div class="text-sm text-gray-600">O valor total é dividido entre todos os participantes</div>
-                                </div>
-                            </div>
-                            <div class="flex items-start space-x-3">
-                                <div class="bg-purple-100 text-purple-600 rounded-full w-8 h-8 flex items-center justify-center font-bold text-sm">3</div>
-                                <div>
-                                    <div class="font-semibold">Compartilhe o Prêmio</div>
-                                    <div class="text-sm text-gray-600">Qualquer prêmio é dividido igualmente entre as cotas</div>
-                                </div>
-                            </div>
-                            <div class="flex items-start space-x-3">
-                                <div class="bg-purple-100 text-purple-600 rounded-full w-8 h-8 flex items-center justify-center font-bold text-sm">4</div>
-                                <div>
-                                    <div class="font-semibold">Celebre Junto</div>
-                                    <div class="text-sm text-gray-600">Ganhe e comemore com outros participantes!</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="bg-white rounded-xl shadow-lg p-8">
-                        <h3 class="text-2xl font-bold mb-6">Vantagens do Bolão</h3>
-                        <div class="space-y-4">
-                            <div class="flex items-center space-x-3">
-                                <div class="text-2xl">📈</div>
-                                <div>
-                                    <div class="font-semibold">Mais Chances</div>
-                                    <div class="text-sm text-gray-600">Mais bilhetes = mais chances de ganhar</div>
-                                </div>
-                            </div>
-                            <div class="flex items-center space-x-3">
-                                <div class="text-2xl">💰</div>
-                                <div>
-                                    <div class="font-semibold">Menor Custo</div>
-                                    <div class="text-sm text-gray-600">Divida o investimento com outros</div>
-                                </div>
-                            </div>
-                            <div class="flex items-center space-x-3">
-                                <div class="text-2xl">👥</div>
-                                <div>
-                                    <div class="font-semibold">Experiência Social</div>
-                                    <div class="text-sm text-gray-600">Jogue com amigos e família</div>
-                                </div>
-                            </div>
-                            <div class="flex items-center space-x-3">
-                                <div class="text-2xl">🏆</div>
-                                <div>
-                                    <div class="font-semibold">Prêmios Garantidos</div>
-                                    <div class="text-sm text-gray-600">Mesmo dividido, ainda é muito dinheiro!</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Bolões Disponíveis -->
-                <div class="bg-white rounded-2xl shadow-2xl p-8 mb-8 border border-gray-200">
-                    <h3 class="text-3xl font-bold mb-8 text-center bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">Bolões Disponíveis</h3>
-                    <div class="overflow-x-auto">
-                        <table class="w-full">
-                            <thead>
-                                <tr class="bg-gradient-to-r from-gray-50 to-gray-100 border-b-2 border-gray-200">
-                                    <th class="text-left py-4 px-4 font-bold text-gray-700">Bilhetes</th>
-                                    <th class="text-left py-4 px-4 font-bold text-gray-700">Descrição</th>
-                                    <th class="text-left py-4 px-4 font-bold text-gray-700">Cotas</th>
-                                    <th class="text-left py-4 px-4 font-bold text-gray-700">Valor/Cota</th>
-                                    <th class="text-left py-4 px-4 font-bold text-gray-700">Investimento</th>
-                                    <th class="text-left py-4 px-4 font-bold text-gray-700">Ação</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr class="border-b hover:bg-gray-50 transition-colors">
-                                    <td class="py-4 px-4 font-semibold">100</td>
-                                    <td class="py-4 px-4 text-sm text-gray-600">Bolão Iniciante • Ideal para começar</td>
-                                    <td class="py-4 px-4">2 a 10</td>
-                                    <td class="py-4 px-4 font-bold text-green-600">R$ 15,00</td>
-                                    <td class="py-4 px-4 text-sm">R$ 30 - R$ 150</td>
-                                    <td class="py-4 px-4">
-                                        <button onclick="selectBolao('100', '15.00', '2', '10')" class="bg-gradient-to-r from-purple-600 to-blue-600 text-white px-6 py-2 rounded-lg hover:from-purple-700 hover:to-blue-700 transition-all duration-300 text-sm font-semibold shadow-lg">
-                                            Participar
-                                        </button>
-                                    </td>
-                                </tr>
-                                <tr class="border-b hover:bg-gray-50 transition-colors">
-                                    <td class="py-4 px-4 font-semibold">250</td>
-                                    <td class="py-4 px-4 text-sm text-gray-600">Bolão Intermediário • Boas chances</td>
-                                    <td class="py-4 px-4">2 a 25</td>
-                                    <td class="py-4 px-4 font-bold text-green-600">R$ 20,00</td>
-                                    <td class="py-4 px-4 text-sm">R$ 40 - R$ 500</td>
-                                    <td class="py-4 px-4">
-                                        <button onclick="selectBolao('250', '20.00', '2', '25')" class="bg-gradient-to-r from-purple-600 to-blue-600 text-white px-6 py-2 rounded-lg hover:from-purple-700 hover:to-blue-700 transition-all duration-300 text-sm font-semibold shadow-lg">
-                                            Participar
-                                        </button>
-                                    </td>
-                                </tr>
-                                <tr class="border-b bg-gradient-to-r from-yellow-50 to-orange-50 hover:from-yellow-100 hover:to-orange-100 transition-colors">
-                                    <td class="py-4 px-4 font-semibold">500 ⭐</td>
-                                    <td class="py-4 px-4 text-sm text-orange-700 font-semibold">Bolão Popular • Mais escolhido</td>
-                                    <td class="py-4 px-4">2 a 50</td>
-                                    <td class="py-4 px-4 font-bold text-green-600">R$ 25,00</td>
-                                    <td class="py-4 px-4 text-sm">R$ 50 - R$ 1.250</td>
-                                    <td class="py-4 px-4">
-                                        <button onclick="selectBolao('500', '25.00', '2', '50')" class="bg-gradient-to-r from-yellow-500 to-orange-500 text-white px-6 py-2 rounded-lg hover:from-yellow-600 hover:to-orange-600 transition-all duration-300 text-sm font-bold shadow-lg">
-                                            Participar
-                                        </button>
-                                    </td>
-                                </tr>
-                                <tr class="border-b hover:bg-gray-50 transition-colors">
-                                    <td class="py-4 px-4 font-semibold">1000</td>
-                                    <td class="py-4 px-4 text-sm text-gray-600">Bolão Avançado • Altas chances</td>
-                                    <td class="py-4 px-4">2 a 100</td>
-                                    <td class="py-4 px-4 font-bold text-green-600">R$ 30,00</td>
-                                    <td class="py-4 px-4 text-sm">R$ 60 - R$ 3.000</td>
-                                    <td class="py-4 px-4">
-                                        <button onclick="selectBolao('1000', '30.00', '2', '100')" class="bg-gradient-to-r from-purple-600 to-blue-600 text-white px-6 py-2 rounded-lg hover:from-purple-700 hover:to-blue-700 transition-all duration-300 text-sm font-semibold shadow-lg">
-                                            Participar
-                                        </button>
-                                    </td>
-                                </tr>
-                                <tr class="border-b hover:bg-gray-50 transition-colors">
-                                    <td class="py-4 px-4 font-semibold">2000</td>
-                                    <td class="py-4 px-4 text-sm text-gray-600">Bolão VIP • Máximas chances</td>
-                                    <td class="py-4 px-4">5 a 100</td>
-                                    <td class="py-4 px-4 font-bold text-green-600">R$ 35,00</td>
-                                    <td class="py-4 px-4 text-sm">R$ 175 - R$ 3.500</td>
-                                    <td class="py-4 px-4">
-                                        <button onclick="selectBolao('2000', '35.00', '5', '100')" class="bg-gradient-to-r from-purple-600 to-blue-600 text-white px-6 py-2 rounded-lg hover:from-purple-700 hover:to-blue-700 transition-all duration-300 text-sm font-semibold shadow-lg">
-                                            Participar
-                                        </button>
-                                    </td>
-                                </tr>
-                                <tr class="bg-gradient-to-r from-red-50 to-orange-50 hover:from-red-100 hover:to-orange-100 transition-colors">
-                                    <td class="py-4 px-4 font-bold text-red-700">4200 🏆</td>
-                                    <td class="py-4 px-4 text-sm text-red-700 font-bold">Bolão PREMIUM • Chances Máximas</td>
-                                    <td class="py-4 px-4 font-semibold">5 a 100</td>
-                                    <td class="py-4 px-4 font-bold text-green-600 text-lg">R$ 85,00</td>
-                                    <td class="py-4 px-4 text-sm font-semibold">R$ 425 - R$ 8.500</td>
-                                    <td class="py-4 px-4">
-                                        <button onclick="selectBolao('4200', '85.00', '5', '100')" class="bg-gradient-to-r from-red-500 to-orange-500 text-white px-6 py-2 rounded-lg hover:from-red-600 hover:to-orange-600 transition-all duration-300 text-sm font-bold shadow-lg transform hover:scale-105">
-                                            PARTICIPAR
-                                        </button>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-
-                <!-- História de Sucesso -->
-                <div class="bg-gradient-to-r from-green-500 to-blue-500 rounded-xl text-white p-8">
-                    <h3 class="text-2xl font-bold mb-6">🏆 História de Sucesso</h3>
-                    <div class="grid md:grid-cols-2 gap-6">
+                <!-- Review Statistics -->
+                <div class="bg-gradient-to-r from-blue-50 to-purple-50 rounded-2xl p-8 text-center">
+                    <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
                         <div>
-                            <h4 class="text-xl font-bold mb-3">Maior Prêmio em Bolão</h4>
-                            <p class="mb-4">Em 2019, um bolão de Juscimeira (MT) ganhou R$ 76 milhões na Mega da Virada! O grupo tinha 26 cotas de R$ 107,94 cada, totalizando R$ 2.806,44 investidos.</p>
-                            <div class="bg-white bg-opacity-20 rounded-lg p-4">
-                                <div class="text-lg font-bold">Cada participante ganhou:</div>
-                                <div class="text-3xl font-bold">R$ 2,9 milhões!</div>
-                            </div>
+                            <div class="text-3xl font-bold text-blue-600 mb-2">15,847</div>
+                            <div class="text-gray-600">Happy Customers</div>
                         </div>
                         <div>
-                            <h4 class="text-xl font-bold mb-3">Como Foi Organizado</h4>
-                            <ul class="space-y-2 text-sm">
-                                <li>• 26 cotas vendidas na Lotérica Triunfo</li>
-                                <li>• Participantes: moradores locais e caminhoneiros</li>
-                                <li>• 11 números jogados = 462 combinações</li>
-                                <li>• Investimento total: R$ 2.806,44</li>
-                                <li>• Prêmio por cota: R$ 2,9 milhões</li>
-                                <li>• Retorno: mais de 1.000x o investimento!</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Contact Section -->
-        <section id="contact" class="section-content hidden">
-            <h2 class="text-4xl font-bold text-center mb-8">Contato</h2>
-            <div class="max-w-4xl mx-auto">
-                <div class="grid md:grid-cols-2 gap-8">
-                    <div class="bg-white rounded-xl shadow-lg p-8">
-                        <h3 class="text-2xl font-bold mb-6">Informações de Contato</h3>
-                        <div class="space-y-4">
-                            <div class="flex items-center space-x-3">
-                                <div class="w-10 h-10 bg-purple-100 rounded-full flex items-center justify-center">
-                                    <span class="text-purple-600">📧</span>
-                                </div>
-                                <div>
-                                    <div class="font-semibold">Email de Suporte</div>
-                                    <div class="text-gray-600">megamillionbrasil@gmail.com</div>
-                                    <div class="text-xs text-blue-600 mt-1">Para problemas, dúvidas ou suporte técnico</div>
-                                </div>
-                            </div>
-                            <div class="flex items-center space-x-3">
-                                <div class="w-10 h-10 bg-purple-100 rounded-full flex items-center justify-center">
-                                    <span class="text-purple-600">🏢</span>
-                                </div>
-                                <div>
-                                    <div class="font-semibold">CNPJ</div>
-                                    <div class="text-gray-600">63.173.859/0001-12</div>
-                                </div>
-                            </div>
-                            <div class="flex items-center space-x-3">
-                                <div class="w-10 h-10 bg-purple-100 rounded-full flex items-center justify-center">
-                                    <span class="text-purple-600">⏰</span>
-                                </div>
-                                <div>
-                                    <div class="font-semibold">Sorteios</div>
-                                    <div class="text-gray-600">Sexta-feira às 19h</div>
-                                </div>
-                            </div>
-                            <div class="flex items-center space-x-3">
-                                <div class="w-10 h-10 bg-purple-100 rounded-full flex items-center justify-center">
-                                    <span class="text-purple-600">📦</span>
-                                </div>
-                                <div>
-                                    <div class="font-semibold">Entrega</div>
-                                    <div class="text-gray-600">Até 30 minutos após compra</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="bg-white rounded-xl shadow-lg p-8">
-                        <h3 class="text-2xl font-bold mb-6">Envie uma Mensagem</h3>
-                        <form onsubmit="sendMessage(event)" class="space-y-4">
-                            <div>
-                                <label class="block text-sm font-medium mb-2">Nome</label>
-                                <input type="text" class="w-full border rounded-lg px-3 py-2" required>
-                            </div>
-                            <div>
-                                <label class="block text-sm font-medium mb-2">Email</label>
-                                <input type="email" class="w-full border rounded-lg px-3 py-2" required>
-                            </div>
-                            <div>
-                                <label class="block text-sm font-medium mb-2">Assunto</label>
-                                <select class="w-full border rounded-lg px-3 py-2" required>
-                                    <option value="">Selecione um assunto</option>
-                                    <option value="duvida">Dúvida sobre sorteios</option>
-                                    <option value="pagamento">Problema com pagamento</option>
-                                    <option value="bilhetes">Não recebi os bilhetes</option>
-                                    <option value="premio">Informações sobre prêmio</option>
-                                    <option value="outro">Outro</option>
-                                </select>
-                            </div>
-                            <div>
-                                <label class="block text-sm font-medium mb-2">Mensagem</label>
-                                <textarea class="w-full border rounded-lg px-3 py-2 h-32" required></textarea>
-                            </div>
-                            <button type="submit" class="w-full bg-purple-600 text-white py-3 rounded-lg hover:bg-purple-700 transition-colors font-semibold">
-                                Enviar Mensagem
-                            </button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Admin Dashboard -->
-        <section id="admin" class="section-content hidden">
-            <div class="bg-gradient-to-r from-red-600 to-purple-700 text-white p-6 rounded-2xl mb-8 shadow-2xl">
-                <h2 class="text-4xl font-bold text-center mb-4">👑 Painel Administrativo</h2>
-                <p class="text-center text-lg">Acesso Exclusivo - Lara Ferreira</p>
-                <div class="text-center text-sm mt-2 opacity-90">
-                    🔒 Área Restrita • 📊 Controle Financeiro • 👥 Gestão de Clientes
-                </div>
-            </div>
-            
-            <div class="max-w-7xl mx-auto">
-                <!-- Financial Overview -->
-                <div class="grid md:grid-cols-4 gap-6 mb-8">
-                    <div class="bg-gradient-to-br from-green-500 to-emerald-600 rounded-2xl shadow-2xl p-6 text-white">
-                        <div class="flex items-center justify-between">
-                            <div>
-                                <div class="text-3xl font-bold" id="totalSales">R$ 0,00</div>
-                                <div class="text-sm opacity-90">Vendas Totais</div>
-                            </div>
-                            <div class="text-4xl opacity-80">💰</div>
-                        </div>
-                    </div>
-                    <div class="bg-gradient-to-br from-blue-500 to-indigo-600 rounded-2xl shadow-2xl p-6 text-white">
-                        <div class="flex items-center justify-between">
-                            <div>
-                                <div class="text-3xl font-bold" id="totalCustomers">0</div>
-                                <div class="text-sm opacity-90">Clientes Únicos</div>
-                            </div>
-                            <div class="text-4xl opacity-80">👥</div>
-                        </div>
-                    </div>
-                    <div class="bg-gradient-to-br from-purple-500 to-pink-600 rounded-2xl shadow-2xl p-6 text-white">
-                        <div class="flex items-center justify-between">
-                            <div>
-                                <div class="text-3xl font-bold" id="totalTickets">0</div>
-                                <div class="text-sm opacity-90">Bilhetes Vendidos</div>
-                            </div>
-                            <div class="text-4xl opacity-80">🎫</div>
-                        </div>
-                    </div>
-                    <div class="bg-gradient-to-br from-orange-500 to-red-600 rounded-2xl shadow-2xl p-6 text-white">
-                        <div class="flex items-center justify-between">
-                            <div>
-                                <div class="text-3xl font-bold" id="pendingOrders">0</div>
-                                <div class="text-sm opacity-90">Pedidos Pendentes</div>
-                            </div>
-                            <div class="text-4xl opacity-80">⏳</div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Financial Controls -->
-                <div class="grid md:grid-cols-2 gap-8 mb-8">
-                    <!-- Revenue Analytics -->
-                    <div class="bg-white rounded-2xl shadow-2xl p-8 border border-gray-200">
-                        <h3 class="text-2xl font-bold mb-6 bg-gradient-to-r from-green-600 to-blue-600 bg-clip-text text-transparent">📈 Análise Financeira</h3>
-                        <div class="space-y-4">
-                            <div class="flex justify-between items-center p-4 bg-green-50 rounded-xl border border-green-200">
-                                <span class="font-semibold text-green-800">Receita Hoje</span>
-                                <span class="text-2xl font-bold text-green-600" id="todayRevenue">R$ 0,00</span>
-                            </div>
-                            <div class="flex justify-between items-center p-4 bg-blue-50 rounded-xl border border-blue-200">
-                                <span class="font-semibold text-blue-800">Receita Esta Semana</span>
-                                <span class="text-2xl font-bold text-blue-600" id="weekRevenue">R$ 0,00</span>
-                            </div>
-                            <div class="flex justify-between items-center p-4 bg-purple-50 rounded-xl border border-purple-200">
-                                <span class="font-semibold text-purple-800">Receita Este Mês</span>
-                                <span class="text-2xl font-bold text-purple-600" id="monthRevenue">R$ 0,00</span>
-                            </div>
-                            <div class="flex justify-between items-center p-4 bg-orange-50 rounded-xl border border-orange-200">
-                                <span class="font-semibold text-orange-800">Ticket Médio</span>
-                                <span class="text-2xl font-bold text-orange-600" id="averageTicket">R$ 0,00</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Quick Actions -->
-                    <div class="bg-white rounded-2xl shadow-2xl p-8 border border-gray-200">
-                        <h3 class="text-2xl font-bold mb-6 bg-gradient-to-r from-purple-600 to-red-600 bg-clip-text text-transparent">⚡ Ações Rápidas</h3>
-                        <div class="space-y-4">
-                            <button onclick="exportSalesData()" class="w-full bg-gradient-to-r from-green-500 to-emerald-600 text-white py-3 rounded-xl hover:from-green-600 hover:to-emerald-700 transition-all duration-300 font-semibold shadow-lg">
-                                📊 Exportar Dados de Vendas
-                            </button>
-                            <button onclick="generateFinancialReport()" class="w-full bg-gradient-to-r from-blue-500 to-indigo-600 text-white py-3 rounded-xl hover:from-blue-600 hover:to-indigo-700 transition-all duration-300 font-semibold shadow-lg">
-                                📋 Gerar Relatório Financeiro
-                            </button>
-                            <button onclick="clearAllData()" class="w-full bg-gradient-to-r from-red-500 to-red-600 text-white py-3 rounded-xl hover:from-red-600 hover:to-red-700 transition-all duration-300 font-semibold shadow-lg">
-                                🗑️ Limpar Todos os Dados
-                            </button>
-                            <button onclick="backupData()" class="w-full bg-gradient-to-r from-purple-500 to-pink-600 text-white py-3 rounded-xl hover:from-purple-600 hover:to-pink-700 transition-all duration-300 font-semibold shadow-lg">
-                                💾 Backup dos Dados
-                            </button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Sales Table -->
-                <div class="bg-white rounded-2xl shadow-2xl p-8 border border-gray-200">
-                    <div class="flex justify-between items-center mb-6">
-                        <h3 class="text-2xl font-bold bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">💳 Histórico de Vendas</h3>
-                        <div class="flex space-x-2">
-                            <select id="statusFilter" onchange="filterSales()" class="border rounded-lg px-3 py-2 text-sm">
-                                <option value="">Todos os Status</option>
-                                <option value="Aguardando Confirmação">Pendentes</option>
-                                <option value="Confirmado">Confirmados</option>
-                                <option value="Enviado">Enviados</option>
-                            </select>
-                            <input type="date" id="dateFilter" onchange="filterSales()" class="border rounded-lg px-3 py-2 text-sm">
-                        </div>
-                    </div>
-                    <div class="overflow-x-auto">
-                        <table class="w-full">
-                            <thead>
-                                <tr class="bg-gradient-to-r from-gray-50 to-gray-100 border-b-2 border-gray-200">
-                                    <th class="text-left py-4 px-4 font-bold text-gray-700">Data/Hora</th>
-                                    <th class="text-left py-4 px-4 font-bold text-gray-700">Cliente</th>
-                                    <th class="text-left py-4 px-4 font-bold text-gray-700">Email</th>
-                                    <th class="text-left py-4 px-4 font-bold text-gray-700">CPF</th>
-                                    <th class="text-left py-4 px-4 font-bold text-gray-700">Produto</th>
-                                    <th class="text-left py-4 px-4 font-bold text-gray-700">Valor</th>
-                                    <th class="text-left py-4 px-4 font-bold text-gray-700">Status</th>
-                                    <th class="text-left py-4 px-4 font-bold text-gray-700">Ações</th>
-                                </tr>
-                            </thead>
-                            <tbody id="salesTable">
-                                <tr>
-                                    <td colspan="8" class="text-center py-8 text-gray-500">
-                                        <div class="text-4xl mb-2">📊</div>
-                                        <div>Nenhuma venda registrada ainda</div>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-
-                <!-- System Info -->
-                <div class="mt-8 bg-gradient-to-r from-gray-800 to-gray-900 rounded-2xl p-6 text-white">
-                    <h3 class="text-xl font-bold mb-4">🔧 Informações do Sistema</h3>
-                    <div class="grid md:grid-cols-3 gap-4 text-sm">
-                        <div>
-                            <span class="font-semibold">Versão:</span> 2.0.1
+                            <div class="text-3xl font-bold text-green-600 mb-2">4.9/5</div>
+                            <div class="text-gray-600">Average Rating</div>
                         </div>
                         <div>
-                            <span class="font-semibold">Último Backup:</span> <span id="lastBackup">Nunca</span>
+                            <div class="text-3xl font-bold text-purple-600 mb-2">99.8%</div>
+                            <div class="text-gray-600">Satisfaction Rate</div>
                         </div>
                         <div>
-                            <span class="font-semibold">Uptime:</span> <span id="systemUptime">Carregando...</span>
+                            <div class="text-3xl font-bold text-red-600 mb-2">24/7</div>
+                            <div class="text-gray-600">Support Available</div>
                         </div>
                     </div>
                 </div>
             </div>
-        </section>
+
+            <!-- Payment Security -->
+            <div class="text-center">
+                <div class="bg-green-50 border-2 border-green-200 rounded-2xl p-8 max-w-4xl mx-auto">
+                    <h4 class="text-2xl font-bold text-green-800 mb-4">🛡️ Secure Payment Processing</h4>
+                    <p class="text-green-700 mb-6">
+                        All payments are processed through Hotmart's secure, encrypted payment gateway with industry-leading security standards.
+                    </p>
+                    <div class="flex flex-wrap justify-center gap-4">
+                        <div class="bg-white rounded-lg px-4 py-2 border border-green-200">
+                            <span class="text-green-600 font-semibold">🔒 SSL Encrypted</span>
+                        </div>
+                        <div class="bg-white rounded-lg px-4 py-2 border border-green-200">
+                            <span class="text-green-600 font-semibold">💳 PCI Compliant</span>
+                        </div>
+                        <div class="bg-white rounded-lg px-4 py-2 border border-green-200">
+                            <span class="text-green-600 font-semibold">🛡️ Fraud Protected</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </main>
 
-    <!-- Login Modal -->
-    <div id="loginModal" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-50">
-        <div class="bg-white rounded-2xl shadow-2xl p-8 max-w-md w-full mx-4 border border-gray-200">
-            <h3 class="text-3xl font-bold mb-8 text-center bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">Entrar na Conta</h3>
-            
-            <!-- Social Login -->
-            <div class="space-y-4 mb-8">
-                <button onclick="loginWithGoogle()" class="w-full bg-gradient-to-r from-red-500 to-red-600 text-white py-4 rounded-xl hover:from-red-600 hover:to-red-700 transition-all duration-300 flex items-center justify-center space-x-3 font-semibold shadow-lg">
-                    <span class="text-xl">🔍</span>
-                    <span>Entrar com Google</span>
-                </button>
-                <button onclick="loginWithFacebook()" class="w-full bg-gradient-to-r from-blue-600 to-blue-700 text-white py-4 rounded-xl hover:from-blue-700 hover:to-blue-800 transition-all duration-300 flex items-center justify-center space-x-3 font-semibold shadow-lg">
-                    <span class="text-xl">📘</span>
-                    <span>Entrar com Facebook</span>
-                </button>
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12 px-4">
+        <div class="max-w-7xl mx-auto text-center">
+            <div class="mb-8">
+                <h5 class="text-2xl font-bold mb-4">MEGA MILLIONS PREMIUM PLATFORM</h5>
+                <p class="text-gray-400 max-w-2xl mx-auto">
+                    Your trusted partner for premium Mega Millions lottery tickets. Secure, professional, and reliable service since day one.
+                </p>
             </div>
-
-            <div class="text-center text-gray-500 mb-8 relative">
-                <div class="absolute inset-0 flex items-center">
-                    <div class="w-full border-t border-gray-300"></div>
-                </div>
-                <div class="relative bg-white px-4">ou</div>
-            </div>
-
-            <!-- Email Login -->
-            <form onsubmit="loginWithEmail(event)" class="space-y-6">
-                <div>
-                    <label class="block text-sm font-semibold mb-2 text-gray-700">Email</label>
-                    <input type="email" id="loginEmail" class="w-full border-2 border-gray-300 rounded-xl px-4 py-3 focus:border-purple-500 focus:outline-none transition-colors" placeholder="seu@email.com" required>
-                </div>
-                <div>
-                    <label class="block text-sm font-semibold mb-2 text-gray-700">Senha</label>
-                    <input type="password" id="loginPassword" class="w-full border-2 border-gray-300 rounded-xl px-4 py-3 focus:border-purple-500 focus:outline-none transition-colors" placeholder="Sua senha" required>
-                </div>
-                
-                <div class="flex justify-between items-center text-sm">
-                    <button type="button" onclick="showRegisterForm()" class="text-purple-600 hover:text-purple-700 font-semibold">Criar conta</button>
-                    <button type="button" onclick="showForgotPassword()" class="text-gray-500 hover:text-gray-700">Esqueci minha senha</button>
-                </div>
-                
-                <button type="submit" class="w-full bg-gradient-to-r from-purple-600 to-blue-600 text-white py-4 rounded-xl hover:from-purple-700 hover:to-blue-700 transition-all duration-300 font-bold text-lg shadow-lg">
-                    Entrar
-                </button>
-            </form>
-
-            <div class="mt-8 text-center">
-                <button onclick="closeLoginModal()" class="text-gray-500 hover:text-gray-700 font-semibold">Fechar</button>
+            <div class="border-t border-gray-700 pt-8">
+                <p class="text-gray-400 text-sm">
+                    © 2025 Mega Millions Premium Platform. All rights reserved. | Secure SSL Encrypted Platform | 24/7 Customer Support
+                </p>
             </div>
         </div>
-    </div>
-
-    <!-- Register Modal -->
-    <div id="registerModal" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-50">
-        <div class="bg-white rounded-2xl shadow-2xl p-8 max-w-md w-full mx-4 border border-gray-200">
-            <h3 class="text-3xl font-bold mb-8 text-center bg-gradient-to-r from-green-500 to-blue-600 bg-clip-text text-transparent">Criar Conta</h3>
-            
-            <form onsubmit="registerUser(event)" class="space-y-6">
-                <div>
-                    <label class="block text-sm font-semibold mb-2 text-gray-700">Nome Completo</label>
-                    <input type="text" id="registerName" class="w-full border-2 border-gray-300 rounded-xl px-4 py-3 focus:border-green-500 focus:outline-none transition-colors" placeholder="Seu nome completo" required>
-                </div>
-                <div>
-                    <label class="block text-sm font-semibold mb-2 text-gray-700">CPF</label>
-                    <input type="text" id="registerCPF" class="w-full border-2 border-gray-300 rounded-xl px-4 py-3 focus:border-green-500 focus:outline-none transition-colors" placeholder="000.000.000-00" required>
-                </div>
-                <div>
-                    <label class="block text-sm font-semibold mb-2 text-gray-700">Email</label>
-                    <input type="email" id="registerEmail" class="w-full border-2 border-gray-300 rounded-xl px-4 py-3 focus:border-green-500 focus:outline-none transition-colors" placeholder="seu@email.com" required>
-                    <div class="text-xs text-gray-500 mt-1">📧 Seus bilhetes serão enviados para este email. Verifique caixa principal e spam.</div>
-                </div>
-                <div>
-                    <label class="block text-sm font-semibold mb-2 text-gray-700">Senha</label>
-                    <input type="password" id="registerPassword" class="w-full border-2 border-gray-300 rounded-xl px-4 py-3 focus:border-green-500 focus:outline-none transition-colors" placeholder="Mínimo 6 caracteres" required>
-                </div>
-                
-                <button type="submit" class="w-full bg-gradient-to-r from-green-500 to-blue-600 text-white py-4 rounded-xl hover:from-green-600 hover:to-blue-700 transition-all duration-300 font-bold text-lg shadow-lg">
-                    Criar Conta
-                </button>
-            </form>
-
-            <div class="mt-8 text-center space-y-2">
-                <button onclick="showLoginForm()" class="text-purple-600 hover:text-purple-700 font-semibold">Já tenho conta</button>
-                <br>
-                <button onclick="closeRegisterModal()" class="text-gray-500 hover:text-gray-700 font-semibold">Fechar</button>
-            </div>
-        </div>
-    </div>
-
-    <!-- Forgot Password Modal -->
-    <div id="forgotPasswordModal" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-50">
-        <div class="bg-white rounded-2xl shadow-2xl p-8 max-w-md w-full mx-4 border border-gray-200">
-            <h3 class="text-3xl font-bold mb-8 text-center bg-gradient-to-r from-orange-500 to-red-600 bg-clip-text text-transparent">Recuperar Senha</h3>
-            
-            <form onsubmit="resetPassword(event)" class="space-y-6">
-                <div>
-                    <label class="block text-sm font-semibold mb-2 text-gray-700">Email</label>
-                    <input type="email" id="resetEmail" class="w-full border-2 border-gray-300 rounded-xl px-4 py-3 focus:border-orange-500 focus:outline-none transition-colors" placeholder="seu@email.com" required>
-                    <div class="text-xs text-gray-500 mt-1">Enviaremos um link para redefinir sua senha</div>
-                </div>
-                
-                <button type="submit" class="w-full bg-gradient-to-r from-orange-500 to-red-600 text-white py-4 rounded-xl hover:from-orange-600 hover:to-red-700 transition-all duration-300 font-bold text-lg shadow-lg">
-                    Enviar Link
-                </button>
-            </form>
-
-            <div class="mt-8 text-center space-y-2">
-                <button onclick="showLoginForm()" class="text-purple-600 hover:text-purple-700 font-semibold">Voltar ao login</button>
-                <br>
-                <button onclick="closeForgotPasswordModal()" class="text-gray-500 hover:text-gray-700 font-semibold">Fechar</button>
-            </div>
-        </div>
-    </div>
-
-    <!-- Purchase Modal -->
-    <div id="purchaseModal" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-50 p-4">
-        <div class="bg-white rounded-2xl shadow-2xl p-6 w-full max-w-sm mx-auto border border-gray-200">
-            <h3 class="text-2xl font-bold mb-6 text-center bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">🎫 Finalizar Compra</h3>
-            
-            <div id="purchaseDetails" class="bg-gradient-to-r from-purple-50 to-blue-50 rounded-xl p-4 mb-6 text-center border border-purple-200">
-                <!-- Purchase details will be inserted here -->
-            </div>
-
-            <div class="text-center">
-                <p class="text-purple-600 mb-6 text-sm">Para comprar este pacote, acesse o link de pagamento na seção Financeiro e depois confirme sua compra.</p>
-                <div class="space-y-3">
-                    <button onclick="showSection('financial'); closePurchaseModal();" class="w-full bg-gradient-to-r from-purple-600 to-blue-600 text-white py-3 rounded-xl hover:from-purple-700 hover:to-blue-700 transition-all duration-300 font-bold shadow-lg">
-                        💳 Ir para Pagamento
-                    </button>
-                    <button type="button" onclick="closePurchaseModal()" class="w-full bg-gradient-to-r from-gray-400 to-gray-500 text-white py-3 rounded-xl hover:from-gray-500 hover:to-gray-600 transition-all duration-300 font-semibold">
-                        Fechar
-                    </button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Bolão Modal -->
-    <div id="bolaoModal" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-50 p-4">
-        <div class="bg-white rounded-2xl shadow-2xl p-4 md:p-6 w-full max-w-sm mx-auto border border-gray-200">
-            <h3 class="text-xl md:text-2xl font-bold mb-4 text-center bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">🤝 Participar do Bolão</h3>
-            
-            <div id="bolaoDetails" class="bg-gradient-to-r from-purple-50 to-blue-50 rounded-xl p-3 mb-4 border border-purple-200 text-center">
-                <!-- Bolão details will be inserted here -->
-            </div>
-
-            <form onsubmit="processBolao(event)" class="space-y-3">
-                <div>
-                    <label class="block text-sm font-semibold mb-2 text-gray-700">Quantidade de Cotas</label>
-                    <select id="bolaoCotas" class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:border-purple-500 focus:outline-none transition-colors bg-white text-sm" required onchange="updateBolaoTotal()">
-                        <!-- Options will be populated dynamically -->
-                    </select>
-                    <div class="text-xs text-gray-500 mt-1">💡 Mais cotas = maior participação no prêmio</div>
-                </div>
-                
-                <div class="bg-gradient-to-r from-purple-50 to-blue-50 rounded-lg p-3 border border-purple-200 text-center">
-                    <div class="text-xs font-semibold text-gray-600 mb-1">Total a Pagar</div>
-                    <div id="bolaoTotal" class="text-2xl font-bold bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">R$ 0,00</div>
-                </div>
-
-                <div class="text-center">
-                    <p class="text-sm text-purple-600 mb-4">Para participar, acesse o pagamento na seção Financeiro e confirme sua participação.</p>
-                    <div class="space-y-2">
-                        <button onclick="showSection('financial'); closeBolaoModal();" class="w-full bg-gradient-to-r from-purple-600 to-blue-600 text-white py-3 rounded-lg hover:from-purple-700 hover:to-blue-700 transition-all duration-300 font-bold text-sm shadow-lg">
-                            💳 Ir para Pagamento
-                        </button>
-                        <button type="button" onclick="closeBolaoModal()" class="w-full bg-gradient-to-r from-gray-400 to-gray-500 text-white py-2 rounded-lg hover:from-gray-500 hover:to-gray-600 transition-all duration-300 font-semibold text-sm">
-                            Fechar
-                        </button>
-                    </div>
-                </div>
-            </form>
-        </div>
-    </div>
-
-    <!-- Success Modal -->
-    <div id="successModal" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-50">
-        <div class="bg-white rounded-2xl shadow-2xl p-10 max-w-lg w-full mx-4 text-center border border-gray-200">
-            <div class="w-20 h-20 bg-gradient-to-r from-green-400 to-emerald-500 rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg">
-                <div class="text-4xl">🎉</div>
-            </div>
-            <h3 class="text-3xl font-bold mb-4 bg-gradient-to-r from-green-500 to-emerald-600 bg-clip-text text-transparent">Compra Realizada com Sucesso!</h3>
-            <p class="text-gray-600 mb-6 text-lg">Seus bilhetes serão enviados para seu email em até 30 minutos após a confirmação do pagamento.</p>
-            
-            <div class="bg-gradient-to-r from-green-50 to-emerald-50 rounded-xl p-6 mb-6 border border-green-200">
-                <div class="text-sm text-green-800 space-y-2">
-                    <div class="flex items-center justify-center space-x-2">
-                        <span class="font-semibold">📧 Verifique seu email</span>
-                    </div>
-                    <div class="flex items-center justify-center space-x-2">
-                        <span class="font-semibold">🏢 CNPJ: 63.173.859/0001-12</span>
-                    </div>
-                    <div class="flex items-center justify-center space-x-2">
-                        <span class="font-semibold">🎯 Próximo sorteio: Sexta-feira às 19h</span>
-                    </div>
-                </div>
-            </div>
-            
-            <button onclick="closeSuccessModal()" class="w-full bg-gradient-to-r from-green-500 to-emerald-600 text-white py-4 rounded-xl hover:from-green-600 hover:to-emerald-700 transition-all duration-300 font-bold text-lg shadow-lg transform hover:scale-105">
-                ✅ Perfeito! Fechar
-            </button>
-        </div>
-    </div>
+    </footer>
 
     <script>
-        // Global variables
-        let currentUser = null;
-        let selectedPackage = null;
-        let selectedBolao = null;
-        let salesData = JSON.parse(localStorage.getItem('megaMillionsSales') || '[]');
-        let countdownInterval = null;
-
-        // Winner names and prizes for automatic rotation
-        const winnerNames = [
-            'Isabela Martins', 'Eduardo Nascimento', 'Rafaela Campos', 'Thiago Barbosa', 'Vanessa Rocha',
-            'Gabriel Mendes', 'Larissa Fernandes', 'Leonardo Silva', 'Bianca Santos', 'Juliana Pereira',
-            'Ricardo Almeida', 'Beatriz Oliveira', 'Marcos Ferreira', 'Priscila Costa', 'André Rodrigues',
-            'Fernanda Lima', 'Gustavo Santos', 'Natália Rocha', 'Felipe Martins', 'Camila Barbosa',
-            'Daniel Oliveira', 'Mariana Costa', 'Bruno Ferreira', 'Aline Santos', 'Rodrigo Silva'
-        ];
-
-        const prizeValues = [
-            10000, 12500, 15000, 18750, 22000, 25500, 28900, 32400, 35800, 39200,
-            42600, 45000, 16800, 19200, 21600, 24000, 26400, 29800, 33200, 36600,
-            40000, 43400, 14300, 17700, 20100, 23500, 26900, 30300, 33700, 37100
-        ];
-
-        // Navigation
-        function showSection(sectionId) {
-            document.querySelectorAll('.section-content').forEach(section => {
-                section.classList.add('hidden');
-            });
-            document.getElementById(sectionId).classList.remove('hidden');
+        function purchaseTickets(packageName, paymentUrl) {
+            // Show loading state briefly for professional feel
+            const event = window.event;
+            const button = event.target.closest('.ticket-card').querySelector('button');
+            const originalText = button.innerHTML;
             
-            // Hide admin section unless user is admin
-            if (sectionId === 'admin' && (!currentUser || !currentUser.isAdmin)) {
-                showSection('home');
-                return;
-            }
-        }
-
-        // Countdown Timer
-        function getNextFriday() {
-            const now = new Date();
-            const nextFriday = new Date();
-            const daysUntilFriday = (5 - now.getDay() + 7) % 7;
+            button.innerHTML = '🔄 Processing...';
+            button.disabled = true;
             
-            if (daysUntilFriday === 0 && now.getHours() >= 19) {
-                // If it's Friday after 7 PM, get next Friday
-                nextFriday.setDate(now.getDate() + 7);
-            } else if (daysUntilFriday === 0) {
-                // If it's Friday before 7 PM, use today
-                nextFriday.setDate(now.getDate());
-            } else {
-                // Otherwise, get the next Friday
-                nextFriday.setDate(now.getDate() + daysUntilFriday);
-            }
-            
-            nextFriday.setHours(19, 0, 0, 0);
-            return nextFriday;
-        }
-
-        function updateCountdown() {
-            const now = new Date();
-            const nextDraw = getNextFriday();
-            const timeDiff = nextDraw - now;
-
-            if (timeDiff <= 0) {
-                // Draw has passed, get next Friday
-                const newNextFriday = new Date(nextDraw);
-                newNextFriday.setDate(newNextFriday.getDate() + 7);
-                updateCountdownDisplay(newNextFriday - now);
-                updateNextDrawDate(newNextFriday);
-                updatePrizeAmount();
-            } else {
-                updateCountdownDisplay(timeDiff);
-                updateNextDrawDate(nextDraw);
-            }
-        }
-
-        function updateCountdownDisplay(timeDiff) {
-            const days = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((timeDiff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((timeDiff % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((timeDiff % (1000 * 60)) / 1000);
-
-            document.getElementById('days').textContent = days.toString().padStart(2, '0');
-            document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
-            document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
-            document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
-        }
-
-        function updateNextDrawDate(date) {
-            const options = { 
-                weekday: 'long', 
-                year: 'numeric', 
-                month: '2-digit', 
-                day: '2-digit' 
-            };
-            const formattedDate = date.toLocaleDateString('pt-BR', options);
-            document.getElementById('nextDrawDate').textContent = `${formattedDate} às 19h`;
-        }
-
-        function updatePrizeAmount() {
-            const baseAmount = 10000;
-            const randomIncrease = Math.floor(Math.random() * 40000);
-            const totalPrize = baseAmount + randomIncrease;
-            document.getElementById('nextPrize').textContent = `R$ ${totalPrize.toLocaleString('pt-BR')}`;
-        }
-
-        // Recent Winners Display
-        function updateRecentWinners() {
-            const recentWinnersDiv = document.getElementById('recentWinners');
-            const randomWinners = [];
-            
-            for (let i = 0; i < 3; i++) {
-                const randomName = winnerNames[Math.floor(Math.random() * winnerNames.length)];
-                const randomPrize = prizeValues[Math.floor(Math.random() * prizeValues.length)];
-                randomWinners.push(`${randomName} - R$ ${randomPrize.toLocaleString('pt-BR')}`);
-            }
-            
-            recentWinnersDiv.textContent = randomWinners.join(' • ');
-        }
-
-        // Winners Ticker Update
-        function updateWinnersTicker() {
-            const ticker = document.getElementById('winnersTicker');
-            const winners = [];
-            
-            for (let i = 0; i < 10; i++) {
-                const randomName = winnerNames[Math.floor(Math.random() * winnerNames.length)];
-                const randomPrize = prizeValues[Math.floor(Math.random() * prizeValues.length)];
-                winners.push(`${randomName} ganhou R$ ${randomPrize.toLocaleString('pt-BR')}`);
-            }
-            
-            ticker.textContent = `🏆 Últimos Ganhadores: ${winners.join(' • ')}`;
-        }
-
-        // Copy to clipboard function
-        function copyToClipboard(text) {
-            navigator.clipboard.writeText(text).then(() => {
-                showMessage('Link copiado para a área de transferência!', 'success');
-            }).catch(() => {
-                showMessage('Erro ao copiar link', 'error');
-            });
-        }
-
-        // Payment confirmation function
-        function submitPaymentConfirmation(event) {
-            event.preventDefault();
-            
-            const name = document.getElementById('confirmName').value;
-            const cpf = document.getElementById('confirmCPF').value;
-            const email = document.getElementById('confirmEmail').value;
-            const packageInfo = document.getElementById('confirmPackage').value;
-            const transactionId = document.getElementById('confirmTransactionId').value;
-            
-            if (!packageInfo) {
-                showMessage('Selecione o pacote comprado', 'error');
-                return;
-            }
-            
-            const [tickets, price] = packageInfo.split('-');
-            
-            // Create pending purchase record
-            const purchase = {
-                id: Date.now(),
-                date: new Date().toLocaleDateString('pt-BR'),
-                time: new Date().toLocaleTimeString('pt-BR'),
-                name: name,
-                email: email,
-                cpf: cpf,
-                tickets: tickets,
-                price: price,
-                transactionId: transactionId || 'Não informado',
-                paymentMethod: 'Mercado Pago',
-                status: 'Aguardando Confirmação'
-            };
-
-            // Save to localStorage
-            salesData.push(purchase);
-            localStorage.setItem('megaMillionsSales', JSON.stringify(salesData));
-
-            // Send email notification to admin
-            sendAdminNotification(purchase);
-
-            // Clear form
-            event.target.reset();
-            
-            // Show success message
-            showMessage('Confirmação enviada! Verificaremos seu pagamento e enviaremos os bilhetes em breve.', 'success');
-            
-            // Update admin dashboard
-            updateAdminDashboard();
-        }
-
-        function sendAdminNotification(purchaseData) {
-            // In a real application, this would send an actual email
-            // For now, we'll simulate the email sending
-            console.log('Email enviado para laraempresaferreira@gmail.com:', purchaseData);
-            
-            // Simulate email content
-            const emailContent = `
-                NOVA CONFIRMAÇÃO DE PAGAMENTO RECEBIDA!
-                
-                ===== DADOS DO CLIENTE =====
-                Nome: ${purchaseData.name}
-                CPF: ${purchaseData.cpf}
-                Email: ${purchaseData.email}
-                
-                ===== DADOS DA COMPRA =====
-                Pacote: ${purchaseData.tickets} bilhetes
-                Valor: R$ ${purchaseData.price}
-                ID Transação: ${purchaseData.transactionId}
-                Data/Hora: ${purchaseData.date} ${purchaseData.time}
-                
-                ===== AÇÕES NECESSÁRIAS =====
-                1. Verificar pagamento no Mercado Pago
-                2. Se aprovado, enviar pack para: ${purchaseData.email}
-                3. Confirmar recebimento com o cliente
-                
-                Link Mercado Pago: link.mercadopago.com.br/megamillionsbrasil
-            `;
-            
-            return true; // Simulate successful email sending
-        }
-
-        // User database simulation
-        let userDatabase = JSON.parse(localStorage.getItem('megaMillionsUsers') || '[]');
-
-        // Login functionality
-        function showLoginModal() {
-            document.getElementById('loginModal').classList.remove('hidden');
-            document.getElementById('loginModal').classList.add('flex');
-        }
-
-        function closeLoginModal() {
-            document.getElementById('loginModal').classList.add('hidden');
-            document.getElementById('loginModal').classList.remove('flex');
-        }
-
-        function loginWithGoogle() {
-            showMessage('Login com Google não está disponível no momento. Use email e senha ou cadastre-se primeiro.', 'error');
-        }
-
-        function loginWithFacebook() {
-            showMessage('Login com Facebook não está disponível no momento. Use email e senha ou cadastre-se primeiro.', 'error');
-        }
-
-        function loginWithEmail(event) {
-            event.preventDefault();
-            const email = document.getElementById('loginEmail').value.trim().toLowerCase();
-            const password = document.getElementById('loginPassword').value;
-
-            // Validate required fields
-            if (!email || !password) {
-                showMessage('Email e senha são obrigatórios!', 'error');
-                return;
-            }
-
-            // Check admin credentials FIRST
-            if (email === 'laraempresaferreira@gmail.com' && password === 'cruzeiro13') {
-                currentUser = {
-                    name: 'Lara Ferreira - ADMIN',
-                    email: email,
-                    isAdmin: true,
-                    provider: 'admin'
-                };
-                closeLoginModal();
-                showSection('admin');
-                updateAdminDashboard();
-                showMessage('🔑 Acesso administrativo autorizado! Bem-vinda Lara!', 'success');
-                updateHeaderForLoggedUser();
-                
-                // Clear form
-                document.getElementById('loginEmail').value = '';
-                document.getElementById('loginPassword').value = '';
-                return;
-            }
-
-            // Check regular user credentials
-            const user = userDatabase.find(u => u.email.toLowerCase() === email && u.password === password);
-            if (!user) {
-                showMessage('❌ Email ou senha incorretos! Verifique seus dados ou cadastre-se primeiro.', 'error');
-                return;
-            }
-
-            // Login successful for regular user
-            currentUser = {
-                id: user.id,
-                name: user.name,
-                email: user.email,
-                cpf: user.cpf,
-                provider: user.provider,
-                isAdmin: false
-            };
-
-            closeLoginModal();
-            updateUserInterface();
-            updateHeaderForLoggedUser();
-            showMessage(`✅ Bem-vindo, ${user.name}! Login realizado com sucesso.`, 'success');
-            
-            // Clear form
-            document.getElementById('loginEmail').value = '';
-            document.getElementById('loginPassword').value = '';
-        }
-
-        // Registration functions
-        function showRegisterModal() {
-            document.getElementById('registerModal').classList.remove('hidden');
-            document.getElementById('registerModal').classList.add('flex');
-        }
-
-        function showRegisterForm() {
-            closeLoginModal();
-            showRegisterModal();
-        }
-
-        function showLoginForm() {
-            closeRegisterModal();
-            closeForgotPasswordModal();
-            showLoginModal();
-        }
-
-        function closeRegisterModal() {
-            document.getElementById('registerModal').classList.add('hidden');
-            document.getElementById('registerModal').classList.remove('flex');
-        }
-
-        function registerUser(event) {
-            event.preventDefault();
-            const name = document.getElementById('registerName').value.trim();
-            const cpf = document.getElementById('registerCPF').value.trim();
-            const email = document.getElementById('registerEmail').value.trim().toLowerCase();
-            const password = document.getElementById('registerPassword').value;
-
-            // Validate required fields
-            if (!name || !cpf || !email || !password) {
-                showMessage('❌ Todos os campos são obrigatórios!', 'error');
-                return;
-            }
-
-            // Validate email format
-            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            if (!emailRegex.test(email)) {
-                showMessage('❌ Por favor, insira um email válido!', 'error');
-                return;
-            }
-
-            // Validate password length
-            if (password.length < 6) {
-                showMessage('❌ A senha deve ter pelo menos 6 caracteres!', 'error');
-                return;
-            }
-
-            // Validate CPF format (basic)
-            if (cpf.length < 11) {
-                showMessage('❌ CPF deve ter pelo menos 11 dígitos!', 'error');
-                return;
-            }
-
-            // Check if user already exists
-            const existingUser = userDatabase.find(user => user.email.toLowerCase() === email);
-            if (existingUser) {
-                showMessage('❌ Este email já está cadastrado! Faça login ou use outro email.', 'error');
-                return;
-            }
-
-            // Check if CPF already exists
-            const existingCPF = userDatabase.find(user => user.cpf === cpf);
-            if (existingCPF) {
-                showMessage('❌ Este CPF já está cadastrado!', 'error');
-                return;
-            }
-
-            // Create new user
-            const newUser = {
-                id: Date.now(),
-                name: name,
-                email: email,
-                cpf: cpf,
-                password: password, // In production, this should be hashed
-                provider: 'email',
-                createdAt: new Date().toISOString(),
-                isActive: true
-            };
-
-            // Save to database
-            userDatabase.push(newUser);
-            localStorage.setItem('megaMillionsUsers', JSON.stringify(userDatabase));
-
-            closeRegisterModal();
-            showMessage('✅ Conta criada com sucesso! Agora você pode fazer login com suas credenciais.', 'success');
-            
-            // Clear form
-            document.getElementById('registerName').value = '';
-            document.getElementById('registerCPF').value = '';
-            document.getElementById('registerEmail').value = '';
-            document.getElementById('registerPassword').value = '';
-
-            // Auto-open login modal
             setTimeout(() => {
-                showLoginModal();
-                // Pre-fill email
-                document.getElementById('loginEmail').value = email;
-                document.getElementById('loginPassword').focus();
-            }, 1500);
+                // Open secure payment link in new tab
+                window.open(paymentUrl, '_blank', 'noopener,noreferrer');
+                
+                // Reset button
+                button.innerHTML = originalText;
+                button.disabled = false;
+            }, 800);
         }
 
-        // Password reset functions
-        function showForgotPassword() {
-            closeLoginModal();
-            document.getElementById('forgotPasswordModal').classList.remove('hidden');
-            document.getElementById('forgotPasswordModal').classList.add('flex');
-        }
-
-        function closeForgotPasswordModal() {
-            document.getElementById('forgotPasswordModal').classList.add('hidden');
-            document.getElementById('forgotPasswordModal').classList.remove('flex');
-        }
-
-        function resetPassword(event) {
-            event.preventDefault();
-            const email = document.getElementById('resetEmail').value.trim().toLowerCase();
-            
-            if (!email) {
-                showMessage('❌ Por favor, insira seu email!', 'error');
-                return;
-            }
-
-            // Check if user exists
-            const user = userDatabase.find(u => u.email.toLowerCase() === email);
-            if (!user) {
-                showMessage('❌ Email não encontrado em nossa base de dados!', 'error');
-                return;
-            }
-            
-            closeForgotPasswordModal();
-            showMessage('✅ Link de recuperação enviado para seu email! Verifique sua caixa de entrada.', 'success');
-            
-            // Clear form
-            document.getElementById('resetEmail').value = '';
-        }
-
-        // Admin access function
-        function showAdminLogin() {
-            showMessage('🔑 Para acessar o painel administrativo, faça login com suas credenciais de administrador.', 'info');
-            showLoginModal();
-            
-            // Pre-fill admin email for convenience
-            setTimeout(() => {
-                document.getElementById('loginEmail').value = 'laraempresaferreira@gmail.com';
-                document.getElementById('loginPassword').focus();
-            }, 500);
-        }
-
-        function updateUserInterface() {
-            if (currentUser) {
-                // Update purchase history
-                updatePurchaseHistory();
-            }
-        }
-
-        function updateHeaderForLoggedUser() {
-            const userActions = document.getElementById('userActions');
-            const userActionsMobile = document.getElementById('userActionsMobile');
-            
-            if (currentUser) {
-                if (currentUser.isAdmin) {
-                    userActions.innerHTML = `
-                        <div class="flex items-center space-x-3">
-                            <span class="text-yellow-300 font-semibold text-sm">👑 ${currentUser.name}</span>
-                            <button onclick="showSection('admin')" class="bg-gradient-to-r from-red-500 to-red-600 text-white px-3 py-2 rounded-full font-bold hover:from-red-600 hover:to-red-700 transition-all duration-300 text-xs">Admin</button>
-                            <button onclick="logout()" class="bg-gradient-to-r from-gray-500 to-gray-600 text-white px-3 py-2 rounded-full font-bold hover:from-gray-600 hover:to-gray-700 transition-all duration-300 text-xs">Sair</button>
-                        </div>
-                    `;
-                    userActionsMobile.innerHTML = `
-                        <div class="flex items-center space-x-2">
-                            <span class="text-yellow-300 font-semibold text-xs">👑</span>
-                            <button onclick="logout()" class="bg-gradient-to-r from-gray-500 to-gray-600 text-white px-2 py-1 rounded-full font-bold hover:from-gray-600 hover:to-gray-700 transition-all duration-300 text-xs">Sair</button>
-                        </div>
-                    `;
-                } else {
-                    userActions.innerHTML = `
-                        <div class="flex items-center space-x-3">
-                            <span class="text-yellow-300 font-semibold text-sm">👤 ${currentUser.name}</span>
-                            <button onclick="logout()" class="bg-gradient-to-r from-gray-500 to-gray-600 text-white px-3 py-2 rounded-full font-bold hover:from-gray-600 hover:to-gray-700 transition-all duration-300 text-xs">Sair</button>
-                        </div>
-                    `;
-                    userActionsMobile.innerHTML = `
-                        <div class="flex items-center space-x-2">
-                            <span class="text-yellow-300 font-semibold text-xs">👤</span>
-                            <button onclick="logout()" class="bg-gradient-to-r from-gray-500 to-gray-600 text-white px-2 py-1 rounded-full font-bold hover:from-gray-600 hover:to-gray-700 transition-all duration-300 text-xs">Sair</button>
-                        </div>
-                    `;
-                }
-            } else {
-                userActions.innerHTML = `
-                    <div class="flex items-center space-x-3">
-                        <button onclick="showRegisterModal()" class="bg-gradient-to-r from-green-500 to-emerald-600 text-white px-4 py-2 rounded-full font-bold hover:from-green-600 hover:to-emerald-700 transition-all duration-300 shadow-lg transform hover:scale-105 text-sm">Cadastrar</button>
-                        <button onclick="showLoginModal()" class="bg-gradient-to-r from-yellow-400 to-orange-500 text-white px-4 py-2 rounded-full font-bold hover:from-yellow-300 hover:to-orange-400 transition-all duration-300 shadow-lg transform hover:scale-105 text-sm">Entrar</button>
-                    </div>
-                `;
-                userActionsMobile.innerHTML = `
-                    <div class="flex items-center space-x-2">
-                        <button onclick="showRegisterModal()" class="bg-gradient-to-r from-green-500 to-emerald-600 text-white px-3 py-2 rounded-full font-bold hover:from-green-600 hover:to-emerald-700 transition-all duration-300 shadow-lg text-xs">Cadastrar</button>
-                        <button onclick="showLoginModal()" class="bg-gradient-to-r from-yellow-400 to-orange-500 text-white px-3 py-2 rounded-full font-bold hover:from-yellow-300 hover:to-orange-400 transition-all duration-300 shadow-lg text-xs">Entrar</button>
-                    </div>
-                `;
-            }
-        }
-
-        // Mobile menu functions
-        function toggleMobileMenu() {
-            const mobileMenu = document.getElementById('mobileMenu');
-            if (mobileMenu.classList.contains('hidden')) {
-                mobileMenu.classList.remove('hidden');
-            } else {
-                mobileMenu.classList.add('hidden');
-            }
-        }
-
-        function closeMobileMenu() {
-            document.getElementById('mobileMenu').classList.add('hidden');
-        }
-
-        function logout() {
-            currentUser = null;
-            updateHeaderForLoggedUser();
-            showSection('inicio');
-            showMessage('Logout realizado com sucesso!', 'success');
-            
-            // Clear purchase history
-            const historyDiv = document.getElementById('purchaseHistory');
-            historyDiv.innerHTML = `
-                <div class="text-center text-gray-500 py-8">
-                    <div class="text-4xl mb-2">📋</div>
-                    <p>Faça login para ver seu histórico</p>
-                </div>
-            `;
-        }
-
-        // Package selection
-        function selectPackage(tickets, price) {
-            selectedPackage = { tickets, price };
-            showPurchaseModal();
-        }
-
-        function showPurchaseModal() {
-            if (!selectedPackage) return;
-
-            const modal = document.getElementById('purchaseModal');
-            const details = document.getElementById('purchaseDetails');
-            
-            details.innerHTML = `
-                <div>
-                    <div class="text-xl font-bold text-gray-800 mb-2">${selectedPackage.tickets} Bilhetes</div>
-                    <div class="text-3xl font-bold bg-gradient-to-r from-green-500 to-emerald-600 bg-clip-text text-transparent mb-4">R$ ${selectedPackage.price}</div>
-                    <div class="text-sm text-gray-600 space-y-1">
-                        <div>🎯 Sorteio: Sexta às 19h</div>
-                        <div>📧 Entrega em 30min</div>
-                        <div>🔒 Pagamento 100% Seguro</div>
-                    </div>
-                </div>
-            `;
-
-            modal.classList.remove('hidden');
-            modal.classList.add('flex');
-        }
-
-        function closePurchaseModal() {
-            document.getElementById('purchaseModal').classList.add('hidden');
-            document.getElementById('purchaseModal').classList.remove('flex');
-        }
-
-        // Payment method selection handlers - Mercado Pago only
-
-
-
-        function showSuccessModal() {
-            document.getElementById('successModal').classList.remove('hidden');
-            document.getElementById('successModal').classList.add('flex');
-        }
-
-        function closeSuccessModal() {
-            document.getElementById('successModal').classList.add('hidden');
-            document.getElementById('successModal').classList.remove('flex');
-        }
-
-        // Financial section - Mercado Pago only
-
-        function updatePurchaseHistory() {
-            const historyDiv = document.getElementById('purchaseHistory');
-            const userPurchases = salesData.filter(sale => 
-                currentUser && sale.email === currentUser.email
-            );
-
-            if (userPurchases.length === 0) {
-                historyDiv.innerHTML = `
-                    <div class="text-center text-gray-500 py-8">
-                        <div class="text-4xl mb-2">📋</div>
-                        <p>Nenhuma compra encontrada</p>
-                    </div>
-                `;
-                return;
-            }
-
-            historyDiv.innerHTML = userPurchases.map(purchase => `
-                <div class="border rounded-lg p-4">
-                    <div class="flex justify-between items-center">
-                        <div>
-                            <div class="font-semibold">${purchase.tickets} Bilhetes</div>
-                            <div class="text-sm text-gray-600">${purchase.date}</div>
-                        </div>
-                        <div class="text-right">
-                            <div class="font-bold text-green-600">R$ ${purchase.price}</div>
-                            <div class="text-sm text-green-600">${purchase.status}</div>
-                        </div>
-                    </div>
-                </div>
-            `).join('');
-        }
-
-        // Admin dashboard
-        function updateAdminDashboard() {
-            const totalSales = salesData.reduce((sum, sale) => sum + parseFloat(sale.price.replace(',', '.')), 0);
-            const totalCustomers = new Set(salesData.map(sale => sale.email)).size;
-            const totalTickets = salesData.reduce((sum, sale) => sum + parseInt(sale.tickets), 0);
-            const pendingOrders = salesData.filter(sale => sale.status === 'Aguardando Confirmação').length;
-
-            document.getElementById('totalSales').textContent = `R$ ${totalSales.toLocaleString('pt-BR', {minimumFractionDigits: 2})}`;
-            document.getElementById('totalCustomers').textContent = totalCustomers;
-            document.getElementById('totalTickets').textContent = totalTickets.toLocaleString('pt-BR');
-            document.getElementById('pendingOrders').textContent = pendingOrders;
-
-            // Calculate revenue analytics
-            const today = new Date().toLocaleDateString('pt-BR');
-            const todaySales = salesData.filter(sale => sale.date === today);
-            const todayRevenue = todaySales.reduce((sum, sale) => sum + parseFloat(sale.price.replace(',', '.')), 0);
-            
-            const thisWeek = getThisWeekSales();
-            const weekRevenue = thisWeek.reduce((sum, sale) => sum + parseFloat(sale.price.replace(',', '.')), 0);
-            
-            const thisMonth = getThisMonthSales();
-            const monthRevenue = thisMonth.reduce((sum, sale) => sum + parseFloat(sale.price.replace(',', '.')), 0);
-            
-            const averageTicket = salesData.length > 0 ? totalSales / salesData.length : 0;
-
-            document.getElementById('todayRevenue').textContent = `R$ ${todayRevenue.toLocaleString('pt-BR', {minimumFractionDigits: 2})}`;
-            document.getElementById('weekRevenue').textContent = `R$ ${weekRevenue.toLocaleString('pt-BR', {minimumFractionDigits: 2})}`;
-            document.getElementById('monthRevenue').textContent = `R$ ${monthRevenue.toLocaleString('pt-BR', {minimumFractionDigits: 2})}`;
-            document.getElementById('averageTicket').textContent = `R$ ${averageTicket.toLocaleString('pt-BR', {minimumFractionDigits: 2})}`;
-
-            updateSalesTable();
-        }
-
-        function updateSalesTable(filteredData = null) {
-            const salesTable = document.getElementById('salesTable');
-            const dataToShow = filteredData || salesData;
-            
-            if (dataToShow.length === 0) {
-                salesTable.innerHTML = `
-                    <tr>
-                        <td colspan="8" class="text-center py-8 text-gray-500">
-                            <div class="text-4xl mb-2">📊</div>
-                            <div>Nenhuma venda encontrada</div>
-                        </td>
-                    </tr>
-                `;
-                return;
-            }
-
-            salesTable.innerHTML = dataToShow.slice(-20).reverse().map(sale => `
-                <tr class="border-b hover:bg-gray-50 transition-colors">
-                    <td class="py-4 px-4">
-                        <div class="font-semibold">${sale.date}</div>
-                        <div class="text-xs text-gray-500">${sale.time || ''}</div>
-                    </td>
-                    <td class="py-4 px-4">
-                        <div class="font-semibold">${sale.name}</div>
-                        <div class="text-xs text-gray-500">${sale.transactionId || 'N/A'}</div>
-                    </td>
-                    <td class="py-4 px-4">
-                        <div class="text-sm">${sale.email}</div>
-                    </td>
-                    <td class="py-4 px-4">
-                        <div class="text-sm font-mono">${sale.cpf || 'N/A'}</div>
-                    </td>
-                    <td class="py-4 px-4">
-                        <div class="font-semibold">${sale.type === 'Bolão' ? `Bolão ${sale.cotas} cotas` : `${sale.tickets} bilhetes`}</div>
-                        <div class="text-xs text-gray-500">${sale.paymentMethod || 'Mercado Pago'}</div>
-                    </td>
-                    <td class="py-4 px-4">
-                        <div class="text-lg font-bold text-green-600">R$ ${sale.price}</div>
-                    </td>
-                    <td class="py-4 px-4">
-                        <span class="px-3 py-1 rounded-full text-xs font-semibold ${getStatusColor(sale.status)}">
-                            ${sale.status}
-                        </span>
-                    </td>
-                    <td class="py-4 px-4">
-                        <div class="flex space-x-2">
-                            ${sale.status === 'Aguardando Confirmação' ? 
-                                `<button onclick="confirmSale('${sale.id}')" class="bg-green-500 text-white px-3 py-1 rounded text-xs hover:bg-green-600 transition-colors">Confirmar</button>` : 
-                                `<button onclick="viewSaleDetails('${sale.id}')" class="bg-blue-500 text-white px-3 py-1 rounded text-xs hover:bg-blue-600 transition-colors">Ver</button>`
-                            }
-                            <button onclick="deleteSale('${sale.id}')" class="bg-red-500 text-white px-3 py-1 rounded text-xs hover:bg-red-600 transition-colors">Excluir</button>
-                        </div>
-                    </td>
-                </tr>
-            `).join('');
-        }
-
-        function getStatusColor(status) {
-            switch(status) {
-                case 'Aguardando Confirmação': return 'bg-yellow-100 text-yellow-800';
-                case 'Confirmado': return 'bg-green-100 text-green-800';
-                case 'Enviado': return 'bg-blue-100 text-blue-800';
-                default: return 'bg-gray-100 text-gray-800';
-            }
-        }
-
-        function getThisWeekSales() {
-            const today = new Date();
-            const weekStart = new Date(today.setDate(today.getDate() - today.getDay()));
-            return salesData.filter(sale => {
-                const saleDate = new Date(sale.date.split('/').reverse().join('-'));
-                return saleDate >= weekStart;
-            });
-        }
-
-        function getThisMonthSales() {
-            const today = new Date();
-            const monthStart = new Date(today.getFullYear(), today.getMonth(), 1);
-            return salesData.filter(sale => {
-                const saleDate = new Date(sale.date.split('/').reverse().join('-'));
-                return saleDate >= monthStart;
-            });
-        }
-
-        // Admin functions
-        function filterSales() {
-            const statusFilter = document.getElementById('statusFilter').value;
-            const dateFilter = document.getElementById('dateFilter').value;
-            
-            let filteredData = salesData;
-            
-            if (statusFilter) {
-                filteredData = filteredData.filter(sale => sale.status === statusFilter);
-            }
-            
-            if (dateFilter) {
-                const filterDate = new Date(dateFilter).toLocaleDateString('pt-BR');
-                filteredData = filteredData.filter(sale => sale.date === filterDate);
-            }
-            
-            updateSalesTable(filteredData);
-        }
-
-        function confirmSale(saleId) {
-            const saleIndex = salesData.findIndex(sale => sale.id == saleId);
-            if (saleIndex !== -1) {
-                salesData[saleIndex].status = 'Confirmado';
-                localStorage.setItem('megaMillionsSales', JSON.stringify(salesData));
-                updateAdminDashboard();
-                showMessage('Venda confirmada com sucesso!', 'success');
-            }
-        }
-
-        function deleteSale(saleId) {
-            if (confirm('Tem certeza que deseja excluir esta venda?')) {
-                salesData = salesData.filter(sale => sale.id != saleId);
-                localStorage.setItem('megaMillionsSales', JSON.stringify(salesData));
-                updateAdminDashboard();
-                showMessage('Venda excluída com sucesso!', 'success');
-            }
-        }
-
-        function viewSaleDetails(saleId) {
-            const sale = salesData.find(sale => sale.id == saleId);
-            if (sale) {
-                alert(`Detalhes da Venda:\n\nCliente: ${sale.name}\nEmail: ${sale.email}\nCPF: ${sale.cpf}\nProduto: ${sale.tickets} bilhetes\nValor: R$ ${sale.price}\nData: ${sale.date} ${sale.time}\nStatus: ${sale.status}\nID Transação: ${sale.transactionId}`);
-            }
-        }
-
-        function exportSalesData() {
-            const csvContent = "data:text/csv;charset=utf-8," 
-                + "Data,Cliente,Email,CPF,Produto,Valor,Status,ID_Transacao\n"
-                + salesData.map(sale => 
-                    `${sale.date},${sale.name},${sale.email},${sale.cpf || ''},${sale.tickets} bilhetes,${sale.price},${sale.status},${sale.transactionId || ''}`
-                ).join("\n");
-            
-            const encodedUri = encodeURI(csvContent);
-            const link = document.createElement("a");
-            link.setAttribute("href", encodedUri);
-            link.setAttribute("download", `vendas_mega_millions_${new Date().toISOString().split('T')[0]}.csv`);
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
-            
-            showMessage('Dados exportados com sucesso!', 'success');
-        }
-
-        function generateFinancialReport() {
-            const totalSales = salesData.reduce((sum, sale) => sum + parseFloat(sale.price.replace(',', '.')), 0);
-            const totalCustomers = new Set(salesData.map(sale => sale.email)).size;
-            const totalTickets = salesData.reduce((sum, sale) => sum + parseInt(sale.tickets), 0);
-            
-            const report = `
-RELATÓRIO FINANCEIRO - MEGA MILLIONS BRASIL
-Data: ${new Date().toLocaleDateString('pt-BR')}
-============================================
-
-RESUMO GERAL:
-- Total de Vendas: R$ ${totalSales.toLocaleString('pt-BR', {minimumFractionDigits: 2})}
-- Total de Clientes: ${totalCustomers}
-- Total de Bilhetes Vendidos: ${totalTickets.toLocaleString('pt-BR')}
-- Ticket Médio: R$ ${(totalSales / salesData.length || 0).toLocaleString('pt-BR', {minimumFractionDigits: 2})}
-
-VENDAS POR STATUS:
-- Aguardando Confirmação: ${salesData.filter(s => s.status === 'Aguardando Confirmação').length}
-- Confirmadas: ${salesData.filter(s => s.status === 'Confirmado').length}
-- Enviadas: ${salesData.filter(s => s.status === 'Enviado').length}
-
-CNPJ: 63.173.859/0001-12
-Email: megamillionbrasil@gmail.com
-            `;
-            
-            const blob = new Blob([report], { type: 'text/plain' });
-            const url = window.URL.createObjectURL(blob);
-            const link = document.createElement('a');
-            link.href = url;
-            link.download = `relatorio_financeiro_${new Date().toISOString().split('T')[0]}.txt`;
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
-            window.URL.revokeObjectURL(url);
-            
-            showMessage('Relatório gerado com sucesso!', 'success');
-        }
-
-        function clearAllData() {
-            if (confirm('ATENÇÃO: Esta ação irá apagar TODOS os dados de vendas e usuários. Esta ação não pode ser desfeita. Tem certeza?')) {
-                if (confirm('Última confirmação: Realmente deseja apagar TODOS os dados?')) {
-                    localStorage.removeItem('megaMillionsSales');
-                    localStorage.removeItem('megaMillionsUsers');
-                    salesData = [];
-                    userDatabase = [];
-                    updateAdminDashboard();
-                    showMessage('Todos os dados foram apagados!', 'success');
-                }
-            }
-        }
-
-        function backupData() {
-            const backupData = {
-                sales: salesData,
-                users: userDatabase,
-                timestamp: new Date().toISOString(),
-                version: '2.0.1'
-            };
-            
-            const blob = new Blob([JSON.stringify(backupData, null, 2)], { type: 'application/json' });
-            const url = window.URL.createObjectURL(blob);
-            const link = document.createElement('a');
-            link.href = url;
-            link.download = `backup_mega_millions_${new Date().toISOString().split('T')[0]}.json`;
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
-            window.URL.revokeObjectURL(url);
-            
-            localStorage.setItem('lastBackup', new Date().toLocaleString('pt-BR'));
-            document.getElementById('lastBackup').textContent = new Date().toLocaleString('pt-BR');
-            
-            showMessage('Backup realizado com sucesso!', 'success');
-        }
-
-        // Bolão functionality
-        function selectBolao(tickets, pricePerCota, minCotas, maxCotas) {
-            selectedBolao = { tickets, pricePerCota, minCotas: parseInt(minCotas), maxCotas: parseInt(maxCotas) };
-            showBolaoModal();
-        }
-
-        function showBolaoModal() {
-            if (!selectedBolao) return;
-
-            const modal = document.getElementById('bolaoModal');
-            const details = document.getElementById('bolaoDetails');
-            const cotasSelect = document.getElementById('bolaoCotas');
-            
-            details.innerHTML = `
-                <div class="text-center">
-                    <div class="text-xl font-bold">Bolão ${selectedBolao.tickets} Bilhetes</div>
-                    <div class="text-lg text-purple-600">R$ ${selectedBolao.pricePerCota} por cota</div>
-                    <div class="text-sm text-gray-600 mt-2">Sorteio: Sexta-feira às 19h</div>
-                    <div class="text-sm text-gray-600">CNPJ: 63.173.859/0001-12</div>
-                </div>
-            `;
-
-            // Populate cotas options
-            cotasSelect.innerHTML = '<option value="">Selecione a quantidade</option>';
-            for (let i = selectedBolao.minCotas; i <= selectedBolao.maxCotas; i++) {
-                const total = (i * parseFloat(selectedBolao.pricePerCota.replace(',', '.'))).toFixed(2).replace('.', ',');
-                cotasSelect.innerHTML += `<option value="${i}">${i} cota${i > 1 ? 's' : ''} - R$ ${total}</option>`;
-            }
-
-            modal.classList.remove('hidden');
-            modal.classList.add('flex');
-        }
-
-        function closeBolaoModal() {
-            document.getElementById('bolaoModal').classList.add('hidden');
-            document.getElementById('bolaoModal').classList.remove('flex');
-        }
-
-        function updateBolaoTotal() {
-            const cotasSelect = document.getElementById('bolaoCotas');
-            const totalSpan = document.getElementById('bolaoTotal');
-            
-            if (cotasSelect.value && selectedBolao) {
-                const cotas = parseInt(cotasSelect.value);
-                const total = (cotas * parseFloat(selectedBolao.pricePerCota.replace(',', '.'))).toFixed(2).replace('.', ',');
-                totalSpan.textContent = `R$ ${total}`;
-            } else {
-                totalSpan.textContent = 'R$ 0,00';
-            }
-        }
-
-
-
-        // Contact form
-        function sendMessage(event) {
-            event.preventDefault();
-            showMessage('Mensagem enviada com sucesso! Responderemos em breve.', 'success');
-            event.target.reset();
-        }
-
-        // Utility functions
-        function showMessage(message, type) {
-            const messageDiv = document.createElement('div');
-            let bgColor = 'bg-red-500';
-            if (type === 'success') bgColor = 'bg-green-500';
-            if (type === 'info') bgColor = 'bg-blue-500';
-            
-            messageDiv.className = `fixed top-4 right-4 p-4 rounded-lg text-white z-50 ${bgColor} shadow-lg`;
-            messageDiv.textContent = message;
-            document.body.appendChild(messageDiv);
-
-            setTimeout(() => {
-                messageDiv.remove();
-            }, 4000);
-        }
-
-        // Modal functions for registration and password reset - Functions moved above to avoid duplication
-
-        // Initialize
+        // Add floating animation to security badges
         document.addEventListener('DOMContentLoaded', function() {
-            showSection('inicio');
-            updateAdminDashboard();
-            updateHeaderForLoggedUser();
-            
-            // Start countdown timer
-            updateCountdown();
-            countdownInterval = setInterval(updateCountdown, 1000);
-            
-            // Update recent winners every 30 seconds
-            updateRecentWinners();
-            setInterval(updateRecentWinners, 30000);
-            
-            // Update winners ticker every 45 seconds
-            updateWinnersTicker();
-            setInterval(updateWinnersTicker, 45000);
-            
-            // Update prize amount every 2 minutes
-            updatePrizeAmount();
-            setInterval(updatePrizeAmount, 120000);
-            
-            // Initialize system uptime
-            const startTime = Date.now();
-            setInterval(() => {
-                const uptime = Date.now() - startTime;
-                const hours = Math.floor(uptime / (1000 * 60 * 60));
-                const minutes = Math.floor((uptime % (1000 * 60 * 60)) / (1000 * 60));
-                document.getElementById('systemUptime').textContent = `${hours}h ${minutes}m`;
-            }, 60000);
-            
-            // Load last backup info
-            const lastBackup = localStorage.getItem('lastBackup');
-            if (lastBackup) {
-                document.getElementById('lastBackup').textContent = lastBackup;
-            }
+            const securityBadges = document.querySelectorAll('.security-badge');
+            securityBadges.forEach(badge => {
+                badge.style.display = 'inline-block';
+            });
         });
     </script>
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'98f112efa0e9e012',t:'MTc2MDU0OTczNy4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'992561f1e3c2e2ce',t:'MTc2MTA5ODIzMi4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
 
+
+
+     
+       
